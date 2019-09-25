@@ -1,0 +1,37 @@
+body {
+    font-family: Arial;
+    color: #212121;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.sitecontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.sitecontainer h1{
+    text-align: center;
+}
+
+.buttongroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button {
+    float: left;
+    width: 40%;
+    height: 50px;
+    border: 3px solid #BAE0E8;
+    border-radius: 50px;
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+}

@@ -13,7 +13,13 @@
     <script type="application/javascript" src="assets/javascript/index.js"></script>
     <title>Gezondheidsmeter - Home</title>
 </head>
-<body>
-    Hello world.
+    <div class="sitecontainer">
+        <image class="logo" src="assets/images/logobig.png" alt="logo"></image><br>
+        <h1>Welkom bij de gezondheidsmeter!</h1><br>
+        <div class="buttongroup">
+            <div class="button">Registreren</div>
+            <div class="button">Inloggen</div>
+        </div>
+    </div>
 </body>
 </html>
