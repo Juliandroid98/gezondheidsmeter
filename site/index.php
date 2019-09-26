@@ -14,7 +14,8 @@
     <title>Gezondheidsmeter - Home</title>
 </head>
     <div class="sitecontainer">
-        <image class="logo" src="assets/images/logobig.png" alt="logo"></image><br>
+        <!-- content -->
+        <image class="logo" src="assets/images/logobig.png" alt="logo"><br>
         <div class="buttongroup">
             <a class="button" href="registreren.php">
                 Registreren

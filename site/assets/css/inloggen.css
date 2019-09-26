@@ -3,7 +3,7 @@
 /*----------*/
 
 .headercontainer{
-    background-color: #C7C7C7;
+    flex-direction: column;
 }
 
 .logosmall{
@@ -13,10 +13,7 @@
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
-}
-
-.form{
-    border-top: 2px solid #b3b3b3;
+    padding-left: 0%;
 }
 
 .inputfield {
