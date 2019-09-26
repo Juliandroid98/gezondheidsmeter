@@ -10,25 +10,18 @@
     <meta name="keywords" content="gezondheid, meter, gezondheidsmeter, gezond leven, eten, slaap, drugs, drinken">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/inloggen.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <script type="application/javascript" src="assets/javascript/index.js"></script>
-    <title>Gezondheidsmeter - Inloggen</title>
+    <title>Gezondheidsmeter - Dashboard</title>
 </head>
 <body>
     <div class="sitecontainer">
         <!-- header -->
         <div class="headercontainer">
-        <a href="index.php">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
-        </a>
+            <h1>Dashboard</h1>
+            <image class="burgermenu" src="assets/images/burgermenu.png" alt="burgermenu">
         </div>
-        <!-- content -->
-        <form class="form" action="assets/php/login.php" method="POST">
-            <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>
-            <input class="submitbutton" type="submit" name="inloggen" value="Inloggen">
-        </form>
     </div>
 </body>
 </html>

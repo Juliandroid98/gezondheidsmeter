@@ -1,9 +1,9 @@
-/*----------*/
-/*inlog page*/
-/*----------*/
+/*----------------*/
+/*registratie page*/
+/*----------------*/
 
 .headercontainer{
-    background-color: #C7C7C7;
+    flex-direction: column;
 }
 
 .logosmall{
@@ -52,4 +52,3 @@
 .submitbutton:hover {
     background-color: #BAE0E8;
 }
-
