@@ -1,17 +1,44 @@
+html{
+    height: 100%;
+    width: 100%;
+}
 .container{
-    margin: 0 20%;
-    background-color: #C7C7C7;
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+}
+.section1{
+    padding: 1% 20%;
+}
+.section2{
+    padding: 1% 20%;
 }
 .buttongroup-rating{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    border: none;
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
 }
+.buttongroup-rating button{
+    display: inline-block;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}.buttongroup-rating button:hover{
+    opacity: 0.8;
+ }
+.buttongroup-rating h4{
+    margin: 1% 0;
+}
+
 .button-rating-1{
     border-radius: 1px;
     width: 40px;
     height: 30px;
     background-color: red;
+
 }
 .button-rating-2{
     border-radius: 1px;
