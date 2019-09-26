@@ -10,6 +10,7 @@
     <meta name="keywords" content="gezondheid, meter, gezondheidsmeter, gezond leven, eten, slaap, drugs, drinken">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/home.css">
     <script type="application/javascript" src="assets/javascript/index.js"></script>
     <title>Gezondheidsmeter - Home</title>
 </head>
