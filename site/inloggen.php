@@ -15,9 +15,11 @@
     <title>Gezondheidsmeter - Inloggen</title>
 </head>
     <div class="sitecontainer">
+        <div class="headercontainer">
         <a href="index.php">
             <image class="logosmall" src="assets/images/logo.png" alt="logo"></image>
-        </a><br>
+        </a>
+        </div>
         <form class="form" action="assets/php/login.php" method="POST">
             <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
             <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>

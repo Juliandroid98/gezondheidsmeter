@@ -15,9 +15,11 @@
     <title>Gezondheidsmeter - Inloggen</title>
 </head>
     <div class="sitecontainer">
+        <div class="headercontainer">
         <a href="index.php">
             <image class="logosmall" src="assets/images/logo.png" alt="logo"></image>
-        </a><br>
+        </a>
+        </div>
         <!--
         naam
         ww

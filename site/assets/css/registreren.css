@@ -2,6 +2,10 @@
 /*inlog page*/
 /*----------*/
 
+.headercontainer{
+    background-color: #C7C7C7;
+}
+
 .logosmall{
     display: block;
     width: 20%;
@@ -12,7 +16,7 @@
 }
 
 .form{
-    border-top: 2px solid #C7C7C7;
+    border-top: 2px solid #b3b3b3;
 }
 
 .inputfield {
