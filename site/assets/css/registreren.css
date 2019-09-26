@@ -1,0 +1,51 @@
+/*----------*/
+/*inlog page*/
+/*----------*/
+
+.logosmall{
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.form{
+    border-top: 2px solid #C7C7C7;
+}
+
+.inputfield {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    background-color: #C7C7C7;
+    transition: background-color 0.1s ease-in-out;
+    font-size: 20px;
+}
+
+.inputfield:focus {
+    background-color: #BAE0E8;
+}
+
+.submitbutton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    border: 3px solid #BAE0E8;
+    border-radius: 50px;
+}
+
+.submitbutton:hover {
+    background-color: #BAE0E8;
+}
+
