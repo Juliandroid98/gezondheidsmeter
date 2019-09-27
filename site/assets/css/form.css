@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Varela+Round&display=swap');
 input[type=text], select, option {
     width: 100%;
     padding: 12px 20px;
@@ -35,6 +37,7 @@ label {
     box-sizing: border-box;
     text-align: center;
     font-weight: bold;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .sitecontainer {
@@ -50,5 +53,9 @@ label {
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
-    background-color: rgb(149, 177, 182)
+    background-color: rgb(149, 177, 182);
+    font-family: 'Ubuntu', sans-serif;
 }
+
+
+
