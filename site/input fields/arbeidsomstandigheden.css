@@ -13,88 +13,85 @@ html{
 .section2{
     padding: 1% 20%;
 }
-.buttongroup-rating{
-    border: none;
-    width: 100%;
-    display: inline-block;
-    margin: 0 auto;
-}
-.buttongroup-rating button{
-    display: inline-block;
-    border: none;
+.text{
+    padding: 0;
     margin: 0;
-    text-decoration: none;
-    cursor: pointer;
+}
+.rating-group {
+    list-style-type:none;
+    padding:0;
+}
+
+.rating-group li {
+    float:left;
+    margin:0 5px 0 0;
+    width:50px;
+    height:30px;
+    position:relative;
+}
+.rating-group ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.rating-group label, .rating-group input {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.rating-group input[type="radio"] {
+    opacity:0.011;
+    z-index:100;
+}
+
+.rating-group input[type="radio"]:checked + label {
+    border: 2px solid black;
+}
+
+.rating-group label {
+    padding:5px;
+    border:1px solid #CCC;
+    cursor:pointer;
+    z-index:90;
     text-align: center;
 }
-.buttongroup-rating button:hover{
-    opacity: 0.8;
- }
-.buttongroup-rating h4{
-    margin: 1% 0;
+
+.rating-group label:hover {
+    opacity: 0.7;
 }
-.buttongroup-rating .submit{
-padding: 1% 20px;
-}
-.button-rating-1{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-1{
     background-color: red;
 
 }
-.button-rating-2{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-2{
     background-color: orangered;
 }
-.button-rating-3{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-3{
     background-color: darkorange;
 }
-.button-rating-4{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-4{
     background-color: orange;
 }
-.button-rating-5{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-5{
     background-color: yellow;
 }
-.button-rating-6{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-6{
     background-color: greenyellow;
 }
-.button-rating-7{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-7{
     background-color: lawngreen;
 }
-.button-rating-8{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-8{
     background-color: limegreen;
 }
-.button-rating-9{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-9{
     background-color: forestgreen;
 
 }
-.button-rating-10{
-    border-radius: 1px;
-    width: 40px;
-    height: 30px;
+.rating-10{
     background-color: green;
 }
