@@ -27,9 +27,9 @@
         <!-- bottom buttons-->
         <div class="bottomcontainer">
             <div class="bottombuttongroup">
-                <a class="bottombutton active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
-                <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/vragen.png" alt="vragenformulier"></a>
-                <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/meldingen.png" alt="meldingen"></a>
+                <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
+                <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
+                <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
             </div>
         </div>
     </div>

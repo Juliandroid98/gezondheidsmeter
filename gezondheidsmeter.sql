@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 27 sep 2019 om 09:14
+-- Gegenereerd op: 27 sep 2019 om 11:52
 -- Serverversie: 10.1.26-MariaDB
 -- PHP-versie: 7.1.8
 
@@ -109,15 +109,16 @@ CREATE TABLE `gebruiker` (
   `geboortedatum` date NOT NULL,
   `lengte` int(11) NOT NULL,
   `gewicht` int(11) NOT NULL,
-  `geslacht` varchar(10) NOT NULL
+  `geslacht` varchar(10) NOT NULL,
+  `geactiveerd` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`is_admin`, `gebruiker_id`, `gebruikersnaam`, `wachtwoord`, `email`, `geboortedatum`, `lengte`, `gewicht`, `geslacht`) VALUES
-(0, 1, 'testgebruiker', 'test123', 'test@emal.com', '2019-09-03', 99, 99, 'man');
+INSERT INTO `gebruiker` (`is_admin`, `gebruiker_id`, `gebruikersnaam`, `wachtwoord`, `email`, `geboortedatum`, `lengte`, `gewicht`, `geslacht`, `geactiveerd`) VALUES
+(0, 1, 'testgebruiker', 'test123', 'test@emal.com', '2019-09-03', 99, 99, 'man', 0);
 
 -- --------------------------------------------------------
 
