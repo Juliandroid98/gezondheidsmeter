@@ -64,3 +64,67 @@ a:active {
     padding-left: 2%;
     cursor: pointer;
 }
+
+/*------------------*/
+/* Bottom container */
+/*------------------*/
+
+.bottomcontainer {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: #C7C7C7;
+    border-top: 3px solid #b3b3b3;
+    bottom: 0;
+}
+
+.bottombuttongroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bottombutton {
+   /* background-color: white;*/
+    background: -webkit-linear-gradient(top, #ffffff 0%,#D3D3D3 100%);
+    width: 25%;
+    height: 60px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 2px solid #b3b3b3;
+    border-radius: 15px;
+}
+
+.bottombutton_active {
+    /* background-color: white;*/
+    background: -webkit-linear-gradient(bottom, #ffffff 0%,#D3D3D3 100%);
+    width: 25%;
+    height: 60px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 2px solid #b3b3b3;
+    border-radius: 15px;
+}
+
+.bottombutton:hover {
+    /* background-color: white;*/
+    background: -webkit-linear-gradient(bottom, #ffffff 0%,#D3D3D3 100%);
+    width: 25%;
+    height: 60px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 2px solid #b3b3b3;
+    border-radius: 15px;
+}
+
+.bottomimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+}
