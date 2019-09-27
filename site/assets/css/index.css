@@ -1,9 +1,11 @@
 /*----*/
 /*init*/
 /*----*/
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Varela+Round&display=swap');
 
 body {
-    font-family: Arial;
+    font-family: 'Varela Round', sans-serif;
     color: #212121;
     margin: 0px;
 }
