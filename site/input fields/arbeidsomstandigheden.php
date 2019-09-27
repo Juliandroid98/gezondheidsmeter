@@ -39,6 +39,8 @@
                 <button class="button-rating-8">8</button>
                 <button class="button-rating-9">9</button>
                 <button class="button-rating-10">10</button>
+                <br><br>
+                <button class="submit" type="submit">Versturen</button>
             </div>
         </div>
     </div>

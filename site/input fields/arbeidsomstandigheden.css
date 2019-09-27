@@ -26,13 +26,16 @@ html{
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-}.buttongroup-rating button:hover{
+}
+.buttongroup-rating button:hover{
     opacity: 0.8;
  }
 .buttongroup-rating h4{
     margin: 1% 0;
 }
-
+.buttongroup-rating .submit{
+padding: 1% 20px;
+}
 .button-rating-1{
     border-radius: 1px;
     width: 40px;
