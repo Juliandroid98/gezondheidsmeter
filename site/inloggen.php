@@ -1,3 +1,35 @@
+<?php
+    include 'assets/php/Connection.php';
+if (isset($_POST["username"])) {
+
+    if (isset($_POST["username"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
+
+        $wachtwoord = $_POST["password"];
+        $gebruikersnaam = $_POST["username"];
+
+
+        $error = "";
+        $sql = "SELECT wachtwoord, gebruiker_id FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+        print_r($row['wachtwoord']);
+        if (password_verify($wachtwoord, $row['wachtwoord'])){
+            session_start();
+            $_SESSION['username'] = $gebruikersnaam;
+            $_SESSION['id'] = $row['gebruiker_id'];
+
+
+        }
+    } else {
+        $error = '<h3 style="color: darkred">niet alles is ingevult</h3>';
+    }
+
+
+
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +56,7 @@
         </a>
         </div>
         <!-- content -->
-        <form class="form" action="assets/php/login.php" method="POST">
+        <form class="form" action="" method="POST">
             <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
             <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>
             <input class="submitbutton" type="submit" name="inloggen" value="Inloggen">
