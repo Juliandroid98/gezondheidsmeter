@@ -30,7 +30,10 @@
             <input class="inputfield" type="email" name="email" placeholder="Email">
             <input class="inputfield" type="date" name="date" placeholder="Geboortedatum">
             <input class="inputfield" type="number" name="length" placeholder="Lengte">
-            <input class="inputfield" type="number" name="weight" placeholder="Gewicht"><br>
+            <input class="inputfield" type="number" name="weight" placeholder="Gewicht">
+            <input type="radio" name="gender" value="male"> Man
+            <input type="radio" name="gender" value="female"> Vrouw
+            <input type="radio" name="gender" value="other"> Anders<br>
             <input class="submitbutton" type="submit" name="inloggen" value="Registreren"><br>
         </form>
     </div>
