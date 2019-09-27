@@ -20,7 +20,7 @@
         <!-- header -->
         <div class="headercontainer">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
-            <h1>Vragenformulier</h1>
+            <h2>Vragenformulier</h2>
             <image class="burgermenu" src="assets/images/burgermenu.png" alt="burgermenu">
         </div>
         <!-- content -->
@@ -83,7 +83,7 @@
         </form>
         <!-- bottom buttons-->
         <div class="bottomcontainer">
-        <div class="bottombuttongroup">
+            <div class="bottombuttongroup">
                 <a class="bottombutton_active" href="dashboard.php"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
                 <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
                 <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
