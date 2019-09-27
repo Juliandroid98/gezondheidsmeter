@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 sep 2019 om 15:36
+-- Gegenereerd op: 27 sep 2019 om 09:14
 -- Serverversie: 10.1.26-MariaDB
 -- PHP-versie: 7.1.8
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `gezondheidsmeter`
 --
-CREATE DATABASE IF NOT EXISTS `gezondheidsmeter` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `gezondheidsmeter`;
 
 -- --------------------------------------------------------
 
@@ -103,6 +101,7 @@ CREATE TABLE `eten` (
 --
 
 CREATE TABLE `gebruiker` (
+  `is_admin` tinyint(1) NOT NULL,
   `gebruiker_id` int(11) NOT NULL,
   `gebruikersnaam` varchar(50) NOT NULL,
   `wachtwoord` varchar(255) NOT NULL,
@@ -117,8 +116,8 @@ CREATE TABLE `gebruiker` (
 -- Gegevens worden geëxporteerd voor tabel `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`gebruiker_id`, `gebruikersnaam`, `wachtwoord`, `email`, `geboortedatum`, `lengte`, `gewicht`, `geslacht`) VALUES
-(1, 'testgebruiker', 'test123', 'test@emal.com', '2019-09-03', 99, 99, 'man');
+INSERT INTO `gebruiker` (`is_admin`, `gebruiker_id`, `gebruikersnaam`, `wachtwoord`, `email`, `geboortedatum`, `lengte`, `gewicht`, `geslacht`) VALUES
+(0, 1, 'testgebruiker', 'test123', 'test@emal.com', '2019-09-03', 99, 99, 'man');
 
 -- --------------------------------------------------------
 
@@ -332,12 +331,12 @@ ALTER TABLE `drugsgebruik`
 -- AUTO_INCREMENT voor een tabel `eten`
 --
 ALTER TABLE `eten`
-  MODIFY `eten_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `eten_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT voor een tabel `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  MODIFY `gebruiker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `gebruiker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `schijf`
 --
