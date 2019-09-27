@@ -23,7 +23,7 @@
         <div class="headercontainer">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h2>Vragenformulier</h2>
-            <image class="burgermenu" src="assets/images/burgermenu.png" alt="burgermenu">
+            <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
         </div>
         <!-- content -->
         <form>
