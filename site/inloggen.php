@@ -13,12 +13,11 @@ if (isset($_POST["username"])) {
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-        print_r($row['wachtwoord']);
         if (password_verify($wachtwoord, $row['wachtwoord'])){
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $row['gebruiker_id'];
-
+            header( 'Location: index.php');
 
         }
     } else {

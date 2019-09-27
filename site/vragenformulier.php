@@ -79,7 +79,7 @@
                 <input type="text" id="vr15" name="vraag15" placeholder="vul hier uw antwoord in..">
 
                 <label for="lname">Wat is uw verbrandingswaarde?</label>
-                <input type="text" id="vr16" name="vraag16" placeholder="vul hier uw antwoord in..">=
+                <input type="text" id="vr16" name="vraag16" placeholder="vul hier uw antwoord in..">
         
             <input type="submit" value="Submit">
         </form>
