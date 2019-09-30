@@ -61,13 +61,8 @@ if (isset($_POST["username"])){
         $_SESSION['username'] = $gebruikersnaam;
         $_SESSION['id'] = $gebruiker['gebruiker_id'];
         header( 'Location: index.php');
-
     }
-
-
 }
-
-
 ?>
 
 <!doctype html>
@@ -99,12 +94,12 @@ if (isset($_POST["username"])){
         </div>
         <!-- content -->
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" placeholder="Wachtwoord">
-            <input class="inputfield" type="email" name="email" placeholder="Email">
-            <input class="inputfield" type="date" name="date" placeholder="Geboortedatum">
-            <input class="inputfield" type="number" name="length" placeholder="Lengte">
-            <input class="inputfield" type="number" name="weight" placeholder="Gewicht">
+            <input class="inputfield" type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Gebruikersnaam">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="password">
+            <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
+            <input class="inputfield" type="date" name="date" value="<?php echo isset($_POST['date']) ? $_POST['date'] : '' ?>" placeholder="Geboortedatum">
+            <input class="inputfield" type="number" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '' ?>" placeholder="Lengte">
+            <input class="inputfield" type="number" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>" placeholder="Gewicht">
             <input type="radio" name="gender" value="male"> Man
             <input type="radio" name="gender" value="female"> Vrouw
             <input type="radio" name="gender" value="other"> Anders<br>
