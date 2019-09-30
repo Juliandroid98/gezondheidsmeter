@@ -73,7 +73,6 @@ if(isset($_POST['submit'])){
                     </li>
                 </ul>
                 <br><br>
-
             </div>
             <div class="section2">
                 <div class="buttongroup-rating">

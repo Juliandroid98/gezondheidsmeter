@@ -40,8 +40,8 @@ a:active {
 /*------------------*/
 
 .headercontainer{
-    background-color: #C7C7C7;
-    border-bottom: 2px solid #b3b3b3;
+    background-color: #34cfe3;
+    border-bottom: 2px solid #2daaba;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -58,6 +58,10 @@ a:active {
     padding: 3px;
     border-radius: 15px;
     border: 3px solid #b3b3b3;
+}
+
+.settingsmenu:hover {
+    background: -webkit-linear-gradient(bottom, #ffffff 0%,#D3D3D3 100%);
 }
 
 .logosmall{
