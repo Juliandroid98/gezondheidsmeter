@@ -73,7 +73,7 @@ if (isset($_POST["username"])){
         <body>
         <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
         <br>
-        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php/?email=$email &uniekid=`$uniekid'>Activeer account</a>
+        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php/?email=$email&uniekid=$uniekid'>Activeer account</a>
         </body>
         </html>
         ";
