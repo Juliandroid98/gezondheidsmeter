@@ -48,8 +48,11 @@ if (isset($_POST["username"])){
     if (count($errors) == 0) {
         $wachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht) 
-  			  VALUES('$gebruikersnaam', '$wachtwoord', '$email', '$datum', '$length', '$weight', '$gender')";
+        $uniekid = uniqid();
+        print_r($uniekid);
+
+        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
+  			  VALUES('$gebruikersnaam', '$wachtwoord', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
@@ -70,7 +73,7 @@ if (isset($_POST["username"])){
         <body>
         <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
         <br>
-        <a ></a>
+        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php/?email=$email &uniekid=`$uniekid'>Activeer account</a>
         </body>
         </html>
         ";
@@ -83,13 +86,8 @@ if (isset($_POST["username"])){
         mail($to,$subject,$message,$headers);
 
         header( 'Location: index.php');
-
     }
-
-
 }
-
-
 ?>
 
 <!doctype html>
@@ -121,12 +119,12 @@ if (isset($_POST["username"])){
         </div>
         <!-- content -->
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" placeholder="Wachtwoord">
-            <input class="inputfield" type="email" name="email" placeholder="Email">
-            <input class="inputfield" type="date" name="date" placeholder="Geboortedatum">
-            <input class="inputfield" type="number" name="length" placeholder="Lengte">
-            <input class="inputfield" type="number" name="weight" placeholder="Gewicht">
+            <input class="inputfield" type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Gebruikersnaam">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="password">
+            <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
+            <input class="inputfield" type="date" name="date" value="<?php echo isset($_POST['date']) ? $_POST['date'] : '' ?>" placeholder="Geboortedatum">
+            <input class="inputfield" type="number" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '' ?>" placeholder="Lengte">
+            <input class="inputfield" type="number" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>" placeholder="Gewicht">
             <input type="radio" name="gender" value="male"> Man
             <input type="radio" name="gender" value="female"> Vrouw
             <input type="radio" name="gender" value="other"> Anders<br>
