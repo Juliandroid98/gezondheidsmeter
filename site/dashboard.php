@@ -23,8 +23,8 @@
         <div class="headercontainer">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Dashboard</h1>
-            <a href="settings.php">
-                <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
+            <a class="settingsmenu" href="settings.php">
+                <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
         </div>
         <!-- content -->
