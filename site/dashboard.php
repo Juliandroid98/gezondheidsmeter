@@ -23,7 +23,7 @@
         <div class="headercontainer">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Dashboard</h1>
-            <image class="burgermenu" src="assets/images/burgermenu.png" alt="burgermenu">
+            <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
         </div>
         <!-- content -->
         <!-- bottom buttons-->
@@ -32,13 +32,6 @@
                 <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
                 <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
                 <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
-            </div>
-        </div>
-        <!-- Sidenav -->
-        <div class="sidenav">
-            <div class="sidenavbuttongroup">
-                <a class="sidenavbutton" href="instellingen.php">Instellingen</a>
-                <a class="sidenavbutton" href="uitloggen.php">Uitloggen</a>
             </div>
         </div>
     </div>
