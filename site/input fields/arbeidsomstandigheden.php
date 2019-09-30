@@ -72,10 +72,9 @@ if(isset($_POST['submit'])){
                         <label class="rating-10" for="rating-1-10">10</label>
                     </li>
                 </ul>
-                <br><br>
             </div>
             <div class="section2">
-                <div class="buttongroup-rating">
+                <div class="rating-group">
                     <h4 class="text">Geef je werkdruk een beoordeling</h4>
                     <ul class="rating-group">
                         <li>
