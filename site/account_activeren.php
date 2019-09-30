@@ -30,9 +30,9 @@
     <!-- content -->
     <div class="center">
         Klik op deze knop om uw account te activeren.<br>
-        <a class="button" href="index.php">
-            Account activeren
-        </a>
+        <form class="form" action="" method="POST">
+            <input class="button" type="submit" name="activate" value="Account activeren">
+        </form>
     </div>
 </div>
 </body>
