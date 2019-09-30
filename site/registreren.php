@@ -58,8 +58,30 @@ if (isset($_POST["username"])){
         $gebruiker = mysqli_fetch_assoc($result);
 
 
-        $_SESSION['username'] = $gebruikersnaam;
-        $_SESSION['id'] = $gebruiker['gebruiker_id'];
+
+        $to = $email;
+        $subject = "Account activeren";
+
+        $message = "
+        <html>
+        <head>
+        <title>Account activeren</title>
+        </head>
+        <body>
+        <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
+        <br>
+        <a ></a>
+        </body>
+        </html>
+        ";
+
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+
         header( 'Location: index.php');
 
     }
