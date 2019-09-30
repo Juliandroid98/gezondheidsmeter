@@ -26,6 +26,15 @@
             <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
         </div>
         <!-- content -->
+        <div class="metercontainer">
+            <div class="meter arbeid">arbeid<br>7</div>
+            <div class="meter drinken">drinken<br>4</div>
+            <div class="meter drugs">drugs<br>-</div>
+            <div class="meter eten">eten<br>5</div>
+            <div class="meter slaap">slaap<br>7</div>
+            <div class="meter sport">sport<br>1</div>
+            <div class="bigmeter algemeen">Algemeen cijfer<br>7</div>
+        </div>
         <!-- bottom buttons-->
         <div class="bottomcontainer">
             <div class="bottombuttongroup">

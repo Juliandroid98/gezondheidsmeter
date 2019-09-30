@@ -1,3 +1,59 @@
 /*--------------*/
 /*dashboard page*/
 /*--------------*/
+
+.metercontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    border-top: 2px solid #96c3cc;
+    border-bottom: 2px solid #96c3cc;
+    background-color: #BAE0E8;
+}
+
+.metercontainer .meter {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 30%;
+    height: 80px;
+    border: 3px solid white;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.metercontainer .meter:hover{
+    cursor: pointer;
+}
+
+.arbeid {
+    background-color: lime;
+}
+
+.drinken {
+    background-color: orange;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.drugs {
+    background-color: lightgray;
+}
+
+.eten {
+    background-color: orange;
+}
+
+.slaap {
+    background-color: lime;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.sport {
+    background-color: red;
+}
