@@ -5,38 +5,38 @@ if (isset($_POST["username"])){
 
     session_start();
 
-// initializing variables
-    $gebruikersnaam = "";
+
+    $username = "";
     $email = "";
-    $wachtwoord = "";
+    $password = "";
     $length = "";
     $weight = "";
     $gender = "";
     $errors = array();
 
 
-    $gebruikersnaam = mysqli_real_escape_string($conn, $_POST['username']);
-    $wachtwoord = mysqli_real_escape_string($conn, $_POST['password']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $datum = mysqli_real_escape_string($conn, $_POST['date']);
     $length = mysqli_real_escape_string($conn, $_POST['length']);
     $weight = mysqli_real_escape_string($conn, $_POST['weight']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
-    if (empty($gebruikersnaam)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
+    if (empty($username)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
     if (empty($email)) { array_push($errors, "Email moet worden ingevuld."); }
-    if (empty($wachtwoord)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
+    if (empty($password)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
     if (empty($datum)) { array_push($errors, "Datum moet worden ingevuld."); }
     if (empty($length)) { array_push($errors, "De lengte moet worden ingevuld."); }
     if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); }
     if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); }
 
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($user['username'] === $gebruikersnaam) {
+        if ($user['gebruikersnaam'] === $username) {
             array_push($errors, "Gebruikersnaam bestaat al.");
         }
 
@@ -46,17 +46,17 @@ if (isset($_POST["username"])){
     }
 
     if (count($errors) == 0) {
-        $wachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $uniekid = uniqid();
         print_r($uniekid);
 
         $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
-  			  VALUES('$gebruikersnaam', '$wachtwoord', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
+  			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
-        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);
 
@@ -73,7 +73,7 @@ if (isset($_POST["username"])){
         <body>
         <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
         <br>
-        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php/?email=$email&uniekid=$uniekid'>Activeer account</a>
+        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php?email=$email&uniekid=$uniekid'>Activeer account</a>
         </body>
         </html>
         ";
@@ -120,14 +120,17 @@ if (isset($_POST["username"])){
         <!-- content -->
         <form class="form" action="" method="POST">
             <input class="inputfield" type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="password">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
             <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
             <input class="inputfield" type="date" name="date" value="<?php echo isset($_POST['date']) ? $_POST['date'] : '' ?>" placeholder="Geboortedatum">
             <input class="inputfield" type="number" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '' ?>" placeholder="Lengte">
             <input class="inputfield" type="number" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>" placeholder="Gewicht">
-            <input type="radio" name="gender" value="male"> Man
-            <input type="radio" name="gender" value="female"> Vrouw
-            <input type="radio" name="gender" value="other"> Anders<br>
+            <div class="radiobuttonwrapper">
+                <input class="radiobutton" type="radio" name="gender" value="male"> Man
+                <input class="radiobutton" type="radio" name="gender" value="female"> Vrouw
+                <input class="radiobutton" type="radio" name="gender" value="other"> Anders<br>
+            </div>
             <input class="submitbutton" type="submit" name="inloggen" value="Registreren"><br>
         </form>
     </div>

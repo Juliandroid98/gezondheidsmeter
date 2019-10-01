@@ -62,7 +62,7 @@ if (isset($_POST["username"])) {
             <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>
             <input class="submitbutton" type="submit" name="inloggen" value="Inloggen">
         </form>
-        <a href="resetpassword.php">
+        <a href="ww_vergeten.php">
             <div class="forgotpasswordbutton">Wachtwoord vergeten</div>
         </a>
     </div>
