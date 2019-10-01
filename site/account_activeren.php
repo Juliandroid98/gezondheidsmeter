@@ -3,6 +3,9 @@ include 'assets/php/Connection.php';
     if(!isset($_GET)){
         header( 'Location: index.php');
     }
+    if($_GET['uniekid'] == 0){
+        header('Location: index.php');
+    }
     if($_POST){
 
         $email = $_GET['email'];
@@ -15,11 +18,21 @@ include 'assets/php/Connection.php';
         $gebruikersnaam = $data['gebruikersnaam'];
         $id = $data['gebruiker_id'];
 
-        session_start();
-        $_SESSION['username'] = $gebruikersnaam;
-        $_SESSION['id'] = $id;
+        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_id'])){
 
-        header( 'Location: index.php');
+            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeerid= '0' WHERE email = '$email'";
+
+            mysqli_query($conn, $sql);
+
+            session_start();
+            $_SESSION['username'] = $gebruikersnaam;
+            $_SESSION['id'] = $id;
+
+            header( 'Location: index.php');
+        }
+
+
+
 
     }
 
