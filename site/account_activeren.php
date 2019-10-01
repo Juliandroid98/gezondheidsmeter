@@ -1,4 +1,29 @@
-<?php ?>
+<?php
+include 'assets/php/Connection.php';
+    if(!isset($_GET)){
+        header( 'Location: index.php');
+    }
+    if($_POST){
+
+        $email = $_GET['email'];
+        $uniekid = $_GET['uniekid'];
+
+        $query = "SELECT gebruikersnaam, gebruiker_id FROM gebruiker WHERE email ='$email' AND activeerid='$uniekid'";
+        $result = mysqli_query($conn, $query);
+        $data = mysqli_fetch_assoc($result);
+
+        $gebruikersnaam = $data['gebruikersnaam'];
+        $id = $data['gebruiker_id'];
+
+        session_start();
+        $_SESSION['username'] = $gebruikersnaam;
+        $_SESSION['id'] = $id;
+
+        header( 'Location: index.php');
+
+    }
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,9 +55,9 @@
     <!-- content -->
     <div class="center">
         Klik op deze knop om uw account te activeren.<br>
-        <a class="button" href="index.php">
-            Account activeren
-        </a>
+        <form class="form" action="" method="POST">
+            <input class="button" type="submit" name="inloggen" value="Account activeren">
+        </form>
     </div>
 </div>
 </body>

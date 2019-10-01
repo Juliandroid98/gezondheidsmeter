@@ -8,7 +8,7 @@ if (isset($_POST["username"])){
 // initializing variables
     $gebruikersnaam = "";
     $email = "";
-    $wachtwoord = "";
+    $password = "";
     $length = "";
     $weight = "";
     $gender = "";
@@ -16,7 +16,7 @@ if (isset($_POST["username"])){
 
 
     $gebruikersnaam = mysqli_real_escape_string($conn, $_POST['username']);
-    $wachtwoord = mysqli_real_escape_string($conn, $_POST['password']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $datum = mysqli_real_escape_string($conn, $_POST['date']);
     $length = mysqli_real_escape_string($conn, $_POST['length']);
@@ -25,7 +25,7 @@ if (isset($_POST["username"])){
 
     if (empty($gebruikersnaam)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
     if (empty($email)) { array_push($errors, "Email moet worden ingevuld."); }
-    if (empty($wachtwoord)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
+    if (empty($password)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
     if (empty($datum)) { array_push($errors, "Datum moet worden ingevuld."); }
     if (empty($length)) { array_push($errors, "De lengte moet worden ingevuld."); }
     if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); }
@@ -46,13 +46,13 @@ if (isset($_POST["username"])){
     }
 
     if (count($errors) == 0) {
-        $wachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $uniekid = uniqid();
         print_r($uniekid);
 
         $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
-  			  VALUES('$gebruikersnaam', '$wachtwoord', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
+  			  VALUES('$gebruikersnaam', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
@@ -73,7 +73,7 @@ if (isset($_POST["username"])){
         <body>
         <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
         <br>
-        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php/?email=$email&uniekid=$uniekid'>Activeer account</a>
+        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php?email=$email&uniekid=$uniekid'>Activeer account</a>
         </body>
         </html>
         ";
