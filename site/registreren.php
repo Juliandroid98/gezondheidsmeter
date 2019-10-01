@@ -125,9 +125,11 @@ if (isset($_POST["username"])){
             <input class="inputfield" type="date" name="date" value="<?php echo isset($_POST['date']) ? $_POST['date'] : '' ?>" placeholder="Geboortedatum">
             <input class="inputfield" type="number" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '' ?>" placeholder="Lengte">
             <input class="inputfield" type="number" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>" placeholder="Gewicht">
-            <input type="radio" name="gender" value="male"> Man
-            <input type="radio" name="gender" value="female"> Vrouw
-            <input type="radio" name="gender" value="other"> Anders<br>
+            <div class="radiobuttonwrapper">
+                <input class="radiobutton" type="radio" name="gender" value="male"> Man
+                <input class="radiobutton" type="radio" name="gender" value="female"> Vrouw
+                <input class="radiobutton" type="radio" name="gender" value="other"> Anders<br>
+            </div>
             <input class="submitbutton" type="submit" name="inloggen" value="Registreren"><br>
         </form>
     </div>
