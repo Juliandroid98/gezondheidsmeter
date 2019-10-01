@@ -12,7 +12,7 @@ include 'assets/php/Connection.php'; ?>
     <meta name="keywords" content="gezondheid, meter, gezondheidsmeter, gezond leven, eten, slaap, drugs, drinken">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/ww_vergeten.css">
+    <link rel="stylesheet" href="assets/css/ww_nieuw.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="application/javascript" src="assets/javascript/index.js"></script>
@@ -30,10 +30,11 @@ include 'assets/php/Connection.php'; ?>
     </div>
     <!-- content -->
     <div class="center">
-        Voer hier uw E-mail in om uw wachtwoord te resetten.<br>
+        Voer hier uw nieuwe wachtwoord in.<br>
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
-            <input class="button" type="submit" name="request" value="Email aanvragen">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
+            <input class="button" type="submit" name="request" value="Wachtwoord resetten">
         </form>
     </div>
 </div>
