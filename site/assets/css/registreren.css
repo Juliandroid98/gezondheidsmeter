@@ -52,3 +52,18 @@
 .submitbutton:hover {
     background-color: #BAE0E8;
 }
+
+.radiobutton {
+    width: 30px;
+    height: 30px;
+}
+
+.radiobuttonwrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
