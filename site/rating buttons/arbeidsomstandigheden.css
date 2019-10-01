@@ -1,0 +1,95 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+.container{
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+}
+.section1{
+    padding: 1% 20%;
+}
+.section2{
+    padding: 5% 20%;
+}
+.text{
+    padding: 0;
+    margin: 0;
+}
+.rating-group {
+    list-style-type:none;
+    padding:0;
+}
+
+.rating-group li {
+    float:left;
+    margin:0 5px 0 0;
+    width:50px;
+    height:30px;
+    position:relative;
+}
+.rating-group ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.rating-group label, .rating-group input {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.rating-group input[type="radio"] {
+    opacity:0.011;
+    z-index:100;
+}
+
+.rating-group input[type="radio"]:checked + label {
+    border: 2px solid black;
+}
+
+.rating-group label {
+    padding:5px;
+    border:1px solid #CCC;
+    cursor:pointer;
+    z-index:90;
+    text-align: center;
+}
+
+.rating-group label:hover {
+    opacity: 0.7;
+}
+.rating-1{
+    background-color: red;
+}
+.rating-2{
+    background-color: orangered;
+}
+.rating-3{
+    background-color: darkorange;
+}
+.rating-4{
+    background-color: orange;
+}
+.rating-5{
+    background-color: yellow;
+}
+.rating-6{
+    background-color: greenyellow;
+}
+.rating-7{
+    background-color: lawngreen;
+}
+.rating-8{
+    background-color: limegreen;
+}
+.rating-9{
+    background-color: forestgreen;
+}
+.rating-10{
+    background-color: green;
+}

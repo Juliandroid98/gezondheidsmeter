@@ -1,5 +1,18 @@
 <?php
-include 'assets/php/Connection.php'; ?>
+include 'assets/php/Connection.php';
+if($_POST){
+    $email = $_POST['email'];
+    $user_check_query = "SELECT email FROM gebruiker WHERE email='$email'";
+    $result = mysqli_query($conn, $user_check_query);
+    $gebruiker = mysqli_fetch_assoc($result);
+
+    print_r($gebruiker['email']);
+
+}
+
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
