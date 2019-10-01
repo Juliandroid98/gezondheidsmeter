@@ -38,6 +38,11 @@
             <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
         </div>
     </div>
+    <!-- algemene instellingen -->
+    <div class="generalsettingscontainer">
+        <div class="closebutton">X</div><br>
+        test</div>
 </div>
 </body>
+<script type="application/javascript" src="assets/javascript/settings.js"></script>
 </html>
