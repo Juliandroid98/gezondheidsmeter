@@ -5,8 +5,8 @@ if (isset($_POST["username"])){
 
     session_start();
 
-// initializing variables
-    $gebruikersnaam = "";
+
+    $username = "";
     $email = "";
     $password = "";
     $length = "";
@@ -15,7 +15,7 @@ if (isset($_POST["username"])){
     $errors = array();
 
 
-    $gebruikersnaam = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $datum = mysqli_real_escape_string($conn, $_POST['date']);
@@ -23,7 +23,7 @@ if (isset($_POST["username"])){
     $weight = mysqli_real_escape_string($conn, $_POST['weight']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
-    if (empty($gebruikersnaam)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
+    if (empty($username)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
     if (empty($email)) { array_push($errors, "Email moet worden ingevuld."); }
     if (empty($password)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
     if (empty($datum)) { array_push($errors, "Datum moet worden ingevuld."); }
@@ -31,12 +31,12 @@ if (isset($_POST["username"])){
     if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); }
     if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); }
 
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($user['username'] === $gebruikersnaam) {
+        if ($user['gebruikersnaam'] === $username) {
             array_push($errors, "Gebruikersnaam bestaat al.");
         }
 
@@ -52,11 +52,11 @@ if (isset($_POST["username"])){
         print_r($uniekid);
 
         $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
-  			  VALUES('$gebruikersnaam', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
+  			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
-        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);
 
