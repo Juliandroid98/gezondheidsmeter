@@ -34,3 +34,14 @@
 .button:hover {
     background-color: #BAE0E8;
 }
+
+.forgotpasswordbutton {
+    margin-top: 20px;
+    text-align: center;
+    color: blue;
+    text-decoration: underline;
+}
+
+.forgotpasswordbutton:hover {
+    cursor: pointer;
+}

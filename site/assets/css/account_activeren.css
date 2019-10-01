@@ -9,6 +9,12 @@
     margin-top: 50px;
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .button {
     float: left;
     width: 55%;
@@ -19,7 +25,6 @@
     margin-left: auto;
     margin-top: 50px;
     text-align: center;
-    line-height: 50px;
     font-size: 20px;
     font-weight: bold;
     transition: background-color 0.1s ease-in-out;

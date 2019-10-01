@@ -56,7 +56,7 @@ include 'assets/php/Connection.php';
     <div class="center">
         Klik op deze knop om uw account te activeren.<br>
         <form class="form" action="" method="POST">
-            <input class="button" type="submit" name="inloggen" value="Account activeren">
+            <input class="button" type="submit" name="activate" value="Account activeren">
         </form>
     </div>
 </div>
