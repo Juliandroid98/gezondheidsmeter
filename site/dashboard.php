@@ -29,12 +29,12 @@
         </div>
         <!-- content -->
         <div class="metercontainer">
-            <div class="meter arbeid">arbeid<br>-</div>
-            <div class="meter drinken">drinken<br>-</div>
-            <div class="meter drugs">drugs<br>-</div>
-            <div class="meter eten">eten<br>-</div>
-            <div class="meter slaap">slaap<br>-</div>
-            <div class="meter sport">sport<br>-</div>
+            <div class="meter arbeid">Arbeid<br>-</div>
+            <div class="meter drinken">Drinken<br>-</div>
+            <div class="meter drugs">Drugs<br>-</div>
+            <div class="meter eten">Eten<br>-</div>
+            <div class="meter slaap">Slaap<br>-</div>
+            <div class="meter sport">Sport<br>-</div>
             <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
         </div>
         <!-- bottom buttons-->
