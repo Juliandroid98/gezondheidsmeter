@@ -28,15 +28,69 @@
             </a>
         </div>
         <!-- content -->
-        <form>
+        <form id="regForm" action="">
+            <!-- Werkplek -->
             <h3>Werkplek</h3>
-                <label for="fname">Vind U uw huidige werkplek prettig?</label>
-                <input type="text" id="vrg1" name="vraag1" placeholder="vul hier uw antwoord in..">
+                <div class="tab">Vind u uw huidige werkplek prettig?
+                    <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+                </div>
+                <div class="tab">Hoe vind u uw werkdruk?
+                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+                </div>
+                <div class="tab">Datum
+                    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+                    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+                    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+                </div>
 
-                <label for="lname">Hoe vind U uw werkdruk?</label>
-                <input type="text" id="vr2" name="vraag2" placeholder="vul hier uw antwoord in..">
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
 
-            <h3>Drinken</h3>
+                <div style="overflow:auto;">
+                    <div style="float:right;">
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Drinken -->
+                <h3>Drinken</h3>
+                <div class="tab">Wat is de naam van de drank?
+                    <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+                </div>
+                <div class="tab">Wat is de kilocalorie?
+                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+                </div>
+                <div class="tab">Datum
+                    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+                    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+                    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+                </div>
+
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+
+                <div style="overflow:auto;">
+                    <div style="float:right;">
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+
+            <!-- <h3>Drinken</h3>
                 <label for="fname">Wat is de naam van de drank?</label>
                 <input type="text" id="vrg3" name="vraag3" placeholder="vul hier uw antwoord in..">
 
@@ -83,8 +137,84 @@
                 <label for="lname">Wat is uw verbrandingswaarde?</label>
                 <input type="text" id="vr16" name="vraag16" placeholder="vul hier uw antwoord in..">
         
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit"> -->
         </form>
+
+        <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+      
+        function showTab(n) {
+          // This function will display the specified tab of the form...
+          var x = document.getElementsByClassName("tab");
+          x[n].style.display = "block";
+          //... and fix the Previous/Next buttons:
+          if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+          } else {
+            document.getElementById("prevBtn").style.display = "inline";
+          }
+          if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit";
+          } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+          }
+          //... and run a function that will display the correct step indicator:
+          fixStepIndicator(n)
+        }
+      
+        function nextPrev(n) {
+          // This function will figure out which tab to display
+          var x = document.getElementsByClassName("tab");
+          // Exit the function if any field in the current tab is invalid:
+          if (n == 1 && !validateForm()) return false;
+          // Hide the current tab:
+          x[currentTab].style.display = "none";
+          // Increase or decrease the current tab by 1:
+          currentTab = currentTab + n;
+          // if you have reached the end of the form...
+          if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+          }
+          // Otherwise, display the correct tab:
+          showTab(currentTab);
+        }
+      
+        function validateForm() {
+          // This function deals with validation of the form fields
+          var x, y, i, valid = true;
+          x = document.getElementsByClassName("tab");
+          y = x[currentTab].getElementsByTagName("input");
+          // A loop that checks every input field in the current tab:
+          for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+              // add an "invalid" class to the field:
+              y[i].className += " invalid";
+              // and set the current valid status to false
+              valid = false;
+            }
+          }
+          // If the valid status is true, mark the step as finished and valid:
+          if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+          }
+          return valid; // return the valid status
+        }
+      
+        function fixStepIndicator(n) {
+          // This function removes the "active" class of all steps...
+          var i, x = document.getElementsByClassName("step");
+          for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+          }
+          //... and adds the "active" class on the current step:
+          x[n].className += " active";
+        }
+        </script>
+        
         <!-- bottom buttons-->
         <div class="bottomcontainer">
             <div class="bottombuttongroup">
