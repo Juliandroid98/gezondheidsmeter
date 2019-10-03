@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b38a968-5836-4594-9051-e4a60e3cb638" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/site/account_activeren.php" afterPath="$PROJECT_DIR$/site/account_activeren.php" />
-      <change beforePath="$PROJECT_DIR$/site/inloggen.php" afterPath="$PROJECT_DIR$/site/inloggen.php" />
-      <change beforePath="$PROJECT_DIR$/site/registreren.php" afterPath="$PROJECT_DIR$/site/registreren.php" />
-      <change beforePath="$PROJECT_DIR$/site/ww_nieuw.php" afterPath="$PROJECT_DIR$/site/ww_nieuw.php" />
-      <change beforePath="$PROJECT_DIR$/site/ww_vergeten.php" afterPath="$PROJECT_DIR$/site/ww_vergeten.php" />
+      <change beforePath="$PROJECT_DIR$/gezondheidsmeter.sql" afterPath="$PROJECT_DIR$/gezondheidsmeter.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -236,7 +231,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39058000" />
+    <option name="totallyTimeSpent" value="39329000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
