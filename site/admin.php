@@ -105,9 +105,9 @@ try{
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['drugs_id'] . "</td>";
-                echo "<td>" . $row['drugs_naam'] . "</td>";
-				echo "<td>" . $row['soort_drugs'] . "</td>";
+                echo "<td>" . $row['drugs_ID'] . "</td>";
+                echo "<td>" . $row['naam'] . "</td>";
+				echo "<td>" . $row['soort'] . "</td>";
 				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
@@ -137,9 +137,9 @@ try{
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['sport_id'] . "</td>";
-                echo "<td>" . $row['sportnaam'] . "</td>";
-				echo "<td>" . $row['verbrandingswaarde'] . "</td>";
+                echo "<td>" . $row['sport_ID'] . "</td>";
+                echo "<td>" . $row['naam'] . "</td>";
+				echo "<td>" . $row['verbranding'] . "</td>";
 				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
@@ -170,10 +170,10 @@ try{
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['eten_id'] . "</td>";
-                echo "<td>" . $row['etennaam'] . "</td>";
-				echo "<td>" . $row['schijf_id'] . "</td>";
-                echo "<td>" . $row['suiker_gram'] . "</td>";
+                echo "<td>" . $row['eten_ID'] . "</td>";
+                echo "<td>" . $row['naam'] . "</td>";
+				echo "<td>" . $row['schijf_ID'] . "</td>";
+                echo "<td>" . $row['sugar'] . "</td>";
 				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
@@ -205,11 +205,11 @@ try{
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['drank_id'] . "</td>";
-                echo "<td>" . $row['dranknaam'] . "</td>";
-				echo "<td>" . $row['suiker_gram'] . "</td>";
-                echo "<td>" . $row['alcoholpercentage'] . "</td>";
-                echo "<td>" . $row['schijf_id'] . "</td>";
+                echo "<td>" . $row['drinken_ID'] . "</td>";
+                echo "<td>" . $row['naam'] . "</td>";
+				echo "<td>" . $row['sugar'] . "</td>";
+                echo "<td>" . $row['alcohol'] . "</td>";
+                echo "<td>" . $row['schijf_ID'] . "</td>";
 				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
