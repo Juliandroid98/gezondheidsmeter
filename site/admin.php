@@ -56,8 +56,8 @@ try{
         while($row = $result->fetch()){
             echo "<tr>";
                 echo "<td>" . $row['is_admin'] . "</td>";
-                echo "<td>" . $row['gebruiker_id'] . "</td>";
-				echo "<td>" . $row['gebruikersnaam'] . "</td>";
+                echo "<td>" . $row['gebruiker_ID'] . "</td>";
+				echo "<td>" . $row['gebruiker'] . "</td>";
                 echo "<td>" . $row['wachtwoord'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . $row['geboortedatum'] . "</td>";
@@ -69,8 +69,18 @@ try{
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
         }
-		echo "<form action='' method='post'><tr id='addRowGebruiker' style='display: none;'><td><input type='text' placeholder='gebruikersnaam'></td><td><input type='text' placeholder='wachtwoord'></td><td><input type='text' placeholder='email'></td><td><input type='text' placeholder='geboortedatum'></td><td><input type='text' placeholder='lengte'></td><td><input type='text' placeholder='gewicht'></td><td><input type='text' placeholder='geslacht'></td><td><input type='submit' value='toevoegen' onclick='addRowForInput();'></td></tr></form>";
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
+		echo "<form action='' method='post'>
+		<tr id='addRowGebruiker' style='display: none;'><td>
+		<input type='text' placeholder='gebruikersnaam' name='gebruikersnaam'></td>
+		<td><input type='text' placeholder='wachtwoord' name='wachtwoord'></td>
+		<td><input type='text' placeholder='email' name='email'></td>
+		<td><input type='text' placeholder='geboortedatum' name='geboortedatum'></td>
+		<td><input type='text' placeholder='lengte' name='lengte'></td>
+		<td><input type='text' placeholder='gewicht' name='gewicht'></td>
+		<td><input type='text' placeholder='geslacht' name='geslacht'></td>
+		<td><input type='submit' value='toevoegen'></td></tr></form>";
+		echo "<tr><td>toevoegen</td>
+		<td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
 		echo "</table></div>";
         // Free result set
         unset($result);
@@ -211,6 +221,31 @@ try{
     } else{
         echo "No records matching your query were found.";
     }
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+// Attempt insert query execution
+try{
+    // Create prepared statement
+    $sql = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email)
+	VALUES (:gebruikersnaam, :wachtwoord, :email)";
+	//, geboortedatum, lengte, gewicht, geslacht)
+	// , :geboortedatum, :lengte, :gewicht, :geslacht)";
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':gebruikersnaam', $_POST['gebruikersnaam']);
+    $stmt->bindParam(':wachtwoord', $_POST['wachtwoord']);
+    $stmt->bindParam(':email', $_POST['email']);
+	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
+    //$stmt->bindParam(':lengte', $_POST['lengte']);
+    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
+	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Records inserted successfully.";
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
