@@ -17,16 +17,16 @@ if(isset($_SESSION['username'])){
         $email = $_GET['email'];
         $uniekid = $_GET['uniekid'];
 
-        $query = "SELECT gebruikersnaam, gebruiker_id FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
+        $query = "SELECT gebruiker, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);
 
-        $gebruikersnaam = $data['gebruikersnaam'];
-        $id = $data['gebruiker_id'];
+        $gebruikersnaam = $data['gebruiker'];
+        $id = $data['gebruiker_ID'];
 
-        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_id'])){
+        if(isset($data['gebruiker']) && isset($data['gebruiker_ID'])){
 
-            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '0' WHERE email = '$email'";
+            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '' WHERE email = '$email'";
 
             mysqli_query($conn, $sql);
 

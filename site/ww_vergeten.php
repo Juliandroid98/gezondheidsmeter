@@ -12,7 +12,7 @@ if($_POST){
     $result = mysqli_query($conn, $user_check_query);
     $gebruiker = mysqli_fetch_assoc($result);
 
-    print_r($gebruiker['email']);
+
     if($email == $gebruiker['email']){
 
         $uniekid = uniqid();

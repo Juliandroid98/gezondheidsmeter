@@ -17,17 +17,17 @@ if($_POST){
     $password = $_POST['password'];
     $passwordrepeat = $_POST['repeatpassword'];
     if($password == $passwordrepeat){
-        $user_check_query = "SELECT email, ww_vergeet_id, gebruikersnaam, gebruiker_id FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
+        $user_check_query = "SELECT email, ww_vergeet_id, gebruiker, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);\
-        print_r($gebruiker);
+
         if($email == $gebruiker['email'] && $vergeet_id == $gebruiker['ww_vergeet_id']){
             $password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "UPDATE gebruiker SET wachtwoord = '$password', ww_vergeet_id = '' WHERE email = '$email'";
 
             mysqli_query($conn, $sql);
-            $_SESSION['username'] = $gebruiker['gebruikersnaam'];
-            $_SESSION['id'] = $gebruiker['gebruiker_id'];
+            $_SESSION['username'] = $gebruiker['gebruiker'];
+            $_SESSION['id'] = $gebruiker['gebruiker_ID'];
             header( 'Location: dashboard.php');
         }
     }

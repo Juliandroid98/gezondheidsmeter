@@ -15,14 +15,14 @@ if (isset($_POST["username"])) {
 
 
         $error = "";
-        $sql = "SELECT wachtwoord, gebruiker_id FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
+        $sql = "SELECT wachtwoord, gebruiker_ID FROM gebruiker WHERE gebruiker = '$gebruikersnaam'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
         if (password_verify($wachtwoord, $row['wachtwoord'])){
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
-            $_SESSION['id'] = $row['gebruiker_id'];
+            $_SESSION['id'] = $row['gebruiker_ID'];
             header( 'Location: dashboard.php');
 
         }
