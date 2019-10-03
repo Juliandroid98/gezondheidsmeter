@@ -35,8 +35,8 @@
 .settingsheader {
     display: flex;
     flex-direction: row;
-    border-bottom:  2px solid #b3b3b3;
-    background-color: #C7C7C7;
+    border-bottom:  2px solid #2daaba;
+    background-color: #34cfe3;
     height: 50px;
     width: 100%;
 }
@@ -55,7 +55,7 @@
     line-height: 50px;
     width: auto;
     height: auto;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 }
 
