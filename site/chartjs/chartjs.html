@@ -30,11 +30,11 @@
 </html>
 <script>
     var ctx = document.getElementById('myChart');
-    var data = [1, 2, 5, 7, 5, 9, 6];
+    var data = [10, 2, 8, 3, 5, 0, 10];
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Dag 1', 'Dag 2', 'Dag 3', 'Dag 4', 'Dag 5', 'Dag 6', 'Dag 7'],
+            labels: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
             datasets: [{
                 label: 'Levensstijl',
                 data: data
@@ -47,17 +47,15 @@
                     ticks: {
                         suggestedMin: 0,
                         beginAtZero: true,
-                        max: 10,
+                        max: 10
                     }
                 }]
             }
         },
         plugins: [
             {
-                id: "responsiveGradient",
-
-                afterLayout: function(chart, options) {
-                    var scales = chart.scales;
+                afterLayout: function(chart) {
+                    var scales = chart. scales;
 
                     var borderColor = chart.ctx.createLinearGradient(
                         scales["x-axis-0"].left,
