@@ -80,3 +80,58 @@
 .sport {
     background-color: lightgray;
 }
+.datadcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    border-top: 2px solid #96c3cc;
+    border-bottom: 2px solid #96c3cc;
+    background-color: #BAE0E8;
+}
+
+.datadcontainer .dashboarddata {
+    margin: 8px 0;
+    width: 20%;
+    height: 80px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    line-height: 40px;
+}
+.dashboard-dataName{
+    font-size: 20px;
+}
+@media only screen and (max-width: 1000px){
+    .datadcontainer { display: block;     }
+    .datadcontainer .dashboarddata { width: 100%; margin: 0; font-size: 20px; height: auto;   }
+}
+.chart-btnGroup{
+    width: 100%;
+}
+.chart-btnGroup button {
+    background-color: #4CAF50;
+    border: 1px solid green;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 10%;
+    text-align: center;
+}
+
+.chart-btnGroup button:hover {
+    background-color: #3e8e41;
+}
+.chart-btnGroup button:focus {
+    background-color: green;
+}
+.chart-btnGroup .content {
+    width: 60%;
+    margin:0 auto;
+    display: none;
+    position: absolute;
+}
+@media only screen and (max-width: 1100px){
+    .chart-btnGroup .content { width: 100%;}
+}

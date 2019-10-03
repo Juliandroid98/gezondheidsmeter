@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script
+<style>
+    body{
+    margin: 3rem;
+    }
+             .fixed-height-chart{
+             height: 200px;
+                        border: 1px solid black;
+             }
+</style>
+</head>
+<body>
+<h1>Chart.js chart with fixed height and variable width</h1>
+<p>Adjust the width of the window to test.</p>
+<div class="fixed-height-chart">
+    <canvas id="favorite-colors" style="border-bottom: 100px;"></canvas>
+</div>
+
+<Script>
+    var ctx = document.getElementById("favorite-colors");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: 'Votes',
+                data: [12, 19, 3, 5, 2, 5]
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+        }
+    });
+</Script>
+</body>
+</html>

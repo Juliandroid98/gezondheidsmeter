@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script
     <script type="application/javascript" src="assets/javascript/index.js"></script>
     <title>Gezondheidsmeter - Dashboard</title>
 </head>
@@ -37,6 +39,44 @@
             <div class="meter sport">Sport<br>-</div>
             <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
         </div>
+        <div class="datadcontainer">
+            <div class="dashboarddata"><label class="dashboard-dataName">slaap:</label><br> 60 uur slaap</div>
+            <div class="dashboarddata"><label class="dashboard-dataName">Eten:</label><br> 5180 KG calorieën</div>
+            <div class="dashboarddata"><label class="dashboard-dataName">Drinken:</label><br> 3800 KG calorieën</div>
+            <div class="dashboarddata"><label class="dashboard-dataName">Drugs:</label><br> 14 MG Genomen</div>
+            <div class="dashboarddata"><label class="dashboard-dataName">Sport:</label><br> 14 KG Verbranding</div>
+        </div>
+        <div class="chart-btnGroup" id="accordion" style="position: relative;">
+            <button type="button" class="collapsible">Slaap</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <button type="button" class="collapsible">Eten</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myCharts"></canvas>
+            </div>
+
+            <button type="button" class="collapsible">Drinken</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <button type="button" class="collapsible">Slaap</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myCharts"></canvas>
+            </div>
+
+            <button type="button" class="collapsible">Slaap</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <button type="button" class="collapsible">Slaap</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="myCharts"></canvas>
+            </div>
+        </div>
         <!-- bottom buttons-->
         <div class="bottomcontainer">
             <div class="bottombuttongroup">
@@ -46,5 +86,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/javascript/dashboard.js"></script>
+    <script src="assets/javascript/chartjs.js"></script>
 </body>
 </html>

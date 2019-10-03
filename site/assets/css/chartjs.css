@@ -1,0 +1,11 @@
+.content {
+    width: 50%;
+    position: relative;
+    margin:0 auto;
+}
+@media only screen and (max-width: 1100px){
+    .content { width: 90%; }
+}
+.chart-buttonGroup .collapsible{
+    display: flex;
+}
