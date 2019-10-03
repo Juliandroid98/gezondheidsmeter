@@ -30,7 +30,7 @@
 </html>
 <script>
     var ctx = document.getElementById('myChart');
-    var data = [10, 2, 8, 3, 5, 4, 10];
+    var data = [10, 2, 8, 3, 5, 0, 10];
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -54,8 +54,6 @@
         },
         plugins: [
             {
-                id: "responsiveGradient",
-
                 afterLayout: function(chart) {
                     var scales = chart. scales;
 
