@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>

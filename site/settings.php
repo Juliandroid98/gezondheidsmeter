@@ -38,6 +38,27 @@
             <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
         </div>
     </div>
+    <!-- algemene instellingen -->
+    <div class="generalsettingscontainer">
+        <div class="settingsheader">
+            <div class="closebutton">X</div>
+            <h4>Algemene instellingen</h4>
+        </div>
+        <a class="settingscontainer resetten" href="ww_vergeten.php">wachtwoord resetten</a>
+        <div class="settingscontainer verwijder">Account verwijderen</div>
+    </div>
+    <!-- confirmation modal -->
+    <div class="confirmmodal">
+        <div class="modaltext">Weet u zeker dat u uw account wilt verwijderen?</div>
+        <div class="modalbuttongroup">
+            <form type="POST" action="">
+                <input class="modalbutton modalyes" type="submit" name="delete" value="Ja">
+                <div class="modalbutton modalno">Nee</div>
+            </form>
+        </div>
+    </div>
+    <div class="blackbackground"></div>
 </div>
 </body>
+<script type="application/javascript" src="assets/javascript/settings.js"></script>
 </html>

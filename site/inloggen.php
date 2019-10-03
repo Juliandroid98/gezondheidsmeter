@@ -1,5 +1,11 @@
 <?php
     include 'assets/php/Connection.php';
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
 if (isset($_POST["username"])) {
 
     if (isset($_POST["username"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
@@ -17,7 +23,7 @@ if (isset($_POST["username"])) {
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $row['gebruiker_id'];
-            header( 'Location: index.php');
+            header( 'Location: dashboard.php');
 
         }
     } else {
@@ -62,7 +68,7 @@ if (isset($_POST["username"])) {
             <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>
             <input class="submitbutton" type="submit" name="inloggen" value="Inloggen">
         </form>
-        <a href="resetpassword.php">
+        <a href="ww_vergeten.php">
             <div class="forgotpasswordbutton">Wachtwoord vergeten</div>
         </a>
     </div>

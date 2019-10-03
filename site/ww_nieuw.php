@@ -6,41 +6,34 @@ if(isset($_SESSION['username'])){
     echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
 }
 
-    if(!isset($_GET)){
-        header( 'Location: index.php');
-    }
-    if($_GET['uniekid'] == 0){
-        header('Location: index.php');
-    }
-    if($_POST){
 
-        $email = $_GET['email'];
-        $uniekid = $_GET['uniekid'];
+if(!$_GET){
 
-        $query = "SELECT gebruikersnaam, gebruiker_id FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
+}
 
-        $gebruikersnaam = $data['gebruikersnaam'];
-        $id = $data['gebruiker_id'];
-
-        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_id'])){
-
-            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '0' WHERE email = '$email'";
+if($_POST){
+    $email = $_GET['email'];
+    $vergeet_id = $_GET['uniekid'];
+    $password = $_POST['password'];
+    $passwordrepeat = $_POST['repeatpassword'];
+    if($password == $passwordrepeat){
+        $user_check_query = "SELECT email, ww_vergeet_id, gebruikersnaam, gebruiker_id FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
+        $result = mysqli_query($conn, $user_check_query);
+        $gebruiker = mysqli_fetch_assoc($result);\
+        print_r($gebruiker);
+        if($email == $gebruiker['email'] && $vergeet_id == $gebruiker['ww_vergeet_id']){
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE gebruiker SET wachtwoord = '$password', ww_vergeet_id = '' WHERE email = '$email'";
 
             mysqli_query($conn, $sql);
-
-            session_start();
-            $_SESSION['username'] = $gebruikersnaam;
-            $_SESSION['id'] = $id;
-
+            $_SESSION['username'] = $gebruiker['gebruikersnaam'];
+            $_SESSION['id'] = $gebruiker['gebruiker_id'];
             header( 'Location: dashboard.php');
         }
-
-
-
-
     }
+}
+
+
 
 ?>
 <!doctype html>
@@ -55,27 +48,29 @@ if(isset($_SESSION['username'])){
     <meta name="keywords" content="gezondheid, meter, gezondheidsmeter, gezond leven, eten, slaap, drugs, drinken">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/account_activeren.css">
+    <link rel="stylesheet" href="assets/css/ww_nieuw.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="application/javascript" src="assets/javascript/index.js"></script>
-    <title>Gezondheidsmeter - Succesvol</title>
+    <title>Gezondheidsmeter - wachtwoord vergeten</title>
 </head>
 <body>
 <div class="sitecontainer">
     <!-- header -->
     <div class="headercontainer">
         <image class="logosmall" src="assets/images/logo.png" alt="logo">
-            <h1>Activatie</h1>
+            <h2>Wachtwoord reset</h2>
             <a style="visibility:hidden;" href="settings.php">
                 <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
             </a>
     </div>
     <!-- content -->
     <div class="center">
-        Klik op deze knop om uw account te activeren.<br>
+        Voer hier uw nieuwe wachtwoord in.<br>
         <form class="form" action="" method="POST">
-            <input class="button" type="submit" name="activate" value="Account activeren">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
+            <input class="button" type="submit" name="request" value="Wachtwoord resetten">
         </form>
     </div>
 </div>

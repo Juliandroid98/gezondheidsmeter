@@ -1,12 +1,14 @@
 <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
 
 include 'assets/php/Connection.php';
 if (isset($_POST["username"])){
 
-    session_start();
-
-// initializing variables
-    $gebruikersnaam = "";
+    $username = "";
     $email = "";
     $password = "";
     $length = "";
@@ -15,7 +17,7 @@ if (isset($_POST["username"])){
     $errors = array();
 
 
-    $gebruikersnaam = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $datum = mysqli_real_escape_string($conn, $_POST['date']);
@@ -23,7 +25,7 @@ if (isset($_POST["username"])){
     $weight = mysqli_real_escape_string($conn, $_POST['weight']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
-    if (empty($gebruikersnaam)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
+    if (empty($username)) { array_push($errors, "U moet een gebruikersnaam invullen."); }
     if (empty($email)) { array_push($errors, "Email moet worden ingevuld."); }
     if (empty($password)) { array_push($errors, "Wachtwoord moet worden ingevuld."); }
     if (empty($datum)) { array_push($errors, "Datum moet worden ingevuld."); }
@@ -31,12 +33,12 @@ if (isset($_POST["username"])){
     if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); }
     if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); }
 
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($user['username'] === $gebruikersnaam) {
+        if ($user['gebruikersnaam'] === $username) {
             array_push($errors, "Gebruikersnaam bestaat al.");
         }
 
@@ -45,18 +47,19 @@ if (isset($_POST["username"])){
         }
     }
 
+    print_r($errors);
     if (count($errors) == 0) {
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $uniekid = uniqid();
         print_r($uniekid);
 
-        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
-  			  VALUES('$gebruikersnaam', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
-
+        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
+  			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
+        print_r($query);
         mysqli_query($conn, $query);
 
-        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$gebruikersnaam' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);
 
@@ -120,14 +123,17 @@ if (isset($_POST["username"])){
         <!-- content -->
         <form class="form" action="" method="POST">
             <input class="inputfield" type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="password">
+            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
             <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
             <input class="inputfield" type="date" name="date" value="<?php echo isset($_POST['date']) ? $_POST['date'] : '' ?>" placeholder="Geboortedatum">
             <input class="inputfield" type="number" name="length" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '' ?>" placeholder="Lengte">
             <input class="inputfield" type="number" name="weight" value="<?php echo isset($_POST['weight']) ? $_POST['weight'] : '' ?>" placeholder="Gewicht">
-            <input type="radio" name="gender" value="male"> Man
-            <input type="radio" name="gender" value="female"> Vrouw
-            <input type="radio" name="gender" value="other"> Anders<br>
+            <div class="radiobuttonwrapper">
+                <input class="radiobutton" type="radio" name="gender" value="male"> Man
+                <input class="radiobutton" type="radio" name="gender" value="female"> Vrouw
+                <input class="radiobutton" type="radio" name="gender" value="other"> Anders<br>
+            </div>
             <input class="submitbutton" type="submit" name="inloggen" value="Registreren"><br>
         </form>
     </div>

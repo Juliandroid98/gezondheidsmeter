@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 27 sep 2019 om 11:52
--- Serverversie: 10.1.26-MariaDB
--- PHP-versie: 7.1.8
+-- Generation Time: Oct 03, 2019 at 09:59 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,389 +25,386 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `arbeidsomstandigheden`
+-- Table structure for table `arbeid`
 --
 
-CREATE TABLE `arbeidsomstandigheden` (
-  `gebruiker_id` int(11) NOT NULL,
-  `werkplek` int(11) NOT NULL,
-  `werkdruk` int(11) NOT NULL,
+CREATE TABLE `arbeid` (
+  `arbeid_ID` int(11) NOT NULL,
+  `werkplek` int(20) NOT NULL,
+  `werkdruk` int(20) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `drinken`
+-- Table structure for table `drinken`
 --
 
 CREATE TABLE `drinken` (
-  `drank_id` int(11) NOT NULL,
-  `dranknaam` varchar(50) NOT NULL,
-  `suiker_gram` int(11) NOT NULL,
-  `alcoholpercentage` int(11) NOT NULL,
-  `schijf_id` int(11) NOT NULL
+  `drinken_ID` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `kcal` int(11) NOT NULL,
+  `sugar` double(4,2) NOT NULL,
+  `schijf_ID` int(11) NOT NULL,
+  `alcohol` varchar(20) NOT NULL,
+  `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `drugs`
+-- Table structure for table `drugs`
 --
 
 CREATE TABLE `drugs` (
-  `drugs_id` int(11) NOT NULL,
-  `drugs_naam` varchar(50) NOT NULL,
-  `soort_drugs` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `drugs`
---
-
-INSERT INTO `drugs` (`drugs_id`, `drugs_naam`, `soort_drugs`) VALUES
-(1, 'testdrugs', 'softdrugs');
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `drugsgebruik`
---
-
-CREATE TABLE `drugsgebruik` (
-  `gebruiker_id` int(11) NOT NULL,
-  `drugs_id` int(11) NOT NULL,
-  `aantal_milligram` int(11) NOT NULL,
+  `drugs_ID` int(11) NOT NULL,
+  `naam` varchar(100) NOT NULL,
+  `soort` varchar(40) NOT NULL,
+  `hoeveelheid` double(4,2) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `eten`
+-- Table structure for table `eten`
 --
 
 CREATE TABLE `eten` (
-  `eten_id` int(11) NOT NULL,
-  `etennaam` varchar(50) NOT NULL,
-  `schijf_id` int(11) NOT NULL,
-  `suiker_gram` int(11) NOT NULL
+  `eten_ID` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `kcal` int(11) NOT NULL,
+  `sugar` double(4,2) NOT NULL,
+  `schijf_ID` int(11) NOT NULL,
+  `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eten`
+--
+
+INSERT INTO `eten` (`eten_ID`, `name`, `kcal`, `sugar`, `schijf_ID`, `datum`) VALUES
+(3, 'zibbi', 13, 0.00, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gebruiker`
+-- Table structure for table `gebruiker`
 --
 
 CREATE TABLE `gebruiker` (
-  `is_admin` tinyint(1) NOT NULL,
-  `gebruiker_id` int(11) NOT NULL,
-  `gebruikersnaam` varchar(50) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
+  `gebruiker` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `wachtwoord` varchar(255) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `geboortedatum` date NOT NULL,
-  `lengte` int(11) NOT NULL,
-  `gewicht` int(11) NOT NULL,
-  `geslacht` varchar(10) NOT NULL,
-  `geactiveerd` tinyint(1) NOT NULL
+  `gewicht` double(3,2) NOT NULL,
+  `lengte` double(3,2) NOT NULL,
+  `leeftijd` int(3) NOT NULL,
+  `geslacht` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `gebruiker`
+-- Dumping data for table `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`is_admin`, `gebruiker_id`, `gebruikersnaam`, `wachtwoord`, `email`, `geboortedatum`, `lengte`, `gewicht`, `geslacht`, `geactiveerd`) VALUES
-(0, 1, 'testgebruiker', 'test123', 'test@emal.com', '2019-09-03', 99, 99, 'man', 0);
+INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruiker`, `email`, `wachtwoord`, `gewicht`, `lengte`, `leeftijd`, `geslacht`) VALUES
+(1, 'Henk', '', '', 9.90, 9.99, 102, 'dunno');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gebruiker_drinken`
+-- Table structure for table `koppel_user_drinks`
 --
 
-CREATE TABLE `gebruiker_drinken` (
+CREATE TABLE `koppel_user_drinks` (
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `drinks_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `koppel_user_drinks`
+--
+
+INSERT INTO `koppel_user_drinks` (`ID`, `user_ID`, `drinks_ID`) VALUES
+(1, 1, 5),
+(2, 1, 6),
+(3, 1, 7),
+(4, 1, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `koppel_user_drugs`
+--
+
+CREATE TABLE `koppel_user_drugs` (
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `drug_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `koppel_user_eten`
+--
+
+CREATE TABLE `koppel_user_eten` (
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `eten_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `koppel_user_eten`
+--
+
+INSERT INTO `koppel_user_eten` (`ID`, `user_ID`, `eten_ID`) VALUES
+(1, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `koppe_user_sport`
+--
+
+CREATE TABLE `koppe_user_sport` (
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `sport_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `melding`
+--
+
+CREATE TABLE `melding` (
+  `melding_ID` int(11) NOT NULL,
+  `melding` varchar(50) NOT NULL,
   `datum` date NOT NULL,
-  `aantal_milliliter` int(11) NOT NULL,
-  `drank_id` int(11) NOT NULL,
-  `gebruiker_id` int(11) NOT NULL
+  `gebruiker_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gebruiker_eten`
---
-
-CREATE TABLE `gebruiker_eten` (
-  `gebruiker_id` int(11) NOT NULL,
-  `eten_id` int(11) NOT NULL,
-  `datum` date NOT NULL,
-  `aantal_grammen` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `schijf`
+-- Table structure for table `schijf`
 --
 
 CREATE TABLE `schijf` (
-  `schijf_id` int(11) NOT NULL,
-  `schijfnaam` varchar(50) NOT NULL
+  `schijf_ID` int(11) NOT NULL,
+  `naam` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `schijf`
---
-
-INSERT INTO `schijf` (`schijf_id`, `schijfnaam`) VALUES
-(1, 'groente en fruit'),
-(2, 'smeer en bereidingsvetten'),
-(3, 'zuivel noten vis peulvruchten vlees en ei'),
-(4, 'brood graanproducten en aardappelen'),
-(5, 'dranken');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `slaapcyclus`
+-- Table structure for table `slaap`
 --
 
-CREATE TABLE `slaapcyclus` (
-  `gebruiker_id` int(11) NOT NULL,
-  `aantal_uur` int(11) NOT NULL,
-  `smiley` int(11) NOT NULL,
+CREATE TABLE `slaap` (
+  `slaap_ID` int(11) NOT NULL,
+  `uren` int(20) NOT NULL,
+  `beoordeling` varchar(50) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Gegevens worden geëxporteerd voor tabel `slaapcyclus`
---
-
-INSERT INTO `slaapcyclus` (`gebruiker_id`, `aantal_uur`, `smiley`, `datum`) VALUES
-(1, 10, 10, '2019-09-11');
-
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `sport`
+-- Table structure for table `sport`
 --
 
 CREATE TABLE `sport` (
-  `sport_id` int(11) NOT NULL,
-  `sportnaam` varchar(50) NOT NULL,
-  `verbrandingswaarde` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `sport`
---
-
-INSERT INTO `sport` (`sport_id`, `sportnaam`, `verbrandingswaarde`) VALUES
-(1, 'testbasketball', 77);
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `sportplanning`
---
-
-CREATE TABLE `sportplanning` (
-  `gebruiker_id` int(11) NOT NULL,
-  `sport_id` int(11) NOT NULL,
-  `aantal_uur` int(11) NOT NULL,
+  `sport_ID` int(11) NOT NULL,
+  `naam` varchar(30) NOT NULL,
+  `verbranding` varchar(20) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `sportplanning`
---
-
-INSERT INTO `sportplanning` (`gebruiker_id`, `sport_id`, `aantal_uur`, `datum`) VALUES
-(1, 1, 0, '0000-00-00');
-
---
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `arbeidsomstandigheden`
+-- Indexes for table `arbeid`
 --
-ALTER TABLE `arbeidsomstandigheden`
-  ADD KEY `gebruiker_id` (`gebruiker_id`);
+ALTER TABLE `arbeid`
+  ADD PRIMARY KEY (`arbeid_ID`);
 
 --
--- Indexen voor tabel `drinken`
+-- Indexes for table `drinken`
 --
 ALTER TABLE `drinken`
-  ADD PRIMARY KEY (`drank_id`),
-  ADD KEY `schijf_id` (`schijf_id`);
+  ADD PRIMARY KEY (`drinken_ID`);
 
 --
--- Indexen voor tabel `drugs`
+-- Indexes for table `drugs`
 --
 ALTER TABLE `drugs`
-  ADD PRIMARY KEY (`drugs_id`);
+  ADD PRIMARY KEY (`drugs_ID`);
 
 --
--- Indexen voor tabel `drugsgebruik`
---
-ALTER TABLE `drugsgebruik`
-  ADD PRIMARY KEY (`drugs_id`),
-  ADD KEY `gebruiker_id` (`gebruiker_id`);
-
---
--- Indexen voor tabel `eten`
+-- Indexes for table `eten`
 --
 ALTER TABLE `eten`
-  ADD PRIMARY KEY (`eten_id`),
-  ADD KEY `schijf_id` (`schijf_id`);
+  ADD PRIMARY KEY (`eten_ID`);
 
 --
--- Indexen voor tabel `gebruiker`
+-- Indexes for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  ADD PRIMARY KEY (`gebruiker_id`);
+  ADD PRIMARY KEY (`gebruiker_ID`);
 
 --
--- Indexen voor tabel `gebruiker_drinken`
+-- Indexes for table `koppel_user_drinks`
 --
-ALTER TABLE `gebruiker_drinken`
-  ADD KEY `drank_id` (`drank_id`),
-  ADD KEY `gebruiker_id` (`gebruiker_id`);
+ALTER TABLE `koppel_user_drinks`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_ID_user_ID` (`user_ID`);
 
 --
--- Indexen voor tabel `gebruiker_eten`
+-- Indexes for table `koppel_user_drugs`
 --
-ALTER TABLE `gebruiker_eten`
-  ADD PRIMARY KEY (`gebruiker_id`,`eten_id`,`datum`),
-  ADD KEY `eten_id` (`eten_id`);
+ALTER TABLE `koppel_user_drugs`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `drugs_ID_drugs_ID` (`drug_ID`),
+  ADD KEY `drugs_user_ID_user_ID` (`user_ID`);
 
 --
--- Indexen voor tabel `schijf`
+-- Indexes for table `koppel_user_eten`
+--
+ALTER TABLE `koppel_user_eten`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `eten_user_ID_user_ID` (`user_ID`),
+  ADD KEY `eten_eten_ID_food_ID` (`eten_ID`);
+
+--
+-- Indexes for table `koppe_user_sport`
+--
+ALTER TABLE `koppe_user_sport`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `melding`
+--
+ALTER TABLE `melding`
+  ADD PRIMARY KEY (`melding_ID`);
+
+--
+-- Indexes for table `schijf`
 --
 ALTER TABLE `schijf`
-  ADD PRIMARY KEY (`schijf_id`);
+  ADD PRIMARY KEY (`schijf_ID`);
 
 --
--- Indexen voor tabel `slaapcyclus`
+-- Indexes for table `slaap`
 --
-ALTER TABLE `slaapcyclus`
-  ADD KEY `gebruiker_id` (`gebruiker_id`);
+ALTER TABLE `slaap`
+  ADD PRIMARY KEY (`slaap_ID`);
 
 --
--- Indexen voor tabel `sport`
+-- Indexes for table `sport`
 --
 ALTER TABLE `sport`
-  ADD PRIMARY KEY (`sport_id`);
+  ADD PRIMARY KEY (`sport_ID`);
 
 --
--- Indexen voor tabel `sportplanning`
---
-ALTER TABLE `sportplanning`
-  ADD PRIMARY KEY (`sport_id`),
-  ADD KEY `gebruiker_id` (`gebruiker_id`);
-
---
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `drinken`
+-- AUTO_INCREMENT for table `arbeid`
+--
+ALTER TABLE `arbeid`
+  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `drinken`
 --
 ALTER TABLE `drinken`
-  MODIFY `drank_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `drugs`
+-- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `drugs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `drugsgebruik`
---
-ALTER TABLE `drugsgebruik`
-  MODIFY `drugs_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT voor een tabel `eten`
+-- AUTO_INCREMENT for table `eten`
 --
 ALTER TABLE `eten`
-  MODIFY `eten_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT voor een tabel `gebruiker`
+-- AUTO_INCREMENT for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  MODIFY `gebruiker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT voor een tabel `schijf`
+-- AUTO_INCREMENT for table `koppel_user_drinks`
+--
+ALTER TABLE `koppel_user_drinks`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `koppel_user_drugs`
+--
+ALTER TABLE `koppel_user_drugs`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `koppel_user_eten`
+--
+ALTER TABLE `koppel_user_eten`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `koppe_user_sport`
+--
+ALTER TABLE `koppe_user_sport`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `melding`
+--
+ALTER TABLE `melding`
+  MODIFY `melding_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `schijf`
 --
 ALTER TABLE `schijf`
-  MODIFY `schijf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `schijf_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `sport`
+-- AUTO_INCREMENT for table `slaap`
+--
+ALTER TABLE `slaap`
+  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `sport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT voor een tabel `sportplanning`
---
-ALTER TABLE `sportplanning`
-  MODIFY `sport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Beperkingen voor geëxporteerde tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Beperkingen voor tabel `arbeidsomstandigheden`
+-- Constraints for table `koppel_user_drinks`
 --
-ALTER TABLE `arbeidsomstandigheden`
-  ADD CONSTRAINT `arbeidsomstandigheden_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`);
+ALTER TABLE `koppel_user_drinks`
+  ADD CONSTRAINT `user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
--- Beperkingen voor tabel `drinken`
+-- Constraints for table `koppel_user_drugs`
 --
-ALTER TABLE `drinken`
-  ADD CONSTRAINT `drinken_ibfk_1` FOREIGN KEY (`schijf_id`) REFERENCES `schijf` (`schijf_id`);
+ALTER TABLE `koppel_user_drugs`
+  ADD CONSTRAINT `drugs_ID_drugs_ID` FOREIGN KEY (`drug_ID`) REFERENCES `drugs` (`drugs_ID`),
+  ADD CONSTRAINT `drugs_user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
--- Beperkingen voor tabel `drugsgebruik`
+-- Constraints for table `koppel_user_eten`
 --
-ALTER TABLE `drugsgebruik`
-  ADD CONSTRAINT `drugsgebruik_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`),
-  ADD CONSTRAINT `drugsgebruik_ibfk_2` FOREIGN KEY (`drugs_id`) REFERENCES `drugs` (`drugs_id`);
-
---
--- Beperkingen voor tabel `eten`
---
-ALTER TABLE `eten`
-  ADD CONSTRAINT `eten_ibfk_1` FOREIGN KEY (`schijf_id`) REFERENCES `schijf` (`schijf_id`);
-
---
--- Beperkingen voor tabel `gebruiker_drinken`
---
-ALTER TABLE `gebruiker_drinken`
-  ADD CONSTRAINT `gebruiker_drinken_ibfk_1` FOREIGN KEY (`drank_id`) REFERENCES `drinken` (`drank_id`),
-  ADD CONSTRAINT `gebruiker_drinken_ibfk_2` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`);
-
---
--- Beperkingen voor tabel `gebruiker_eten`
---
-ALTER TABLE `gebruiker_eten`
-  ADD CONSTRAINT `gebruiker_eten_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`),
-  ADD CONSTRAINT `gebruiker_eten_ibfk_2` FOREIGN KEY (`eten_id`) REFERENCES `eten` (`eten_id`);
-
---
--- Beperkingen voor tabel `slaapcyclus`
---
-ALTER TABLE `slaapcyclus`
-  ADD CONSTRAINT `slaapcyclus_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`);
-
---
--- Beperkingen voor tabel `sportplanning`
---
-ALTER TABLE `sportplanning`
-  ADD CONSTRAINT `sportplanning_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruiker` (`gebruiker_id`),
-  ADD CONSTRAINT `sportplanning_ibfk_2` FOREIGN KEY (`sport_id`) REFERENCES `sport` (`sport_id`);
+ALTER TABLE `koppel_user_eten`
+  ADD CONSTRAINT `eten_eten_ID_food_ID` FOREIGN KEY (`eten_ID`) REFERENCES `eten` (`eten_ID`),
+  ADD CONSTRAINT `eten_user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

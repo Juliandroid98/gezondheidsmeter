@@ -69,6 +69,7 @@ try{
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
         }
+		echo "<form action='' method='post'><tr id='addRowGebruiker' style='display: none;'><td><input type='text' placeholder='gebruikersnaam'></td><td><input type='text' placeholder='wachtwoord'></td><td><input type='text' placeholder='email'></td><td><input type='text' placeholder='geboortedatum'></td><td><input type='text' placeholder='lengte'></td><td><input type='text' placeholder='gewicht'></td><td><input type='text' placeholder='geslacht'></td><td><input type='submit' value='toevoegen' onclick='addRowForInput();'></td></tr></form>";
 		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
 		echo "</table></div>";
         // Free result set
