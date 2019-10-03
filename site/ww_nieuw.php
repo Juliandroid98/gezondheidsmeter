@@ -1,5 +1,41 @@
 <?php
-include 'assets/php/Connection.php'; ?>
+include 'assets/php/Connection.php';
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
+
+if(!$_GET){
+
+}
+
+if($_POST){
+    $email = $_GET['email'];
+    $vergeet_id = $_GET['uniekid'];
+    $password = $_POST['password'];
+    $passwordrepeat = $_POST['repeatpassword'];
+    if($password == $passwordrepeat){
+        $user_check_query = "SELECT email, ww_vergeet_id, gebruiker, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
+        $result = mysqli_query($conn, $user_check_query);
+        $gebruiker = mysqli_fetch_assoc($result);
+
+        if($email == $gebruiker['email'] && $vergeet_id == $gebruiker['ww_vergeet_id']){
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE gebruiker SET wachtwoord = '$password', ww_vergeet_id = '' WHERE email = '$email'";
+
+            mysqli_query($conn, $sql);
+            $_SESSION['username'] = $gebruiker['gebruiker'];
+            $_SESSION['id'] = $gebruiker['gebruiker_ID'];
+            header( 'Location: dashboard.php');
+        }
+    }
+}
+
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>

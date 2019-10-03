@@ -1,13 +1,49 @@
 <?php
 include 'assets/php/Connection.php';
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
 if($_POST){
     $email = $_POST['email'];
     $user_check_query = "SELECT email FROM gebruiker WHERE email='$email'";
     $result = mysqli_query($conn, $user_check_query);
     $gebruiker = mysqli_fetch_assoc($result);
 
-    print_r($gebruiker['email']);
 
+    if($email == $gebruiker['email']){
+
+        $uniekid = uniqid();
+        $sql = "UPDATE gebruiker SET ww_vergeet_id= '$uniekid' WHERE email = '$email'";
+
+        mysqli_query($conn, $sql);
+
+
+        $to = $email;
+        $subject = "Wachtwoord vergeten";
+
+        $message = "
+        <html>
+        <head>
+        <title>Account activeren</title>
+        </head>
+        <body>
+        <p>Door op de onderstaande link te klikken kunt u uw wachtwoord wijzigen.</p>
+        <br>
+        <a href='http://localhost/periode%209/gezondheidsmeter/site/ww_nieuw.php?email=$email&uniekid=$uniekid'>Nieuw wachtwoord aanmaken</a>
+        </body>
+        </html>
+        ";
+
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+    }
 }
 
 

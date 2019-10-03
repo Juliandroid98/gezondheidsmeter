@@ -1,10 +1,12 @@
 <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
 
 include 'assets/php/Connection.php';
 if (isset($_POST["username"])){
-
-    session_start();
-
 
     $username = "";
     $email = "";
@@ -31,12 +33,12 @@ if (isset($_POST["username"])){
     if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); }
     if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); }
 
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM gebruiker WHERE gebruiker ='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($user['gebruikersnaam'] === $username) {
+        if ($user['gebruiker'] === $username) {
             array_push($errors, "Gebruikersnaam bestaat al.");
         }
 
@@ -45,18 +47,19 @@ if (isset($_POST["username"])){
         }
     }
 
+    print_r($errors);
     if (count($errors) == 0) {
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $uniekid = uniqid();
-        print_r($uniekid);
 
-        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeerid) 
+
+        $query = "INSERT INTO gebruiker (gebruiker, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
   			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
-        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM gebruiker WHERE gebruiker ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);
 

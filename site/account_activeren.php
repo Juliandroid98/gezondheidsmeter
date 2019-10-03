@@ -1,5 +1,11 @@
 <?php
 include 'assets/php/Connection.php';
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
     if(!isset($_GET)){
         header( 'Location: index.php');
     }
@@ -11,16 +17,16 @@ include 'assets/php/Connection.php';
         $email = $_GET['email'];
         $uniekid = $_GET['uniekid'];
 
-        $query = "SELECT gebruikersnaam, gebruiker_id FROM gebruiker WHERE email ='$email' AND activeerid='$uniekid'";
+        $query = "SELECT gebruiker, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);
 
-        $gebruikersnaam = $data['gebruikersnaam'];
-        $id = $data['gebruiker_id'];
+        $gebruikersnaam = $data['gebruiker'];
+        $id = $data['gebruiker_ID'];
 
-        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_id'])){
+        if(isset($data['gebruiker']) && isset($data['gebruiker_ID'])){
 
-            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeerid= '0' WHERE email = '$email'";
+            $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '' WHERE email = '$email'";
 
             mysqli_query($conn, $sql);
 
@@ -28,7 +34,7 @@ include 'assets/php/Connection.php';
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $id;
 
-            header( 'Location: index.php');
+            header( 'Location: dashboard.php');
         }
 
 

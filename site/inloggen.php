@@ -1,5 +1,11 @@
 <?php
     include 'assets/php/Connection.php';
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
+}
+
 if (isset($_POST["username"])) {
 
     if (isset($_POST["username"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
@@ -9,15 +15,15 @@ if (isset($_POST["username"])) {
 
 
         $error = "";
-        $sql = "SELECT wachtwoord, gebruiker_id FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
+        $sql = "SELECT wachtwoord, gebruiker_ID FROM gebruiker WHERE gebruiker = '$gebruikersnaam'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
         if (password_verify($wachtwoord, $row['wachtwoord'])){
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
-            $_SESSION['id'] = $row['gebruiker_id'];
-            header( 'Location: index.php');
+            $_SESSION['id'] = $row['gebruiker_ID'];
+            header( 'Location: dashboard.php');
 
         }
     } else {
