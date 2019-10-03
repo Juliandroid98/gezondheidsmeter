@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2019 at 09:59 AM
+-- Generation Time: Oct 03, 2019 at 11:30 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -43,7 +43,7 @@ CREATE TABLE `arbeid` (
 
 CREATE TABLE `drinken` (
   `drinken_ID` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `naam` varchar(30) NOT NULL,
   `kcal` int(11) NOT NULL,
   `sugar` double(4,2) NOT NULL,
   `schijf_ID` int(11) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `drugs` (
 
 CREATE TABLE `eten` (
   `eten_ID` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `naam` varchar(30) NOT NULL,
   `kcal` int(11) NOT NULL,
   `sugar` double(4,2) NOT NULL,
   `schijf_ID` int(11) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `eten` (
 -- Dumping data for table `eten`
 --
 
-INSERT INTO `eten` (`eten_ID`, `name`, `kcal`, `sugar`, `schijf_ID`, `datum`) VALUES
+INSERT INTO `eten` (`eten_ID`, `naam`, `kcal`, `sugar`, `schijf_ID`, `datum`) VALUES
 (3, 'zibbi', 13, 0.00, 0, '0000-00-00');
 
 -- --------------------------------------------------------
@@ -100,16 +100,21 @@ CREATE TABLE `gebruiker` (
   `wachtwoord` varchar(255) NOT NULL,
   `gewicht` double(3,2) NOT NULL,
   `lengte` double(3,2) NOT NULL,
-  `leeftijd` int(3) NOT NULL,
-  `geslacht` varchar(5) NOT NULL
+  `geboortedatum` date NOT NULL,
+  `geslacht` varchar(5) NOT NULL,
+  `geactiveerd` tinyint(1) NOT NULL,
+  `activeer_id` varchar(13) NOT NULL,
+  `ww_vergeet_id` varchar(13) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruiker`, `email`, `wachtwoord`, `gewicht`, `lengte`, `leeftijd`, `geslacht`) VALUES
-(1, 'Henk', '', '', 9.90, 9.99, 102, 'dunno');
+INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruiker`, `email`, `wachtwoord`, `gewicht`, `lengte`, `geboortedatum`, `geslacht`, `geactiveerd`, `activeer_id`, `ww_vergeet_id`, `is_admin`) VALUES
+(1, 'Henk', '', '', 9.90, 9.99, '2004-06-09', 'dunno', 0, '', '', 0),
+(2, 'miquel', 'miquelalessandro@gmail.com', '$2y$10$oDKaVNdwV4OjiOKM.SyPC.kOailffgTBkHWQ/UX0rUSdWUFVUk61e', 9.99, 9.99, '2001-04-24', 'male', 1, '0', '', 0);
 
 -- --------------------------------------------------------
 
@@ -167,10 +172,10 @@ INSERT INTO `koppel_user_eten` (`ID`, `user_ID`, `eten_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `koppe_user_sport`
+-- Table structure for table `koppel_user_sport`
 --
 
-CREATE TABLE `koppe_user_sport` (
+CREATE TABLE `koppel_user_sport` (
   `ID` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
   `sport_ID` int(11) NOT NULL
@@ -284,9 +289,9 @@ ALTER TABLE `koppel_user_eten`
   ADD KEY `eten_eten_ID_food_ID` (`eten_ID`);
 
 --
--- Indexes for table `koppe_user_sport`
+-- Indexes for table `koppel_user_sport`
 --
-ALTER TABLE `koppe_user_sport`
+ALTER TABLE `koppel_user_sport`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -341,7 +346,7 @@ ALTER TABLE `eten`
 -- AUTO_INCREMENT for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `koppel_user_drinks`
 --
@@ -358,9 +363,9 @@ ALTER TABLE `koppel_user_drugs`
 ALTER TABLE `koppel_user_eten`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `koppe_user_sport`
+-- AUTO_INCREMENT for table `koppel_user_sport`
 --
-ALTER TABLE `koppe_user_sport`
+ALTER TABLE `koppel_user_sport`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `melding`
