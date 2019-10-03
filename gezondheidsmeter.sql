@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 okt 2019 om 13:41
+-- Gegenereerd op: 03 okt 2019 om 14:54
 -- Serverversie: 10.1.26-MariaDB
 -- PHP-versie: 7.1.8
 
@@ -60,9 +60,15 @@ CREATE TABLE `drinken` (
 CREATE TABLE `drugs` (
   `drugs_ID` int(11) NOT NULL,
   `naam` varchar(100) NOT NULL,
-  `soort` varchar(40) NOT NULL,
-  `datum` date NOT NULL
+  `soort` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `drugs`
+--
+
+INSERT INTO `drugs` (`drugs_ID`, `naam`, `soort`) VALUES
+(1, 'testdrugs1', 'softdrugs');
 
 -- --------------------------------------------------------
 
@@ -147,7 +153,8 @@ CREATE TABLE `koppel_user_drugs` (
   `ID` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
   `drug_ID` int(11) NOT NULL,
-  `hoeveelheid` int(11) NOT NULL
+  `hoeveelheid` int(11) NOT NULL,
+  `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -336,7 +343,7 @@ ALTER TABLE `drinken`
 -- AUTO_INCREMENT voor een tabel `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `eten`
 --

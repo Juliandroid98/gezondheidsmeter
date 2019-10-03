@@ -56,8 +56,8 @@ try{
         while($row = $result->fetch()){
             echo "<tr>";
                 echo "<td>" . $row['is_admin'] . "</td>";
-                echo "<td>" . $row['gebruiker_id'] . "</td>";
-				echo "<td>" . $row['gebruikersnaam'] . "</td>";
+                echo "<td>" . $row['gebruiker_ID'] . "</td>";
+				echo "<td>" . $row['gebruiker'] . "</td>";
                 echo "<td>" . $row['wachtwoord'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . $row['geboortedatum'] . "</td>";
