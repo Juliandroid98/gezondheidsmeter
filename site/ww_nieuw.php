@@ -2,9 +2,6 @@
 include 'assets/php/Connection.php';
 session_start();
 
-if(isset($_SESSION['username'])){
-    echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
-}
 
 
 if(!$_GET){
