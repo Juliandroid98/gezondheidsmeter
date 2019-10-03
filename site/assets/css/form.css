@@ -1,44 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu|Varela+Round&display=swap');
-/* input[type=text], select, option {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: white;
-    color: black;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border:  3px solid #BAE0E8;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-
-}
-
-input[type=submit]:hover {
-    background-color: #BAE0E8;
-}
-
-label {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    box-sizing: border-box;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Varela Round', sans-serif;
-} */
 
 .sitecontainer {
     margin-bottom: 100px;

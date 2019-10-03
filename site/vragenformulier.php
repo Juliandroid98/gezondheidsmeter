@@ -29,115 +29,166 @@
         </div>
         <!-- content -->
         <form id="regForm" action="">
-            <!-- Werkplek -->
-            <h3>Werkplek</h3>
-                <div class="tab">Vind u uw huidige werkplek prettig?
-                    <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
-                </div>
-                <div class="tab">Hoe vind u uw werkdruk?
-                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-                </div>
-                <div class="tab">Datum
-                    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-                </div>
+          <!-- Werkplek -->
+          <h3>Werkplek</h3>
+            <div class="tab">Beoordeel uw werkplek?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            </div>
 
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
+            <div class="tab">Beoordeel uw werkdruk?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <div style="overflow:auto;">
-                    <div style="float:right;">
-                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    </div>
-                </div>
+            <div class="tab">Datum
+              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            </div>
 
-                <!-- Drinken -->
-                <h3>Drinken</h3>
-                <div class="tab">Wat is de naam van de drank?
-                    <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
-                </div>
-                <div class="tab">Wat is de kilocalorie?
-                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-                </div>
-                <div class="tab">Datum
-                    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-                    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-                    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-                </div>
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">1</span>
+              <span class="step">2</span>
+              <span class="step">3</span>
+            </div>
 
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
 
-                <div style="overflow:auto;">
-                    <div style="float:right;">
-                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    </div>
-                </div>
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-        </div>
+          <!-- Drinken -->
+          <h3>Drinken</h3>
+            <div class="tab">Wat is de naam van de drank?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            </div>
 
-            <!-- <h3>Drinken</h3>
-                <label for="fname">Wat is de naam van de drank?</label>
-                <input type="text" id="vrg3" name="vraag3" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Wat is de kilocalorie?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <label for="lname">Wat is de suikerwaarde ervan?</label>
-                <input type="text" id="vr4" name="vraag4" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Hoeveel gram suiker zit erin?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <label for="lname">Wat is de alcoholpercentage ervan?</label>
-                <input type="text" id="vr5" name="vraag5" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Hoeveel % alcohol zit erin?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <label for="lname">Hoeveel ml heeft U gedronken?</label>
-                <input type="text" id="vr6" name="vraag6" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Datum
+              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            </div>
 
-            <h3>Drugs</h3>
-                <label for="lname">Wat is de drugsnaam?</label>
-                <input type="text" id="vr7" name="vraag7" placeholder="vul hier uw antwoord in..">
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">1</span>
+              <span class="step">2</span>
+              <span class="step">3</span>
+              <span class="step">4</span>
+              <span class="step">5</span>
+            </div>
 
-                <label for="lname">Wat voor soort drugs is het?</label>
-                <input type="text" id="vr8" name="vraag8" placeholder="vul hier uw antwoord in..">
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
 
-                <label for="lname">Hoeveel ml heeft U genomen?</label>
-                <input type="text" id="vr9" name="vraag9" placeholder="vul hier uw antwoord in..">
+          <!-- Eten -->
+          <h3>Eten</h3>
+            <div class="tab">Wat is de naam van het voedsel?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            </div>
 
-            <h3>Voedsel</h3>
-                <label for="lname">Wat is de naam van de voedsel?</label>
-                <input type="text" id="vr10" name="vraag10" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Wat is de kilocalorie?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <label for="lname">Wat is de suikerwaarde ervan?</label>
-                <input type="text" id="vr11" name="vraag11" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Hoeveel gram suiker zit erin?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
 
-                <label for="lname">Hoeveel calorien heeft het?</label>
-                <input type="text" id="vr12" name="vraag12" placeholder="vul hier uw antwoord in..">
+            <div class="tab">Datum
+              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            </div>
 
-            <h3>Slaap</h3>
-                <label for="lname">Hoeveel uur heeft u geslapen?</label>
-                <input type="text" id="vr13" name="vraag13" placeholder="vul hier uw antwoord in..">
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">1</span>
+              <span class="step">2</span>
+              <span class="step">3</span>
+              <span class="step">4</span>
+            </div>
 
-                <label for="lname">Welke beoordeling geeft U uw slaap?</label>
-                <input type="text" id="vr14" name="vraag14" placeholder="vul hier uw antwoord in..">
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
 
-            <h3>Sport</h3>
-                <label for="lname">Wat voor sport heeft u gedaan?</label>
-                <input type="text" id="vr15" name="vraag15" placeholder="vul hier uw antwoord in..">
+          <!-- Drugs -->
+          <h3>Drugs</h3>
+            <div class="tab">Wat is de naam van de drugs?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            </div>
 
-                <label for="lname">Wat is uw verbrandingswaarde?</label>
-                <input type="text" id="vr16" name="vraag16" placeholder="vul hier uw antwoord in..">
-        
-            <input type="submit" value="Submit"> -->
+            <div class="tab">Hoeveel mg heeft u gebruikt?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
+
+            <div class="tab">Datum
+              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">1</span>
+              <span class="step">2</span>
+              <span class="step">3</span>
+            </div>
+
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
+
+          <!-- Slaap -->
+          <h3>Slaap</h3>
+            <div class="tab">Hoeveek uren heeft u geslapen?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            </div>
+
+            <div class="tab">Beoordeel uw slaap.
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            </div>
+
+            <div class="tab">Datum
+              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
+              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">1</span>
+              <span class="step">2</span>
+              <span class="step">3</span>
+            </div>
+
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              </div>
+            </div>
+
         </form>
 
         <script>
