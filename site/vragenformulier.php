@@ -1,4 +1,17 @@
-<?php include 'assets/php/connection.php' ?>
+<?php include 'assets/php/connection.php';
+
+if(isset($_POST['submit'])){
+    $werkplek = $_POST['rating-1'];
+    $werkdruk = $_POST['rating-2'];
+    $timenow = date('Y-m-d');
+
+    $mysqli = new mysqli('localhost', 'root', '', 'gezondheidsmeter') or die(mysqli_error($mysqli));
+    $result = $mysqli->query("INSERT INTO `arbeid` (`ID`, `werkplek`, `werkdruk`) 
+    VALUES ('', '$werkplek', '$werkdruk');") or die($mysqli->error);
+
+    echo "<script>alert('De beroordeling is succesvol verzonden')</script>";
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
