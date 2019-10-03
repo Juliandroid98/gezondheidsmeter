@@ -30,11 +30,15 @@
 
 /* Style the input fields */
 input {
+
+  margin: 8px 0;
   padding: 10px;
-  width: 100%;
+  width: 93%;
   font-size: 17px;
   font-family: Raleway;
+  border-radius: 4px;
   border: 1px solid #aaaaaa;
+  text-align: center;
 }
 
 /* Mark input boxes that gets an error on validation: */
@@ -44,6 +48,8 @@ input.invalid {
 
 /* Hide all steps by default: */
 .tab {
+  font-weight: bold;
+  text-align: center;
   display: none;
 }
 
