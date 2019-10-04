@@ -2,19 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu|Varela+Round&display=swap');
 
 .sitecontainer {
-  margin-bottom: 100px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-.sitecontainer h3 {
+h3 {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
+  padding: 10px;
+  /* /* margin: 8px 0 */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   text-align: center;
-  background-color: rgb(149, 177, 182);
+  background-color: #BAE0E8;
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -46,6 +46,36 @@ input.invalid {
   background-color: #ffdddd;
 }
 
+#nextBtn {
+  width: 50%;
+  background-color: rgb(61, 119, 119);
+  border-color: white;
+  color: white;
+  padding: 5px 20px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+
+#prevBtn {
+  width: 50%;
+  background-color: rgb(61, 119, 119);
+  border-color: white;
+  color: white;
+  padding: 5px 20px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
 /* Hide all steps by default: */
 .tab {
   font-weight: bold;
@@ -74,3 +104,5 @@ input.invalid {
 .step.finish {
   background-color: #4CAF50;
 }
+
+

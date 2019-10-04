@@ -52,10 +52,8 @@
             </div>
 
             <div style="overflow:auto;">
-              <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
             </div>
 
           <!-- Drinken -->
@@ -91,10 +89,8 @@
             </div>
 
             <div style="overflow:auto;">
-              <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
             </div>
 
           <!-- Eten -->
@@ -125,10 +121,8 @@
             </div>
 
             <div style="overflow:auto;">
-              <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
             </div>
 
           <!-- Drugs -->
@@ -154,10 +148,8 @@
             </div>
 
             <div style="overflow:auto;">
-              <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
             </div>
 
           <!-- Slaap -->
@@ -183,10 +175,8 @@
             </div>
 
             <div style="overflow:auto;">
-              <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
             </div>
 
         </form>
