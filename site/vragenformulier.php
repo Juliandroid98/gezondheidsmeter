@@ -1,13 +1,49 @@
 <?php include 'assets/php/connection.php';
 
 if(isset($_POST['submit'])){
-    $werkplek = $_POST['rating-1'];
-    $werkdruk = $_POST['rating-2'];
+    $werkPlek = $_POST['werkPlek'];
+    $werkDruk = $_POST['werkDruk'];
+
+    $drankNaam = $_POST['drankNaam'];
+    $drankCalorie = $_POST['DrankCalorie'];
+    $drankSuiker = $_POST['DrankSuiker'];
+    $drankAlochol = $_POST['drankAlochol'];
+    $schijfDrank = "";
+
+    $etenNaam = $_POST['etenNaam'];
+    $etenCalorie = $_POST['etenCalorie'];
+    $etenSuiker = $_POST['etenSuiker'];
+    $schijfEten = "";
+
+    $drugsNaam = $_POST['drugsNaam'];
+    $drugsHoeveelheid = $_POST['drugsHoeveelheid'];
+
+    $slaapHoeveelheid = $_POST['slaapHoeveelheid'];
+    $slaapKwaliteit = $_POST['slaapKwaliteit'];
+
+    $sportNaam = $_POST['sportNaam'];
+    $sportVerbranding = $_POST['sportVerbranding'];
+
     $timenow = date('Y-m-d');
 
     $mysqli = new mysqli('localhost', 'root', '', 'gezondheidsmeter') or die(mysqli_error($mysqli));
-    $result = $mysqli->query("INSERT INTO `arbeid` (`ID`, `werkplek`, `werkdruk`) 
-    VALUES ('', '$werkplek', '$werkdruk');") or die($mysqli->error);
+    $result = $mysqli->query("INSERT INTO `werkplek` (`ID`, `werkplek`, `werkdruk`, `datum`) 
+    VALUES ('', '$werkPlek', '$werkDruk', '$timenow');") or die($mysqli->error);
+
+    $result = $mysqli->query("INSERT INTO `drinken` (`ID`, `naam`, `kcal`, `sugar`, `schijf_ID`, `alcohol`) 
+    VALUES ('', '$drankNaam', '$drankCalorie', '$drankSuiker', '$schijfDrank', '$drankAlochol');") or die($mysqli->error);
+
+    $result = $mysqli->query("INSERT INTO `eten` (`ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) 
+    VALUES ('', '$etenNaam', '$etenCalorie', '$etenSuiker', '$schijfEten');") or die($mysqli->error);
+
+    $result = $mysqli->query("INSERT INTO `drugs` (`ID`, `naam`, `soort`) 
+    VALUES ('', '$drugsNaam', '$drugsHoeveelheid');") or die($mysqli->error);
+
+    $result = $mysqli->query("INSERT INTO `slaap` (`ID`, `uren`, `beoordeling`, `datum`) 
+    VALUES ('', '$slaapHoeveelheid', '$slaapKwaliteit', '$timenow');") or die($mysqli->error);
+
+    $result = $mysqli->query("INSERT INTO `sport` (`ID`, `naam`, `verbranding`) 
+    VALUES ('', '$sportNaam', '$sportVerbranding');") or die($mysqli->error);
 
     echo "<script>alert('De beroordeling is succesvol verzonden')</script>";
 }
@@ -52,16 +88,10 @@ if(isset($_POST['submit'])){
               <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
             </div>
 
-            <div class="tab">Datum
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-            </div>
 
             <div style="text-align:center;margin-top:40px;">
               <span class="step">1</span>
               <span class="step">2</span>
-              <span class="step">3</span>
             </div>
 
             <div style="overflow:auto;">
@@ -73,26 +103,20 @@ if(isset($_POST['submit'])){
 
           <!-- Drinken -->
           <h3>Drinken</h3>
-            <div class="tab">Wat is de naam van de drank?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            <div class="tab">Welke drank(en) heb je gehad?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankNaam"></p>
             </div>
 
-            <div class="tab">Wat is de kilocalorie?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            <div class="tab">Hoeveel kilocalorie zit er erin?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankCalorie"></p>
             </div>
 
             <div class="tab">Hoeveel gram suiker zit erin?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankSuiker"></p>
             </div>
 
-            <div class="tab">Hoeveel % alcohol zit erin?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-            </div>
-
-            <div class="tab">Datum
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            <div class="tab">Welk % alcohol zit erin?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankAlochol"></p>
             </div>
 
             <div style="text-align:center;margin-top:40px;">
@@ -100,7 +124,6 @@ if(isset($_POST['submit'])){
               <span class="step">2</span>
               <span class="step">3</span>
               <span class="step">4</span>
-              <span class="step">5</span>
             </div>
 
             <div style="overflow:auto;">
@@ -112,29 +135,22 @@ if(isset($_POST['submit'])){
 
           <!-- Eten -->
           <h3>Eten</h3>
-            <div class="tab">Wat is de naam van het voedsel?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            <div class="tab">Welk eten heb je gehad?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenNaam"></p>
             </div>
 
-            <div class="tab">Wat is de kilocalorie?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+            <div class="tab">Hoeveel kilo caloriën zit er in?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenCalorie"></p>
             </div>
 
             <div class="tab">Hoeveel gram suiker zit erin?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-            </div>
-
-            <div class="tab">Datum
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenSuiker"></p>
             </div>
 
             <div style="text-align:center;margin-top:40px;">
               <span class="step">1</span>
               <span class="step">2</span>
               <span class="step">3</span>
-              <span class="step">4</span>
             </div>
 
             <div style="overflow:auto;">
@@ -146,24 +162,17 @@ if(isset($_POST['submit'])){
 
           <!-- Drugs -->
           <h3>Drugs</h3>
-            <div class="tab">Wat is de naam van de drugs?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            <div class="tab">Welke drug(s) heb je gehad?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsNaam"></p>
             </div>
 
-            <div class="tab">Hoeveel mg heeft u gebruikt?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-            </div>
-
-            <div class="tab">Datum
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            <div class="tab">Hoeveel mg heeft u in totaal gebruikt?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsHoeveelheid"></p>
             </div>
 
             <div style="text-align:center;margin-top:40px;">
               <span class="step">1</span>
               <span class="step">2</span>
-              <span class="step">3</span>
             </div>
 
             <div style="overflow:auto;">
@@ -175,24 +184,41 @@ if(isset($_POST['submit'])){
 
           <!-- Slaap -->
           <h3>Slaap</h3>
-            <div class="tab">Hoeveek uren heeft u geslapen?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
+            <div class="tab">Hoeveel uren heeft u geslapen?
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="slaapHoeveelheid"></p>
             </div>
 
             <div class="tab">Beoordeel uw slaap.
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="slaapKwaliteit"></p>
             </div>
 
-            <div class="tab">Datum
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="mm"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step">1</span>
+                <span class="step">2</span>
+            </div>
+
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+
+            <!-- Sport -->
+            <h3>Slaap</h3>
+            <div class="tab">Welke sport(en) heb je gedaan?
+                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="sportNaam"></p>
+            </div>
+
+            <div class="tab">Hoeveel colorieën heb je daarmee verbrandt?
+                <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="sportVerbranding"></p>
             </div>
 
             <div style="text-align:center;margin-top:40px;">
               <span class="step">1</span>
               <span class="step">2</span>
               <span class="step">3</span>
+              <span class="step">4</span>
             </div>
 
             <div style="overflow:auto;">
