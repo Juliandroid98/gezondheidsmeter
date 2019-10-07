@@ -88,7 +88,7 @@ if (isset($_POST["username"])){
 
         mail($to,$subject,$message,$headers);
 
-        header( 'Location: index.php');
+        header( 'Location: index.php/#popup1');
     }
 }
 ?>
