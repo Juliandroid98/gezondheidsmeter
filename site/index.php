@@ -21,6 +21,7 @@ if(isset($_SESSION['username'])){
     <meta name="keywords" content="gezondheid, meter, gezondheidsmeter, gezond leven, eten, slaap, drugs, drinken">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/popup.css">
     <link rel="stylesheet" href="assets/css/home.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -39,6 +40,18 @@ if(isset($_SESSION['username'])){
             </a>
         </div>
     </div>
+
+    <!-- Registratie gelukt popup -->
+
+    <div id="popup1" class="overlay">
+	<div class="popup">
+		<h2>Account is succesvol aangemaakt!</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			U kunt nu inloggen met het account dat u net heeft aangemaakt.
+		</div>
+	</div>
+</div>
 
     
 
