@@ -32,19 +32,11 @@
         <!-- content -->
         <div class="metercontainer">
             <div class="meter arbeid">Arbeid<br>-</div>
-            <div class="meter drinken">Drinken<br>-</div>
+            <div class="meter voeding">Voeding<br>-</div>
             <div class="meter drugs">Drugs<br>-</div>
-            <div class="meter eten">Eten<br>-</div>
             <div class="meter slaap">Slaap<br>-</div>
             <div class="meter sport">Sport<br>-</div>
             <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
-        </div>
-        <div class="datadcontainer">
-            <div class="dashboarddata"><label class="dashboard-dataName">slaap:</label><br> 60 uur slaap</div>
-            <div class="dashboarddata"><label class="dashboard-dataName">Eten:</label><br> 5180 KG calorieën</div>
-            <div class="dashboarddata"><label class="dashboard-dataName">Drinken:</label><br> 3800 KG calorieën</div>
-            <div class="dashboarddata"><label class="dashboard-dataName">Drugs:</label><br> 14 MG Genomen</div>
-            <div class="dashboarddata"><label class="dashboard-dataName">Sport:</label><br> 14 KG Verbranding</div>
         </div>
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
             <button type="button" class="collapsible">Slaap</button>
@@ -52,14 +44,9 @@
                 <canvas id="myChart"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Eten</button>
+            <button type="button" class="collapsible">Voeding</button>
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="myCharts"></canvas>
-            </div>
-
-            <button type="button" class="collapsible">Drinken</button>
-            <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
             </div>
 
             <button type="button" class="collapsible">Slaap</button>
