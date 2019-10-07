@@ -41,7 +41,6 @@
 
             $datum = 0;
             $drinken_ID = 0;
-            $gebruiker_ID= 0;
 
             $sql = "INSERT INTO `drinken`(drinken_ID, naam, kcal, suiker, alcohol) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
@@ -105,7 +104,7 @@
 
             $sql = "INSERT INTO `slaap`(slaap_ID, ebruiker_ID, uren, beoordeling, datum) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("iiiis", $slaap_ID, $gebruiker_ID, $uren, $beoordeling, $datum);
+            $stmt->bind_param("iiiis", $slaap_ID, $gebruiker_ID, $SlaapHoeveelheid, $SlaapKwaliteit, $datum);
             $stmt->execute();
             $stmt->close();
 
