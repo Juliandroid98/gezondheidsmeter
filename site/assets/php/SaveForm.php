@@ -3,7 +3,7 @@
 
     class SaveForm
     {
-        function GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenCalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding,$gebruikersnaam){
+        function GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding,$gebruikersnaam){
             $gebruiker_ID = 0;
 
             $sql = "SELECT `gebruiker_ID` FROM `gebruiker` WHERE gebruikersnaam=?";
@@ -19,7 +19,9 @@
             $this->SaveArbeid($conn,$Werkplek, $Werkdruk, $gebruiker_ID);
             $this->SaveDrinken($conn,$DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol,$gebruiker_ID);
             $this->SaveDrugs($conn, $DrugsNaam, $DrugsHoeveelheid, $gebruiker_ID);
-            $this->SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenCalorie,$gebruiker_ID);
+            $this->SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenKcalorie,$gebruiker_ID);
+            $this->SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit,$gebruiker_ID);
+            $this->SaveSport($conn,$SportNaam, $SportVerbranding,$gebruiker_ID);
 
         }
 
@@ -31,14 +33,12 @@
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("iiiis", $arbeid_ID, $gebruiker_ID, $Werkplek, $Werkdruk, $datum);
             $stmt->execute();
-            $Record_ID = $conn->insert_id;
             $stmt->close();
 
         }
 
-        function SaveDrinken($conn,$DrinkenNaam,$DrinkenKcalorie, $DrinkenSuiker,$DrinkenAlcohol,$gebruiker_ID){
+        function SaveDrinken($conn,$DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker,$DrinkenAlcohol,$gebruiker_ID){
 
-            $DrinkenKcalorie = 0;
             $datum = 0;
             $drinken_ID = 0;
             $gebruiker_ID= 0;
@@ -59,8 +59,9 @@
 
         function SaveDrugs($conn, $DrugsNaam, $DrugsHoeveelheid, $gebruiker_ID){
 
-            $drugs_ID
-            $soort
+            $drugs_ID = 0;
+            $soort = 0;
+            $datum = 0;
 
             $sql = "INSERT INTO `drugs`(drugs_ID, naam, soort) VALUES (?,?,?)";
             $stmt = $conn->prepare($sql);
@@ -70,25 +71,63 @@
             $stmt->close();
 
 
-            $stmt = $conn->prepare("INSERT INTO koppel_user_drinks(gebruiker_ID, drinks_ID, datum) VALUES (?,?,?)");
-            $stmt->bind_param("iis",$gebruiker_ID, $Record_ID, $DrugsHoeveelheid, $datum);
+            $stmt = $conn->prepare("INSERT INTO koppel_user_drugs(gebruiker_ID, drug_ID, hoeveelheid, datum) VALUES (?,?,?,?)");
+            $stmt->bind_param("iiis",$gebruiker_ID, $Record_ID, $DrugsHoeveelheid, $datum);
             $stmt->execute();
             $stmt->close();
         }
 
-        function SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenCalorie,$id){
+        function SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenKcalorie,$gebruiker_ID){
 
-            $sql = "INSERT INTO `food`(name,kcal) VALUES (?,?)";
+            $eten_ID = 0;
+            $datum = 0;
+
+            $sql = "INSERT INTO `eten`(eten_ID,naam,kcal,sugar) VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sii", $EtenNaam,$EtenSuiker, $EtenCalorie);
+            $stmt->bind_param("isii", $eten_ID, $EtenNaam, $EtenKcalorie, $EtenSuiker);
             $stmt->execute();
             $Record_ID = $conn->insert_id;
             $stmt->close();
 
 
-            $stmt = $conn->prepare("INSERT INTO koppel_user_eten(user_ID,eten_ID) VALUES (?,?)");
-            $stmt->bind_param("ii",$id,$Record_ID);
+            $stmt = $conn->prepare("INSERT INTO koppel_user_eten(gebruiker_ID, eten_ID, datum) VALUES (?,?,?)");
+            $stmt->bind_param("iis",$gebruiker_ID,$Record_ID, $datum);
             $stmt->execute();
             $stmt->close();
+        }
+
+        function SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit,$gebruiker_ID){
+
+            $slaap_ID = 0;
+            $uren = 0;
+            $beoordeling = 0;
+            $datum = 0;
+
+            $sql = "INSERT INTO `slaap`(slaap_ID, ebruiker_ID, uren, beoordeling, datum) VALUES (?,?,?,?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("iiiis", $slaap_ID, $gebruiker_ID, $uren, $beoordeling, $datum);
+            $stmt->execute();
+            $stmt->close();
+
+        }
+
+        function SaveSport($conn, $SportNaam, $SportVerbranding, $gebruiker_ID){
+
+            $sport_ID = 0;
+            $datum = 0;
+
+            $sql = "INSERT INTO `sport`(sport_ID, naam, verbranding) VALUES (?,?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("isi", $sport_ID, $SportNaam, $SportVerbranding);
+            $stmt->execute();
+            $Record_ID = $conn->insert_id;
+            $stmt->close();
+
+
+            $stmt = $conn->prepare("INSERT INTO koppel_user_sport(gebruiker_ID, sport_ID, datum) VALUES (?,?,?)");
+            $stmt->bind_param("iis",$gebruiker_ID,$Record_ID, $datum);
+            $stmt->execute();
+            $stmt->close();
+
         }
     }

@@ -14,7 +14,7 @@ if (isset($_POST['submit'])){
     $DrinkenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['drankSuiker']));
     $DrinkenAlcohol = $conn->real_escape_string(htmlspecialchars($_POST['drankAlcohol']));
     $EtenNaam = $conn->real_escape_string(htmlspecialchars($_POST['etenNaam']));
-    $EtenCalorie = $conn->real_escape_string(htmlspecialchars($_POST['etenCalorie']));
+    $EtenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['etenCalorie']));
     $EtenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['etenSuiker']));
     $DrugsNaam = $conn->real_escape_string(htmlspecialchars($_POST['drugsNaam']));
     $DrugsHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['drugsHoeveelheid']));
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])){
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenCalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding, $_SESSION['Username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding, $_SESSION['Username']);
 
 }
 ?>
