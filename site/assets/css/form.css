@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu|Varela+Round&display=swap');
 
+/*Body*/
 .sitecontainer {
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   margin-bottom: 100px;
+}
+
+.hidden{
+  display: none;
 }
 
 h3 {
@@ -19,8 +24,7 @@ h3 {
   font-family: 'Ubuntu', sans-serif;
 }
 
-/* Test */
-/* Style the form */
+/*Formulier*/
 #regForm {
   background-color: #ffffff;
   margin: 0px auto;
@@ -29,22 +33,22 @@ h3 {
   min-width: 300px;
   }
 
-/* Style the input fields */
 input {
-
   margin: 8px 0;
   padding: 10px;
   width: 93%;
-  font-size: 17px;
-  font-family: Raleway;
-  border-radius: 4px;
+  font-size: 17px;  border-radius: 4px;
   border: 1px solid #aaaaaa;
   text-align: center;
 }
 
-/* Mark input boxes that gets an error on validation: */
 input.invalid {
   background-color: #ffdddd;
+}
+
+p select {
+  width: 30%;
+  padding: 5px;
 }
 
 #nextBtn {
@@ -77,14 +81,12 @@ input.invalid {
   float: left;
 }
 
-/* Hide all steps by default: */
 .tab {
   font-weight: bold;
   text-align: center;
   display: none;
 }
 
-/* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
   width: 15px;
@@ -96,12 +98,10 @@ input.invalid {
   opacity: 0.5;
 }
 
-/* Mark the active step: */
 .step.active {
   opacity: 1;
 }
 
-/* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #4CAF50;
 }
