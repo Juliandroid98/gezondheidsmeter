@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b38a968-5836-4594-9051-e4a60e3cb638" name="Default" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/ww_nieuw.php" beforeDir="false" afterPath="$PROJECT_DIR$/site/ww_nieuw.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/ww_vergeten.php" beforeDir="false" afterPath="$PROJECT_DIR$/site/ww_vergeten.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,6 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< Updated upstream
     <leaf>
       <file leaf-file-name="vragenformulier.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/site/vragenformulier.php">
@@ -23,6 +28,68 @@
               <folding>
                 <element signature="n#style#0;n#div#9;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#10;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ww_vergeten.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/ww_vergeten.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <marker date="1570110597788" expanded="true" signature="130:178" ph="SELECT email... gebruiker" />
+                <marker date="1570110597788" expanded="true" signature="368:437" ph="UPDATE gebruiker... " />
+                <marker date="1570110597788" expanded="true" signature="577:937" ph="..." />
+                <marker date="1570110597788" expanded="true" signature="592:649" ph="..." />
+                <marker date="1570110597788" expanded="true" signature="664:921" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ww_nieuw.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/ww_nieuw.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <marker date="1570110603462" expanded="true" signature="307:395" ph="SELECT email... gebruiker" />
+                <marker date="1570110603462" expanded="true" signature="307:428" ph="SELECT email... gebruiker" />
+                <marker date="1570110603462" expanded="true" signature="717:779" ph="UPDATE gebruiker... " />
+                <marker date="1570110603462" expanded="true" signature="717:805" ph="UPDATE gebruiker... " />
+                <marker date="1570110603462" expanded="true" signature="1077:1096" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vragenformulier.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/vragenformulier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+              <folding>
+                <marker date="1570174256315" expanded="true" signature="1910:1933" ph="SELECT * FRO... gebruiker" />
+                <marker date="1570174256315" expanded="true" signature="3383:4001" ph="..." />
+                <marker date="1570174256315" expanded="false" signature="3419:3433" ph="..." />
+                <marker date="1570174256315" expanded="true" signature="3434:3994" ph="..." />
+                <marker date="1570174256315" expanded="true" signature="3438:3516" ph="..." />
+                <marker date="1570174256315" expanded="true" signature="4016:4131" ph="..." />
+                <marker date="1570174256315" expanded="true" signature="4405:4424" ph="SELECT * FRO... drugs" />
+                <marker date="1570174256315" expanded="true" signature="5547:5566" ph="SELECT * FRO... sport" />
+                <marker date="1570174256315" expanded="true" signature="6702:6720" ph="SELECT * FRO... eten" />
+                <marker date="1570174256315" expanded="true" signature="7940:7961" ph="SELECT * FRO... drinken" />
+                <marker date="1570174256315" expanded="true" signature="9364:9468" ph="INSERT INTO gebruiker... " />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -100,6 +167,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
+=======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -129,7 +200,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -172,13 +243,19 @@
       <workItem from="1569579374431" duration="625000" />
       <workItem from="1569826345486" duration="6409000" />
       <workItem from="1570005045913" duration="4387000" />
+<<<<<<< Updated upstream
       <workItem from="1570106009499" duration="1338000" />
       <workItem from="1570431214236" duration="64000" />
       <workItem from="1570431280486" duration="5913000" />
+=======
+      <workItem from="1570106009499" duration="1772000" />
+      <workItem from="1570172671816" duration="1693000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="46936000" />
   </component>
   <component name="ToolWindowManager">
@@ -205,6 +282,32 @@
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="6" />
+=======
+    <option name="totallyTimeSpent" value="43086000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25208333" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -365,6 +468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/site/assets/php/InsertForm.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state>
           <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
         </state>
@@ -384,16 +488,60 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/ww_vergeten.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <marker date="1570110597788" expanded="true" signature="130:178" ph="SELECT email... gebruiker" />
+            <marker date="1570110597788" expanded="true" signature="368:437" ph="UPDATE gebruiker... " />
+            <marker date="1570110597788" expanded="true" signature="577:937" ph="..." />
+            <marker date="1570110597788" expanded="true" signature="592:649" ph="..." />
+            <marker date="1570110597788" expanded="true" signature="664:921" ph="..." />
+          </folding>
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/site/vragenformulier.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="-924">
           <caret line="177" column="38" lean-forward="true" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="38" />
+=======
+        <state relative-caret-position="17">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="n#style#0;n#div#9;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#10;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <folding>
+            <marker date="1570174256315" expanded="true" signature="1910:1933" ph="SELECT * FRO... gebruiker" />
+            <marker date="1570174256315" expanded="true" signature="3383:4001" ph="..." />
+            <marker date="1570174256315" expanded="false" signature="3419:3433" ph="..." />
+            <marker date="1570174256315" expanded="true" signature="3434:3994" ph="..." />
+            <marker date="1570174256315" expanded="true" signature="3438:3516" ph="..." />
+            <marker date="1570174256315" expanded="true" signature="4016:4131" ph="..." />
+            <marker date="1570174256315" expanded="true" signature="4405:4424" ph="SELECT * FRO... drugs" />
+            <marker date="1570174256315" expanded="true" signature="5547:5566" ph="SELECT * FRO... sport" />
+            <marker date="1570174256315" expanded="true" signature="6702:6720" ph="SELECT * FRO... eten" />
+            <marker date="1570174256315" expanded="true" signature="7940:7961" ph="SELECT * FRO... drinken" />
+            <marker date="1570174256315" expanded="true" signature="9364:9468" ph="INSERT INTO gebruiker... " />
           </folding>
         </state>
       </provider>
