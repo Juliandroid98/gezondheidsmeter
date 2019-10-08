@@ -73,8 +73,8 @@ if($_POST){
     <div class="center">
         Voer hier uw nieuwe wachtwoord in.<br>
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
-            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
+            <input class="inputfield" type="password" required name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" required name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
             <input class="button" type="submit" name="request" value="Wachtwoord resetten">
         </form>
     </div>
