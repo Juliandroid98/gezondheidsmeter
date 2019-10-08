@@ -27,7 +27,7 @@ if (isset($_POST["username"])) {
 
         }
     } else {
-        $error = '<h3 style="color: darkred">niet alles is ingevult</h3>';
+        echo "<script> alert('Nog niet alle velden zijn ingevuld!!!')</script>";
     }
 
 
