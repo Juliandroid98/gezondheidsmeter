@@ -39,8 +39,5 @@ if(isset($_SESSION['username'])){
             </a>
         </div>
     </div>
-
-    
-
 </body>
 </html>

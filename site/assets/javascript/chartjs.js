@@ -1,5 +1,23 @@
+// datatoday opslaan in database
+// data uit database halen van afgelopen dagen
+
+var datatoday = 10;
 var ctx = document.getElementById('myChart').getContext('2d');
 var data = [10, 2, 8, 3, 5, 0, 10];
+
+var days = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
+var dateString = Date.now();
+var d = new Date(dateString);
+var dayName = days[d.getDay() - 1];
+console.log(dayName);
+
+for(var i = 0; i < days.length; i++){
+    if(days[i] === dayName){
+        data[i] = datatoday;
+        console.log(data);
+    }
+}
+
 
 var chart = new Chart(ctx, {
     type: 'line',
