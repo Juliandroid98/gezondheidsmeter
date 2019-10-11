@@ -121,11 +121,25 @@ try{
                 echo "<td>" . $row['drugs_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['soort'] . "</td>";
-				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
+				echo "<td><img onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				//echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
+			echo "<tr id='addRowEditDrugs".$row['drugs_ID']."' style='display: none;'>";
+				echo "<form action='' method='post'>";
+				echo "<td><input id='editRecordDrugs' type='text' name='drugs_ID' value='" . $row['drugs_ID'] . "'></td>";
+                echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='soort' value='" . $row['soort'] . "'></td>";
+				echo "<td><input type='submit'></td><td></td>";
+				echo "</form>";				
+			echo "</tr>";
+			
         }
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png'></td></tr>";
+		echo "<form action='' method='post'>
+		<tr id='addRowDrugs' style='display: none;'><td>
+		<input type='text' placeholder='drugsnaam' name='drugsnaam'></td>
+		<td><input type='text' placeholder='soort' name='soort'></td>
+		<td><input type='submit' value='toevoegen'></td></tr></form>";
+		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrugs();'></td></tr>";
 		echo "</table>";
         // Free result set
         unset($result);
@@ -153,11 +167,25 @@ try{
                 echo "<td>" . $row['sport_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['verbranding'] . "</td>";
-				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
+				echo "<td><img onclick='addRowForEditSport(" . $row['sport_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				//echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
+			echo "<tr id='addRowEditSport".$row['sport_ID']."' style='display: none;'>";
+				echo "<form action='' method='post'>";
+				echo "<td><input id='editRecordDrugs' type='text' name='sport_ID' value='" . $row['sport_ID'] . "'></td>";
+                echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='verbranding' value='" . $row['verbranding'] . "'></td>";
+				echo "<td><input type='submit'></td><td></td>";
+				echo "</form>";				
+			echo "</tr>";
+			
         }
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png'></td></tr>";
+		echo "<form action='' method='post'>
+		<tr id='addRowSport' style='display: none;'><td>
+		<input type='text' placeholder='naam' name='naam'></td>
+		<td><input type='text' placeholder='verbranding' name='verbranding'></td>
+		<td><input type='submit' value='toevoegen'></td></tr></form>";
+		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputSport();'></td></tr>";
 		echo "</table>";
         // Free result set
         unset($result);
@@ -191,7 +219,14 @@ try{
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
         }
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png'></td></tr>";
+		echo "<form action='' method='post'>
+		<tr id='addRowEten' style='display: none;'><td>
+		<input type='text' placeholder='naam' name='naam'></td>
+		<td><input type='text' placeholder='kcal' name='kcal'></td>
+		<td><input type='text' placeholder='schijf' name='schijf_ID'></td>
+		<td><input type='text' placeholder='suiker' name='sugar'></td>
+		<td><input type='submit' value='toevoegen'></td></tr></form>";
+		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
 		echo "</table>";
         // Free result set
         unset($result);
@@ -227,7 +262,15 @@ try{
 				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
             echo "</tr>";
         }
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png'></td></tr>";
+		echo "<form action='' method='post'>
+		<tr id='addRowDrinken' style='display: none;'><td>
+		<input type='text' placeholder='naam' name='naam'></td>
+		<td><input type='text' placeholder='kcal' name='kcal'></td>
+		<td><input type='text' placeholder='schijf' name='schijf_ID'></td>
+		<td><input type='text' placeholder='suiker' name='sugar'></td>
+		<td><input type='text' placeholder='alcohol' name='alcohol'></td>
+		<td><input type='submit' value='toevoegen'></td></tr></form>";
+		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrinken();'></td></tr>";
 		echo "</table>";
         // Free result set
         unset($result);
@@ -252,7 +295,42 @@ try{
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
-		
+
+
+try{
+    // Create prepared statement
+    $sql = "UPDATE sport SET sport_ID = :sport_ID, naam = :naam, verbranding = :verbranding WHERE sport_ID = :sport_ID";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':sport_ID', $_POST['sport_ID']);
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':verbranding', $_POST['verbranding']);
+    $stmt->execute();
+    echo "Record updated successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+
+try{
+    // Create prepared statement
+    $sql = "UPDATE drugs SET drugs_ID = :drugs_ID, naam = :naam, soort = :soort WHERE drugs_ID = :drugs_ID";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':drugs_ID', $_POST['drugs_ID']);
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':soort', $_POST['soort']);
+    $stmt->execute();
+    echo "Record updated successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+
 try{
     // Create prepared statement
     $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruiker, geboortedatum = :geboortedatum, email = :email WHERE gebruiker_ID = :gebruikerID";
@@ -272,6 +350,84 @@ try{
     // Execute the prepared statement
     $stmt->execute();
     echo "Record updated successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "INSERT INTO drinken (naam, kcal, suiker, schijf_ID, alcohol)
+	VALUES (:naam, :kcal, :sugar, :schijf_ID, :alcohol)";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':kcal', $_POST['kcal']);
+    $stmt->bindParam(':sugar', $_POST['sugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':alcohol', $_POST['alcohol']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Records inserted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+
+try{
+    // Create prepared statement
+    $sql = "INSERT INTO eten (naam, kcal, sugar, schijf_ID)
+	VALUES (:naam, :kcal, :sugar, :schijf_ID)";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':kcal', $_POST['kcal']);
+    $stmt->bindParam(':sugar', $_POST['sugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Records inserted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "INSERT INTO sport (naam, verbranding)
+	VALUES (:naam, :verbranding)";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':verbranding', $_POST['verbranding']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Records inserted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "INSERT INTO drugs (naam, soort)
+	VALUES (:naam, :soort)";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':naam', $_POST['drugsnaam']);
+    $stmt->bindParam(':soort', $_POST['soort']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Records inserted successfully.";
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
@@ -301,7 +457,6 @@ try{
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
-
 
 // Close connection
 unset($pdo);
