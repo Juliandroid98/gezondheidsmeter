@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])){
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $id;
 
-            header( 'Location: dashboard.php');
+            echo "<script> alert('Uw account is nu geactiveerd, u wordt wordt nu naar het dashboard gestuurd.'); window.location.href='dashboard.php';</script>";
         }
 
 

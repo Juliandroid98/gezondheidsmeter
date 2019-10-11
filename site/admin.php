@@ -43,7 +43,6 @@ try{
                 echo "<th>is_admin</th>";
                 echo "<th>gebruiker_id</th>";
 				echo "<th>gebruikersnaam</th>";
-                echo "<th>wachtwoord</th>";
                 echo "<th>email</th>";
 				echo "<th>geboortedatum</th>";
 				echo "<th>lengte</th>";
@@ -55,23 +54,36 @@ try{
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['is_admin'] . "</td>";
+				echo "<td>" . $row['is_admin'] . "</td>";
                 echo "<td>" . $row['gebruiker_ID'] . "</td>";
-				echo "<td>" . $row['gebruiker'] . "</td>";
-                echo "<td>" . $row['wachtwoord'] . "</td>";
+				echo "<td>" . $row['gebruikersnaam'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . $row['geboortedatum'] . "</td>";
 				echo "<td>" . $row['lengte'] . "</td>";
 				echo "<td>" . $row['gewicht'] . "</td>";
 				echo "<td>" . $row['geslacht'] . "</td>";
 				echo "<td>" . $row['geactiveerd'] . "</td>";
-				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
-            echo "</tr>";
+				echo "<td><img onclick='addRowForEdit(" . $row['gebruiker_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+			echo "</tr>";
+			echo "<tr id='addRowEdit".$row['gebruiker_ID']."' style='display: none;'>";
+				echo "<form action='' method='post'>";
+				echo "<td><input id='editRecord' type='text' name='isAdmin' value='" . $row['is_admin'] . "'></td>";
+                echo "<td><input id='editRecord' type='text' name='gebruikerID' value='" . $row['gebruiker_ID'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='gebruikersnaam' value='" . $row['gebruikersnaam'] . "'></td>";
+                echo "<td><input id='editRecord' type='text' name='email' value='" . $row['email'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='geboortedatum' value='" . $row['geboortedatum'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='lengte' value='" . $row['lengte'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='gewicht' value='" . $row['gewicht'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='geslacht' value='" . $row['geslacht'] . "'></td>";
+				echo "<td><input id='editRecord' type='text' name='geactiveerd' value='" . $row['geactiveerd'] . "'></td>";
+				echo "<td><input type='submit'></td><td></td>";
+				echo "</form>";				
+			echo "</tr>";
         }
 		echo "<form action='' method='post'>
 		<tr id='addRowGebruiker' style='display: none;'><td>
-		<input type='text' placeholder='gebruikersnaam' name='gebruikersnaam'></td>
+		<input type='text' placeholder='gebruikersnaam' name='gebruiker'></td>
 		<td><input type='text' placeholder='wachtwoord' name='wachtwoord'></td>
 		<td><input type='text' placeholder='email' name='email'></td>
 		<td><input type='text' placeholder='geboortedatum' name='geboortedatum'></td>
@@ -90,6 +102,7 @@ try{
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
+
 
 try{
     $sql = "SELECT * FROM drugs";
@@ -225,17 +238,56 @@ try{
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
+try{
+    // Create prepared statement
+    $sql = "DELETE FROM gebruiker WHERE gebruiker_ID = (:verwijderGebruikerID)";	
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':verwijderGebruikerID', $_POST['verwijderID'], PDO::PARAM_INT);
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+		
+try{
+    // Create prepared statement
+    $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruiker, geboortedatum = :geboortedatum, email = :email WHERE gebruiker_ID = :gebruikerID";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
+    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
+    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':gebruikerID', $_POST['gebruikerID']);
+	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
+    //$stmt->bindParam(':lengte', $_POST['lengte']);
+    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
+	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record updated successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
 // Attempt insert query execution
 try{
     // Create prepared statement
     $sql = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email)
-	VALUES (:gebruikersnaam, :wachtwoord, :email)";
-	//, geboortedatum, lengte, gewicht, geslacht)
-	// , :geboortedatum, :lengte, :gewicht, :geslacht)";
+	VALUES (:gebruiker, :wachtwoord, :email)";
+	//, :geboortedatum, :lengte, :gewicht, :geslacht)"; , geboortedatum, lengte, gewicht, geslacht)
+	
+	
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':gebruikersnaam', $_POST['gebruikersnaam']);
+    $stmt->bindParam(':gebruiker', $_POST['gebruiker']);
     $stmt->bindParam(':wachtwoord', $_POST['wachtwoord']);
     $stmt->bindParam(':email', $_POST['email']);
 	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
@@ -249,6 +301,7 @@ try{
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
+
 
 // Close connection
 unset($pdo);

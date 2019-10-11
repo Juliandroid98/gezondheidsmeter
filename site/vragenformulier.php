@@ -1,51 +1,30 @@
-<?php include 'assets/php/connection.php';
+<?php
+session_start();
 
-if(isset($_POST['submit'])){
-    $werkPlek = $_POST['werkPlek'];
-    $werkDruk = $_POST['werkDruk'];
+require 'assets/php/Connection.php';
+require 'assets/php/SaveForm.php';
 
-    $drankNaam = $_POST['drankNaam'];
-    $drankCalorie = $_POST['DrankCalorie'];
-    $drankSuiker = $_POST['DrankSuiker'];
-    $drankAlochol = $_POST['drankAlochol'];
-    $schijfDrank = "";
+$Class = new SaveForm();
 
-    $etenNaam = $_POST['etenNaam'];
-    $etenCalorie = $_POST['etenCalorie'];
-    $etenSuiker = $_POST['etenSuiker'];
-    $schijfEten = "";
+if (isset($_POST['submit'])){
+    $Werkplek = $conn->real_escape_string(htmlspecialchars($_POST['werkplek']));
+    $Werkdruk = $conn->real_escape_string(htmlspecialchars($_POST['werkdruk']));
+    $DrinkenNaam = $conn->real_escape_string(htmlspecialchars($_POST['drankNaam']));
+    $DrinkenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['drankCalorie']));
+    $DrinkenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['drankSuiker']));
+    $DrinkenAlcohol = $conn->real_escape_string(htmlspecialchars($_POST['drankAlcohol']));
+    $EtenNaam = $conn->real_escape_string(htmlspecialchars($_POST['etenNaam']));
+    $EtenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['etenCalorie']));
+    $EtenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['etenSuiker']));
+    $DrugsNaam = $conn->real_escape_string(htmlspecialchars($_POST['drugsNaam']));
+    $DrugsHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['drugsHoeveelheid']));
+    $SlaapHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['slaapHoeveelheid']));
+    $SlaapKwaliteit = $conn->real_escape_string(htmlspecialchars($_POST['slaapKwaliteit']));
+    $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
+    $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $drugsNaam = $_POST['drugsNaam'];
-    $drugsHoeveelheid = $_POST['drugsHoeveelheid'];
+    $Class->GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding, $_SESSION['Username']);
 
-    $slaapHoeveelheid = $_POST['slaapHoeveelheid'];
-    $slaapKwaliteit = $_POST['slaapKwaliteit'];
-
-    $sportNaam = $_POST['sportNaam'];
-    $sportVerbranding = $_POST['sportVerbranding'];
-
-    $timenow = date('Y-m-d');
-
-    $mysqli = new mysqli('localhost', 'root', '', 'gezondheidsmeter') or die(mysqli_error($mysqli));
-    $result = $mysqli->query("INSERT INTO `werkplek` (`ID`, `werkplek`, `werkdruk`, `datum`) 
-    VALUES ('', '$werkPlek', '$werkDruk', '$timenow');") or die($mysqli->error);
-
-    $result = $mysqli->query("INSERT INTO `drinken` (`ID`, `naam`, `kcal`, `sugar`, `schijf_ID`, `alcohol`) 
-    VALUES ('', '$drankNaam', '$drankCalorie', '$drankSuiker', '$schijfDrank', '$drankAlochol');") or die($mysqli->error);
-
-    $result = $mysqli->query("INSERT INTO `eten` (`ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) 
-    VALUES ('', '$etenNaam', '$etenCalorie', '$etenSuiker', '$schijfEten');") or die($mysqli->error);
-
-    $result = $mysqli->query("INSERT INTO `drugs` (`ID`, `naam`, `soort`) 
-    VALUES ('', '$drugsNaam', '$drugsHoeveelheid');") or die($mysqli->error);
-
-    $result = $mysqli->query("INSERT INTO `slaap` (`ID`, `uren`, `beoordeling`, `datum`) 
-    VALUES ('', '$slaapHoeveelheid', '$slaapKwaliteit', '$timenow');") or die($mysqli->error);
-
-    $result = $mysqli->query("INSERT INTO `sport` (`ID`, `naam`, `verbranding`) 
-    VALUES ('', '$sportNaam', '$sportVerbranding');") or die($mysqli->error);
-
-    echo "<script>alert('De beroordeling is succesvol verzonden')</script>";
 }
 ?>
 <!doctype html>
@@ -68,41 +47,50 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <div class="sitecontainer">
-        <!-- header -->
-        <div class="headercontainer">
-            <image class="logosmall" src="assets/images/logo.png" alt="logo">
-            <h2>Vragenformulier</h2>
-            <a class="settingsmenu" href="settings.php">
-                <image class="settingsimg" src="assets/images/settings.png" alt="settings">
-            </a>
+    <!-- header -->
+    <div class="headercontainer">
+        <image class="logosmall" src="assets/images/logo.png" alt="logo">
+        <h2>Vragenformulier</h2>
+        <a class="settingsmenu" href="settings.php">
+            <image class="settingsimg" src="assets/images/settings.png" alt="settings">
+        </a>
+    </div>
+    <!-- content -->
+    <form id="regForm" action="">
+      <!-- Werkplek -->
+      <h3>Werkplek</h3>
+      <div id="werkvragen" class="">
+        <div class="tab">Beoordeel uw werkplek?
+          <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
         </div>
-        <!-- content -->
-        <form id="regForm" action="">
-          <!-- Werkplek -->
-          <h3>Werkplek</h3>
-            <div class="tab">Beoordeel uw werkplek?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkplek"></p>
-            </div>
 
-            <div class="tab">Beoordeel uw werkdruk?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
-            </div>
+        <div class="tab">Beoordeel uw werkdruk?
+          <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="werkdruk"></p>
+        </div>
 
+        <div style="text-align:center;margin-top:40px;">
+          <span class="step">1</span>
+          <span class="step">2</span>
+        </div>
 
-            <div style="text-align:center;margin-top:40px;">
-              <span class="step">1</span>
-              <span class="step">2</span>
-            </div>
+        <div style="overflow:auto;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
 
-            <div style="overflow:auto;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-            </div>
-
-          <!-- Drinken -->
+        <!-- Drinken -->
+        <div id="drinkenVragen" class="hidden">
           <h3>Drinken</h3>
             <div class="tab">Welke drank(en) heb je gehad?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankNaam"></p>
+              <p>
+                <select oninput="this.className = ''" name="drankNaam">
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
+              </p>
             </div>
 
             <div class="tab">Hoeveel kilocalorie zit er erin?
@@ -114,7 +102,7 @@ if(isset($_POST['submit'])){
             </div>
 
             <div class="tab">Welk % alcohol zit erin?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankAlochol"></p>
+              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drankAlcohol"></p>
             </div>
 
             <div style="text-align:center;margin-top:40px;">
@@ -128,11 +116,20 @@ if(isset($_POST['submit'])){
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
+          </div>
 
           <!-- Eten -->
+        <div id="etenVragen" class="hidden">
           <h3>Eten</h3>
             <div class="tab">Welk eten heb je gehad?
-              <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenNaam"></p>
+              <p>
+                <select class="custom-select" oninput="this.className = ''" name="etenNaam">
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
+              </p>
             </div>
 
             <div class="tab">Hoeveel kilo caloriën zit er in?
@@ -153,8 +150,10 @@ if(isset($_POST['submit'])){
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
+        </div>
 
           <!-- Drugs -->
+        <div id="drugsVragen" class="hidden">
           <h3>Drugs</h3>
             <div class="tab">Welke drug(s) heb je gehad?
               <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsNaam"></p>
@@ -173,8 +172,10 @@ if(isset($_POST['submit'])){
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
+        </div>
 
           <!-- Slaap -->
+        <div id="slaapVragen" class="hidden">
           <h3>Slaap</h3>
             <div class="tab">Hoeveel uren heeft u geslapen?
               <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="slaapHoeveelheid"></p>
@@ -193,9 +194,10 @@ if(isset($_POST['submit'])){
                     <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                     <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
-
+        </div>
             <!-- Sport -->
-            <h3>Slaap</h3>
+        <div id="sportVragen" class="hidden">
+            <h3>Sport</h3>
             <div class="tab">Welke sport(en) heb je gedaan?
                 <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="sportNaam"></p>
             </div>
@@ -204,7 +206,7 @@ if(isset($_POST['submit'])){
                 <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="sportVerbranding"></p>
             </div>
 
-            <div style="text-align:center;margin-top:40px;">
+            <div style="text-align:center;margin-top:30px;">
               <span class="step">1</span>
               <span class="step">2</span>
               <span class="step">3</span>
@@ -215,8 +217,8 @@ if(isset($_POST['submit'])){
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
-
-        </form>
+        </div>
+    </form>
 
         <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)

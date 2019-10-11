@@ -27,7 +27,7 @@ if (isset($_POST["username"])) {
 
         }
     } else {
-        $error = '<h3 style="color: darkred">niet alles is ingevult</h3>';
+        echo "<script> alert('Nog niet alle velden zijn ingevuld!!!')</script>";
     }
 
 
@@ -64,8 +64,8 @@ if (isset($_POST["username"])) {
         </div>
         <!-- content -->
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="text" name="username" placeholder="Gebruikersnaam">
-            <input class="inputfield" type="password" name="password" placeholder="Wachtwoord"><br>
+            <input class="inputfield" required type="text" name="username" placeholder="Gebruikersnaam">
+            <input class="inputfield" required type="password" name="password" placeholder="Wachtwoord"><br>
             <input class="submitbutton" type="submit" name="inloggen" value="Inloggen">
         </form>
         <a href="ww_vergeten.php">
