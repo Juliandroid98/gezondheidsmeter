@@ -3,7 +3,7 @@
 
     class SaveForm
     {
-        function GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding,$gebruikersnaam){
+        function GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding,$gebruikersnaam){
             $gebruiker_ID = 0;
 
             $sql = "SELECT `gebruiker_ID` FROM `gebruiker` WHERE gebruikersnaam=?";
@@ -18,7 +18,7 @@
 
             $this->SaveArbeid($conn,$Werkplek, $Werkdruk,$Werkdatum, $gebruiker_ID);
             $this->SaveDrinken($conn,$DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol,$gebruiker_ID);
-            $this->SaveDrugs($conn, $DrugsNaam, $DrugsHoeveelheid, $gebruiker_ID);
+            $this->SaveDrugs($conn, $DrugsNaam, $DrugsSoort, $gebruiker_ID);
             $this->SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenKcalorie,$gebruiker_ID);
             $this->SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit, $Slaapdatum, $gebruiker_ID);
             $this->SaveSport($conn,$SportNaam, $SportVerbranding,$gebruiker_ID);
@@ -55,7 +55,7 @@
             $stmt->close();
         }
 
-        function SaveDrugs($conn, $DrugsNaam, $DrugsHoeveelheid, $gebruiker_ID){
+        function SaveDrugs($conn, $DrugsNaam, $DrugsSoort, $gebruiker_ID){
 
             $drugs_ID = 0;
             $soort = 0;
@@ -63,14 +63,14 @@
 
             $sql = "INSERT INTO `drugs`(drugs_ID, naam, soort) VALUES (?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("iss", $drugs_ID,$DrugsNaam, $soort);
+            $stmt->bind_param("iss", $drugs_ID,$DrugsNaam, $DrugsSoort);
             $stmt->execute();
             $Record_ID = $conn->insert_id;
             $stmt->close();
 
 
             $stmt = $conn->prepare("INSERT INTO koppel_user_drugs(gebruiker_ID, drug_ID, hoeveelheid, datum) VALUES (?,?,?,?)");
-            $stmt->bind_param("iiis",$gebruiker_ID, $Record_ID, $DrugsHoeveelheid, $datum);
+            $stmt->bind_param("iiis",$gebruiker_ID, $Record_ID, $DrugsSoort, $datum);
             $stmt->execute();
             $stmt->close();
         }
