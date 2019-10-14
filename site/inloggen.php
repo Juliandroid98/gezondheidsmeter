@@ -1,25 +1,28 @@
 <?php
     include 'assets/php/Connection.php';
+    //start session
 session_start();
-
+//als er al iemand is ingelogt wordt hij geredirect
 if(isset($_SESSION['username'])){
     echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
 }
 
 if (isset($_POST["username"])) {
-
+    //kijkt of er iets leeg is
     if (isset($_POST["username"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
-
+        //zet de post data in variabelen
         $wachtwoord = $_POST["password"];
         $gebruikersnaam = $_POST["username"];
 
-
+        //haalt met de gegevens data op uit de database
         $error = "";
         $sql = "SELECT wachtwoord, gebruiker_ID FROM gebruiker WHERE gebruiker = '$gebruikersnaam'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
+        //checkt of de wachtwoorden hetzelfde zijn
         if (password_verify($wachtwoord, $row['wachtwoord'])){
+            //maakt een session aan met gebruikers data
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $row['gebruiker_ID'];
