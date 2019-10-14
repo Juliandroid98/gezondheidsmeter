@@ -20,15 +20,15 @@ if(isset($_SESSION['username'])){
         $uniekid = $_GET['uniekid'];
 
         //haalt data uit de database
-        $query = "SELECT gebruiker, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
+        $query = "SELECT gebruikersnaam, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);
 
-        $gebruikersnaam = $data['gebruiker'];
+        $gebruikersnaam = $data['gebruikersnaam'];
         $id = $data['gebruiker_ID'];
 
         //checkt of de data hetzelfde is
-        if(isset($data['gebruiker']) && isset($data['gebruiker_ID'])){
+        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_ID'])){
 
             $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '' WHERE email = '$email'";
 

@@ -16,7 +16,7 @@ if (isset($_POST["username"])) {
 
         //haalt met de gegevens data op uit de database
         $error = "";
-        $sql = "SELECT wachtwoord, gebruiker_ID FROM gebruiker WHERE gebruiker = '$gebruikersnaam'";
+        $sql = "SELECT wachtwoord, gebruiker_ID FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 

@@ -36,7 +36,7 @@ if (isset($_POST["username"])){
     if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); echo "<script> alert('Het geslacht moet nog ingevuld worden.')</script>";}
 
     //searching the name in the database to see if it already exists
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruiker ='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
@@ -60,12 +60,12 @@ if (isset($_POST["username"])){
         $uniekid = uniqid();
 
         //puts data into database
-        $query = "INSERT INTO gebruiker (gebruiker, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
+        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
   			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
 
         mysqli_query($conn, $query);
 
-        $user_check_query = "SELECT * FROM gebruiker WHERE gebruiker ='$username' OR email='$email' LIMIT 1";
+        $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
         $gebruiker = mysqli_fetch_assoc($result);
 

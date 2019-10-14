@@ -15,7 +15,7 @@ if($_POST){
         $password = $_POST['password'];
         $passwordrepeat = $_POST['repeatpassword'];
         if ($password == $passwordrepeat) {
-            $user_check_query = "SELECT email, ww_vergeet_id, gebruiker, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
+            $user_check_query = "SELECT email, ww_vergeet_id, gebruikersnaam, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
             $result = mysqli_query($conn, $user_check_query);
             $gebruiker = mysqli_fetch_assoc($result);
 

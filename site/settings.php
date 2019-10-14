@@ -32,6 +32,7 @@ session_start();
     </div>
     <!-- content -->
     <div class="button general">Algemene instellingen</div>
+    <?php ?>
     <a class="button logout" href="logout.php">Uitloggen</a>
     <!-- bottom buttons-->
     <div class="bottomcontainer">
