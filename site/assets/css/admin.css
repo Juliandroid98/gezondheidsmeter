@@ -3,10 +3,21 @@ body{
 }
 .responsiveTable{
 	overflow-x: auto;
+	border-bottom: 2px solid black;
 }
 .sitecontainer{
 	margin-bottom: 100px;
 }
 #addRowGebruiker{
 	display: none;
+}
+td{
+	border: 1px solid black;
+}
+.toevoegen td{
+	border: 0px solid black;
+}
+.tabelTitel{
+	margin: auto;
+	font-size: 30px;
 }

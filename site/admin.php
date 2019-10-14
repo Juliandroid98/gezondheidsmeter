@@ -28,7 +28,7 @@
             </a>
         </div>
         <!-- content -->
-		welkom op de admin pagina De admin kan iemand admin maken. De admin kan iemand geen admin maken. De admin kan drugs, sport, eten en drinken wijzigen, verwijderen en toevoegen. De admin kan de gebruikers zien.
+		<!--welkom op de admin pagina De admin kan iemand admin maken. De admin kan iemand geen admin maken. De admin kan drugs, sport, eten en drinken wijzigen, verwijderen en toevoegen. De admin kan de gebruikers zien.-->
 <?php
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=gezondheidsmeter", "root", "");
@@ -40,7 +40,7 @@ try{
     $sql = "SELECT * FROM gebruiker";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br>gebruiker<div class='responsiveTable'><table id='gebruiker'>";
+        echo "<br><b class='tabelTitel'>gebruiker</b><div class='responsiveTable'><table id='gebruiker'>";
             echo "<tr>";
                 echo "<th>is_admin</th>";
                 echo "<th>gebruiker_id</th>";
@@ -93,7 +93,7 @@ try{
 		<td><input type='text' placeholder='gewicht' name='gewicht'></td>
 		<td><input type='text' placeholder='geslacht' name='geslacht'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr><td>toevoegen</td>
+		echo "<tr class='toevoegen'><td>toevoegen</td>
 		<td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
 		echo "</table></div>";
         // Free result set
@@ -110,7 +110,7 @@ try{
     $sql = "SELECT * FROM drugs";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br>drugs<table>";
+        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table>";
             echo "<tr>";
                 echo "<th>drugs_id</th>";
                 echo "<th>drugs_naam</th>";
@@ -141,8 +141,8 @@ try{
 		<input type='text' placeholder='drugsnaam' name='drugsnaam'></td>
 		<td><input type='text' placeholder='soort' name='soort'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrugs();'></td></tr>";
-		echo "</table>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrugs();'></td></tr>";
+		echo "</table></div>";
         // Free result set
         unset($result);
     } else{
@@ -156,7 +156,7 @@ try{
     $sql = "SELECT * FROM sport";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br>sport<table>";
+        echo "<br><b class='tabelTitel'>sport</b><div class='responsiveTable'><table>";
             echo "<tr>";
                 echo "<th>sport_id</th>";
                 echo "<th>sportnaam</th>";
@@ -187,8 +187,8 @@ try{
 		<input type='text' placeholder='naam' name='naam'></td>
 		<td><input type='text' placeholder='verbranding' name='verbranding'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputSport();'></td></tr>";
-		echo "</table>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputSport();'></td></tr>";
+		echo "</table></div>";
         // Free result set
         unset($result);
     } else{
@@ -202,7 +202,7 @@ try{
     $sql = "SELECT * FROM eten";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br>eten<table>";
+        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table>";
             echo "<tr>";
                 echo "<th>eten_id</th>";
                 echo "<th>etennaam</th>";
@@ -240,8 +240,8 @@ try{
 		<td><input type='text' placeholder='schijf' name='schijf_ID'></td>
 		<td><input type='text' placeholder='suiker' name='sugar'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
-		echo "</table>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
+		echo "</table></div>";
         // Free result set
         unset($result);
     } else{
@@ -255,7 +255,7 @@ try{
     $sql = "SELECT * FROM drinken";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br>drinken<table>";
+        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table>";
             echo "<tr>";
                 echo "<th>drank_id</th>";
                 echo "<th>dranknaam</th>";
@@ -297,8 +297,8 @@ try{
 		<td><input type='text' placeholder='suiker' name='sugar'></td>
 		<td><input type='text' placeholder='alcohol' name='alcohol'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrinken();'></td></tr>";
-		echo "</table>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrinken();'></td></tr>";
+		echo "</table></div>";
         // Free result set
         unset($result);
     } else{
