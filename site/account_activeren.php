@@ -20,12 +20,13 @@ if(isset($_SESSION['username'])){
         $uniekid = $_GET['uniekid'];
 
         //haalt data uit de database
-        $query = "SELECT gebruikersnaam, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
+        $query = "SELECT gebruikersnaam, gebruiker_ID, is_admin FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);
 
         $gebruikersnaam = $data['gebruikersnaam'];
         $id = $data['gebruiker_ID'];
+        $is_admin = $data['is_admin'];
 
         //checkt of de data hetzelfde is
         if(isset($data['gebruikersnaam']) && isset($data['gebruiker_ID'])){
@@ -38,6 +39,7 @@ if(isset($_SESSION['username'])){
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $id;
+            $_SESSION['is_admin'] = $is_admin;
 
             //alert de gebruiken wat er gebeurt
             echo "<script> alert('Uw account is nu geactiveerd, u wordt wordt nu naar het dashboard gestuurd.'); window.location.href='dashboard.php';</script>";
