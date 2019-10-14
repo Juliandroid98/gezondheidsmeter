@@ -1,4 +1,7 @@
-<?php include 'assets/php/connection.php' ?>
+<?php include 'assets/php/connection.php';
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,6 +32,11 @@
     </div>
     <!-- content -->
     <div class="button general">Algemene instellingen</div>
+    <?php if ($_SESSION['is_admin'] == 1){
+        echo '<a class="button admin" href="admin.php">Admin pagina</a>';
+    } else {
+        echo '';
+    }?>
     <a class="button logout" href="logout.php">Uitloggen</a>
     <!-- bottom buttons-->
     <div class="bottomcontainer">

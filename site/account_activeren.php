@@ -1,7 +1,9 @@
 <?php
 include 'assets/php/Connection.php';
+//start de session
 session_start();
 
+//checkt of er al iemand is ingelogt, als dat zo is worden ze geredirect
 if(isset($_SESSION['username'])){
     echo "<script> alert('U bent al ingelogt.'); window.location.href='dashboard.php';</script>";
 }
@@ -13,28 +15,34 @@ if(isset($_SESSION['username'])){
         header('Location: index.php');
     }
     if($_POST){
-
+        //zet de GET data in variabelen
         $email = $_GET['email'];
         $uniekid = $_GET['uniekid'];
 
-        $query = "SELECT gebruiker, gebruiker_ID FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
+        //haalt data uit de database
+        $query = "SELECT gebruikersnaam, gebruiker_ID, is_admin FROM gebruiker WHERE email ='$email' AND activeer_id='$uniekid'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);
 
-        $gebruikersnaam = $data['gebruiker'];
+        $gebruikersnaam = $data['gebruikersnaam'];
         $id = $data['gebruiker_ID'];
+        $is_admin = $data['is_admin'];
 
-        if(isset($data['gebruiker']) && isset($data['gebruiker_ID'])){
+        //checkt of de data hetzelfde is
+        if(isset($data['gebruikersnaam']) && isset($data['gebruiker_ID'])){
 
             $sql = "UPDATE gebruiker SET geactiveerd= '1' , activeer_id= '' WHERE email = '$email'";
 
             mysqli_query($conn, $sql);
 
+            //maakt een session aan die data van de gebruiker opslaat
             session_start();
             $_SESSION['username'] = $gebruikersnaam;
             $_SESSION['id'] = $id;
+            $_SESSION['is_admin'] = $is_admin;
 
-            header( 'Location: dashboard.php');
+            //alert de gebruiken wat er gebeurt
+            echo "<script> alert('Uw account is nu geactiveerd, u wordt wordt nu naar het dashboard gestuurd.'); window.location.href='dashboard.php';</script>";
         }
 
 

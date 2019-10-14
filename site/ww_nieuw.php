@@ -9,24 +9,32 @@ if(!$_GET){
 }
 
 if($_POST){
-    $email = $_GET['email'];
-    $vergeet_id = $_GET['uniekid'];
-    $password = $_POST['password'];
-    $passwordrepeat = $_POST['repeatpassword'];
-    if($password == $passwordrepeat){
-        $user_check_query = "SELECT email, ww_vergeet_id, gebruiker, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
-        $result = mysqli_query($conn, $user_check_query);
-        $gebruiker = mysqli_fetch_assoc($result);
+    if (isset($_POST["password"]) && !empty($_POST["password"]) && !empty($_POST["repeatpassword"])) {
+        $email = $_GET['email'];
+        $vergeet_id = $_GET['uniekid'];
+        $password = $_POST['password'];
+        $passwordrepeat = $_POST['repeatpassword'];
+        if ($password == $passwordrepeat) {
+            $user_check_query = "SELECT email, ww_vergeet_id, gebruikersnaam, gebruiker_ID FROM gebruiker WHERE email='$email' AND ww_vergeet_id= '$vergeet_id'";
+            $result = mysqli_query($conn, $user_check_query);
+            $gebruiker = mysqli_fetch_assoc($result);
 
-        if($email == $gebruiker['email'] && $vergeet_id == $gebruiker['ww_vergeet_id']){
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "UPDATE gebruiker SET wachtwoord = '$password', ww_vergeet_id = '' WHERE email = '$email'";
+            if ($email == $gebruiker['email'] && $vergeet_id == $gebruiker['ww_vergeet_id']) {
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "UPDATE gebruiker SET wachtwoord = '$password', ww_vergeet_id = '' WHERE email = '$email'";
 
-            mysqli_query($conn, $sql);
-            $_SESSION['username'] = $gebruiker['gebruiker'];
-            $_SESSION['id'] = $gebruiker['gebruiker_ID'];
-            header( 'Location: dashboard.php');
+                mysqli_query($conn, $sql);
+                $_SESSION['username'] = $gebruiker['gebruiker'];
+                $_SESSION['id'] = $gebruiker['gebruiker_ID'];
+                echo "<script> alert('Uw wachtwoord is verandert.'); window.location.href='dashboard.php';</script>";
+            }else{
+                echo "<script> alert('dit email adres mag nu het wachtwoord niet veranderen!!!')</script>";
+            }
+        }else{
+            echo "<script> alert('De wachtwoorden zijn niet hetzelfde!!!')</script>";
         }
+    }else{
+        echo "<script> alert('Nog niet alle velden zijn ingevuld!!!')</script>";
     }
 }
 
@@ -65,8 +73,8 @@ if($_POST){
     <div class="center">
         Voer hier uw nieuwe wachtwoord in.<br>
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="password" name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
-            <input class="inputfield" type="password" name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
+            <input class="inputfield" type="password" required name="password" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Wachtwoord">
+            <input class="inputfield" type="password" required name="repeatpassword" value="<?php echo isset($_POST['username']) ? $_POST['password'] : '' ?>" placeholder="Herhaal wachtwoord">
             <input class="button" type="submit" name="request" value="Wachtwoord resetten">
         </form>
     </div>

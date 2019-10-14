@@ -5,42 +5,46 @@ session_start();
 
 
 if($_POST){
-    $email = $_POST['email'];
-    $user_check_query = "SELECT email FROM gebruiker WHERE email='$email'";
-    $result = mysqli_query($conn, $user_check_query);
-    $gebruiker = mysqli_fetch_assoc($result);
+    if (!empty($_POST["email"])){
+        $email = $_POST['email'];
+        $user_check_query = "SELECT email FROM gebruiker WHERE email='$email'";
+        $result = mysqli_query($conn, $user_check_query);
+        $gebruiker = mysqli_fetch_assoc($result);
 
 
-    if($email == $gebruiker['email']){
+        if($email == $gebruiker['email']) {
 
-        $uniekid = uniqid();
-        $sql = "UPDATE gebruiker SET ww_vergeet_id= '$uniekid' WHERE email = '$email'";
+            $uniekid = uniqid();
+            $sql = "UPDATE gebruiker SET ww_vergeet_id= '$uniekid' WHERE email = '$email'";
 
-        mysqli_query($conn, $sql);
-
-
-        $to = $email;
-        $subject = "Wachtwoord vergeten";
-
-        $message = "
-        <html>
-        <head>
-        <title>Account activeren</title>
-        </head>
-        <body>
-        <p>Door op de onderstaande link te klikken kunt u uw wachtwoord wijzigen.</p>
-        <br>
-        <a href='http://localhost/periode%209/gezondheidsmeter/site/ww_nieuw.php?email=$email&uniekid=$uniekid'>Nieuw wachtwoord aanmaken</a>
-        </body>
-        </html>
-        ";
+            mysqli_query($conn, $sql);
 
 
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
+            $to = $email;
+            $subject = "Wachtwoord vergeten";
 
-        mail($to,$subject,$message,$headers);
+            $message = "
+            <html>
+            <head>
+            <title>Account activeren</title>
+            </head>
+            <body>
+            <p>Door op de onderstaande link te klikken kunt u uw wachtwoord wijzigen.</p>
+            <br>
+            <a href='http://localhost/periode%209/gezondheidsmeter/site/ww_nieuw.php?email=$email&uniekid=$uniekid'>Nieuw wachtwoord aanmaken</a>
+            </body>
+            </html>
+            ";
+
+
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
+
+            mail($to, $subject, $message, $headers);
+        }else{
+            echo "<script> alert('Voer een email in!!!')</script>";
+        }
     }
 }
 
@@ -79,7 +83,7 @@ if($_POST){
     <div class="center">
         Voer hier uw E-mail in om uw wachtwoord te resetten.<br>
         <form class="form" action="" method="POST">
-            <input class="inputfield" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
+            <input class="inputfield" type="email" name="email" required value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email">
             <input class="button" type="submit" name="request" value="Email aanvragen">
         </form>
     </div>

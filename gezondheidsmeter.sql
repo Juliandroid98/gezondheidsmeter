@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2019 at 03:30 PM
+-- Generation Time: Oct 07, 2019 at 12:55 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `arbeid` (
   `arbeid_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `werkplek` int(20) NOT NULL,
   `werkdruk` int(20) NOT NULL,
   `datum` date NOT NULL
@@ -45,7 +46,7 @@ CREATE TABLE `drinken` (
   `drinken_ID` int(11) NOT NULL,
   `naam` varchar(30) NOT NULL,
   `kcal` int(11) NOT NULL,
-  `sugar` double(4,2) NOT NULL,
+  `suiker` double(4,2) NOT NULL,
   `schijf_ID` int(11) NOT NULL,
   `alcohol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -98,7 +99,7 @@ INSERT INTO `eten` (`eten_ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) VALUES
 
 CREATE TABLE `gebruiker` (
   `gebruiker_ID` int(11) NOT NULL,
-  `gebruiker` varchar(50) NOT NULL,
+  `gebruikersnaam` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `wachtwoord` varchar(255) NOT NULL,
   `gewicht` double(3,2) NOT NULL,
@@ -115,9 +116,10 @@ CREATE TABLE `gebruiker` (
 -- Dumping data for table `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruiker`, `email`, `wachtwoord`, `gewicht`, `lengte`, `geboortedatum`, `geslacht`, `geactiveerd`, `activeer_id`, `ww_vergeet_id`, `is_admin`) VALUES
-(1, 'Henk', '', '', 9.90, 9.99, '2004-06-09', 'dunno', 0, '', '', 0),
-(2, 'miquel', 'miquelalessandro@gmail.com', '$2y$10$oDKaVNdwV4OjiOKM.SyPC.kOailffgTBkHWQ/UX0rUSdWUFVUk61e', 9.99, 9.99, '2001-04-24', 'male', 1, '0', '', 0);
+INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruikersnaam`, `email`, `wachtwoord`, `gewicht`, `lengte`, `geboortedatum`, `geslacht`, `geactiveerd`, `activeer_id`, `ww_vergeet_id`, `is_admin`) VALUES
+(1, 'userew', '', 'user', 9.90, 9.99, '2004-06-09', 'dunno', 0, '', '', 1),
+(2, 'miquel', 'miquelalessandro@gmail.com', '$2y$10$oDKaVNdwV4OjiOKM.SyPC.kOailffgTBkHWQ/UX0rUSdWUFVUk61e', 9.99, 9.99, '2001-04-24', 'male', 1, '0', '', 0),
+(3, 'user', 'u@u', '$2y$10$WzIaEfM6.MZwS9/colA4b.gGS1YbT2gvlliAeqfLwsIIzB1./cBYW', 1.00, 1.00, '2019-10-01', 'femal', 0, '5d9716af4f2e8', '', 0);
 
 -- --------------------------------------------------------
 
@@ -126,8 +128,7 @@ INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruiker`, `email`, `wachtwoord`, `ge
 --
 
 CREATE TABLE `koppel_user_drinks` (
-  `ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `drinks_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -136,11 +137,11 @@ CREATE TABLE `koppel_user_drinks` (
 -- Dumping data for table `koppel_user_drinks`
 --
 
-INSERT INTO `koppel_user_drinks` (`ID`, `user_ID`, `drinks_ID`, `datum`) VALUES
-(1, 1, 5, '0000-00-00'),
-(2, 1, 6, '0000-00-00'),
-(3, 1, 7, '0000-00-00'),
-(4, 1, 8, '0000-00-00');
+INSERT INTO `koppel_user_drinks` (`gebruiker_ID`, `drinks_ID`, `datum`) VALUES
+(1, 5, '0000-00-00'),
+(1, 6, '0000-00-00'),
+(1, 7, '0000-00-00'),
+(1, 8, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -149,8 +150,7 @@ INSERT INTO `koppel_user_drinks` (`ID`, `user_ID`, `drinks_ID`, `datum`) VALUES
 --
 
 CREATE TABLE `koppel_user_drugs` (
-  `ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `drug_ID` int(11) NOT NULL,
   `hoeveelheid` int(11) NOT NULL,
   `datum` date NOT NULL
@@ -163,8 +163,7 @@ CREATE TABLE `koppel_user_drugs` (
 --
 
 CREATE TABLE `koppel_user_eten` (
-  `ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `eten_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -173,8 +172,8 @@ CREATE TABLE `koppel_user_eten` (
 -- Dumping data for table `koppel_user_eten`
 --
 
-INSERT INTO `koppel_user_eten` (`ID`, `user_ID`, `eten_ID`, `datum`) VALUES
-(1, 1, 3, '0000-00-00');
+INSERT INTO `koppel_user_eten` (`gebruiker_ID`, `eten_ID`, `datum`) VALUES
+(1, 3, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -183,8 +182,7 @@ INSERT INTO `koppel_user_eten` (`ID`, `user_ID`, `eten_ID`, `datum`) VALUES
 --
 
 CREATE TABLE `koppel_user_sport` (
-  `ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `sport_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -221,6 +219,7 @@ CREATE TABLE `schijf` (
 
 CREATE TABLE `slaap` (
   `slaap_ID` int(11) NOT NULL,
+  `gebruiker_ID` int(11) NOT NULL,
   `uren` int(20) NOT NULL,
   `beoordeling` varchar(50) NOT NULL,
   `datum` date NOT NULL
@@ -276,30 +275,31 @@ ALTER TABLE `gebruiker`
 -- Indexes for table `koppel_user_drinks`
 --
 ALTER TABLE `koppel_user_drinks`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `user_ID_user_ID` (`user_ID`);
+  ADD KEY `user_ID_user_ID` (`gebruiker_ID`),
+  ADD KEY `drinks_ID` (`drinks_ID`);
 
 --
 -- Indexes for table `koppel_user_drugs`
 --
 ALTER TABLE `koppel_user_drugs`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`gebruiker_ID`),
+  ADD UNIQUE KEY `gebruiker_ID` (`gebruiker_ID`),
   ADD KEY `drugs_ID_drugs_ID` (`drug_ID`),
-  ADD KEY `drugs_user_ID_user_ID` (`user_ID`);
+  ADD KEY `drugs_user_ID_user_ID` (`gebruiker_ID`);
 
 --
 -- Indexes for table `koppel_user_eten`
 --
 ALTER TABLE `koppel_user_eten`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `eten_user_ID_user_ID` (`user_ID`),
+  ADD PRIMARY KEY (`gebruiker_ID`),
+  ADD KEY `eten_user_ID_user_ID` (`gebruiker_ID`),
   ADD KEY `eten_eten_ID_food_ID` (`eten_ID`);
 
 --
 -- Indexes for table `koppel_user_sport`
 --
 ALTER TABLE `koppel_user_sport`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`gebruiker_ID`);
 
 --
 -- Indexes for table `melding`
@@ -353,27 +353,7 @@ ALTER TABLE `eten`
 -- AUTO_INCREMENT for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `koppel_user_drinks`
---
-ALTER TABLE `koppel_user_drinks`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `koppel_user_drugs`
---
-ALTER TABLE `koppel_user_drugs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `koppel_user_eten`
---
-ALTER TABLE `koppel_user_eten`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `koppel_user_sport`
---
-ALTER TABLE `koppel_user_sport`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `melding`
 --
@@ -402,21 +382,21 @@ ALTER TABLE `sport`
 -- Constraints for table `koppel_user_drinks`
 --
 ALTER TABLE `koppel_user_drinks`
-  ADD CONSTRAINT `user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+  ADD CONSTRAINT `user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
 -- Constraints for table `koppel_user_drugs`
 --
 ALTER TABLE `koppel_user_drugs`
   ADD CONSTRAINT `drugs_ID_drugs_ID` FOREIGN KEY (`drug_ID`) REFERENCES `drugs` (`drugs_ID`),
-  ADD CONSTRAINT `drugs_user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+  ADD CONSTRAINT `drugs_user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
 -- Constraints for table `koppel_user_eten`
 --
 ALTER TABLE `koppel_user_eten`
   ADD CONSTRAINT `eten_eten_ID_food_ID` FOREIGN KEY (`eten_ID`) REFERENCES `eten` (`eten_ID`),
-  ADD CONSTRAINT `eten_user_ID_user_ID` FOREIGN KEY (`user_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+  ADD CONSTRAINT `eten_user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
