@@ -34,7 +34,7 @@ try{
     $pdo = new PDO("mysql:host=localhost;dbname=gezondheidsmeter", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
-    die("ERROR: Could not connect. " . $e->getMessage());
+    //die("ERROR: Could not connect. " . $e->getMessage());
 }
 try{
     $sql = "SELECT * FROM gebruiker";
@@ -66,10 +66,10 @@ try{
 				echo "<td>" . $row['geslacht'] . "</td>";
 				echo "<td>" . $row['geactiveerd'] . "</td>";
 				echo "<td><img onclick='addRowForEdit(" . $row['gebruiker_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
 			echo "</tr>";
 			echo "<tr id='addRowEdit".$row['gebruiker_ID']."' style='display: none;'>";
-				echo "<form action='' method='post'>";
+				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='editRecord' type='text' name='isAdmin' value='" . $row['is_admin'] . "'></td>";
                 echo "<td><input id='editRecord' type='text' name='gebruikerID' value='" . $row['gebruiker_ID'] . "'></td>";
 				echo "<td><input id='editRecord' type='text' name='gebruikersnaam' value='" . $row['gebruikersnaam'] . "'></td>";
@@ -83,7 +83,7 @@ try{
 				echo "</form>";				
 			echo "</tr>";
         }
-		echo "<form action='' method='post'>
+		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowGebruiker' style='display: none;'><td>
 		<input type='text' placeholder='gebruikersnaam' name='gebruiker'></td>
 		<td><input type='text' placeholder='wachtwoord' name='wachtwoord'></td>
@@ -99,10 +99,10 @@ try{
         // Free result set
         unset($result);
     } else{
-        echo "No records matching your query were found.";
+        //echo "No records matching your query were found.";
     }
 } catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
 
@@ -124,10 +124,10 @@ try{
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['soort'] . "</td>";
 				echo "<td><img onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrugs' value='" . $row['drugs_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrugs' value='" . $row['drugs_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditDrugs".$row['drugs_ID']."' style='display: none;'>";
-				echo "<form action='' method='post'>";
+				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='editRecordDrugs' type='text' name='drugs_ID' value='" . $row['drugs_ID'] . "'></td>";
                 echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
 				echo "<td><input id='editRecordDrugs' type='text' name='soort' value='" . $row['soort'] . "'></td>";
@@ -136,7 +136,7 @@ try{
 			echo "</tr>";
 			
         }
-		echo "<form action='' method='post'>
+		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowDrugs' style='display: none;'><td>
 		<input type='text' placeholder='drugsnaam' name='drugsnaam'></td>
 		<td><input type='text' placeholder='soort' name='soort'></td>
@@ -146,10 +146,10 @@ try{
         // Free result set
         unset($result);
     } else{
-        echo "No records matching your query were found.";
+        //echo "No records matching your query were found.";
     }
 } catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
 try{
@@ -170,10 +170,10 @@ try{
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['verbranding'] . "</td>";
 				echo "<td><img onclick='addRowForEditSport(" . $row['sport_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDsport' value='" . $row['sport_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDsport' value='" . $row['sport_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditSport".$row['sport_ID']."' style='display: none;'>";
-				echo "<form action='' method='post'>";
+				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='' type='text' name='sport_ID' value='" . $row['sport_ID'] . "'></td>";
                 echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
 				echo "<td><input id='' type='text' name='verbranding' value='" . $row['verbranding'] . "'></td>";
@@ -182,7 +182,7 @@ try{
 			echo "</tr>";
 			
         }
-		echo "<form action='' method='post'>
+		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowSport' style='display: none;'><td>
 		<input type='text' placeholder='naam' name='naam'></td>
 		<td><input type='text' placeholder='verbranding' name='verbranding'></td>
@@ -192,10 +192,10 @@ try{
         // Free result set
         unset($result);
     } else{
-        echo "No records matching your query were found.";
+        //echo "No records matching your query were found.";
     }
 } catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
  
 try{
@@ -220,10 +220,10 @@ try{
 				echo "<td>" . $row['schijf_ID'] . "</td>";
                 echo "<td>" . $row['sugar'] . "</td>";
 				echo "<td><img onclick='addRowForEditEten(" . $row['eten_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
-				echo "<form action='' method='post'>";
+				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='editRecordDrugs' type='text' name='eten_ID' value='" . $row['eten_ID'] . "'></td>";
                 echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
 				echo "<td><input id='editRecordDrugs' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
@@ -233,7 +233,7 @@ try{
 				echo "</form>";				
 			echo "</tr>";
         }
-		echo "<form action='' method='post'>
+		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowEten' style='display: none;'><td>
 		<input type='text' placeholder='naam' name='naam'></td>
 		<td><input type='text' placeholder='kcal' name='kcal'></td>
@@ -245,10 +245,10 @@ try{
         // Free result set
         unset($result);
     } else{
-        echo "No records matching your query were found.";
+        //echo "No records matching your query were found.";
     }
 } catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
 try{
@@ -275,10 +275,10 @@ try{
                 echo "<td>" . $row['alcohol'] . "</td>";
                 echo "<td>" . $row['schijf_ID'] . "</td>";
 				echo "<td><img onclick='addRowForEditDrinken(" . $row['drinken_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrinken' value='" . $row['drinken_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrinken' value='" . $row['drinken_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditDrinken".$row['drinken_ID']."' style='display: none;'>";
-				echo "<form action='' method='post'>";
+				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='' type='text' name='drinken_ID' value='" . $row['drinken_ID'] . "'></td>";
                 echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
                 echo "<td><input id='' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
@@ -289,7 +289,7 @@ try{
 				echo "</form>";				
 			echo "</tr>";
         }
-		echo "<form action='' method='post'>
+		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowDrinken' style='display: none;'><td>
 		<input type='text' placeholder='naam' name='naam'></td>
 		<td><input type='text' placeholder='kcal' name='kcal'></td>
@@ -302,284 +302,10 @@ try{
         // Free result set
         unset($result);
     } else{
-        echo "No records matching your query were found.";
+        //echo "No records matching your query were found.";
     }
 } catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "DELETE FROM drinken WHERE drinken_ID = (:verwijderDrinkenID)";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':verwijderDrinkenID', $_POST['verwijderIDdrinken'], PDO::PARAM_INT);
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record deleted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "DELETE FROM eten WHERE eten_ID = (:verwijderEtenID)";	
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':verwijderEtenID', $_POST['verwijderIDeten'], PDO::PARAM_INT);
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record deleted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "DELETE FROM sport WHERE sport_ID = (:verwijderSportID)";	
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':verwijderSportID', $_POST['verwijderIDsport'], PDO::PARAM_INT);
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record deleted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "DELETE FROM drugs WHERE drugs_ID = (:verwijderDrugsID)";	
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':verwijderDrugsID', $_POST['verwijderIDdrugs'], PDO::PARAM_INT);
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record deleted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "DELETE FROM gebruiker WHERE gebruiker_ID = (:verwijderGebruikerID)";	
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':verwijderGebruikerID', $_POST['verwijderID'], PDO::PARAM_INT);
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record deleted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "UPDATE drinken SET drinken_ID = :drinken_ID, naam = :naam, kcal = :kcal, suiker =:suiker, schijf_ID = :schijf_ID, alcohol = :alcohol WHERE drinken_ID = :drinken_ID";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':drinken_ID', $_POST['drinken_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':suiker', $_POST['suiker']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
-    $stmt->bindParam(':alcohol', $_POST['alcohol']);
-    $stmt->execute();
-    echo "Record updated successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "UPDATE eten SET eten_ID = :eten_ID, naam = :naam, kcal = :kcal, sugar =:sugar, schijf_ID = :schijf_ID WHERE eten_ID = :eten_ID";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':eten_ID', $_POST['eten_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
-    $stmt->execute();
-    echo "Record updated successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-
-try{
-    // Create prepared statement
-    $sql = "UPDATE sport SET sport_ID = :sport_ID, naam = :naam, verbranding = :verbranding WHERE sport_ID = :sport_ID";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':sport_ID', $_POST['sport_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':verbranding', $_POST['verbranding']);
-    $stmt->execute();
-    echo "Record updated successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-
-try{
-    // Create prepared statement
-    $sql = "UPDATE drugs SET drugs_ID = :drugs_ID, naam = :naam, soort = :soort WHERE drugs_ID = :drugs_ID";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':drugs_ID', $_POST['drugs_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':soort', $_POST['soort']);
-    $stmt->execute();
-    echo "Record updated successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-
-try{
-    // Create prepared statement
-    $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruiker, geboortedatum = :geboortedatum, email = :email WHERE gebruiker_ID = :gebruikerID";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
-    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    $stmt->bindParam(':email', $_POST['email']);
-    $stmt->bindParam(':gebruikerID', $_POST['gebruikerID']);
-	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    //$stmt->bindParam(':lengte', $_POST['lengte']);
-    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
-	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Record updated successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "INSERT INTO drinken (naam, kcal, suiker, schijf_ID, alcohol)
-	VALUES (:naam, :kcal, :sugar, :schijf_ID, :alcohol)";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
-    $stmt->bindParam(':alcohol', $_POST['alcohol']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Records inserted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-
-try{
-    // Create prepared statement
-    $sql = "INSERT INTO eten (naam, kcal, sugar, schijf_ID)
-	VALUES (:naam, :kcal, :sugar, :schijf_ID)";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Records inserted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "INSERT INTO sport (naam, verbranding)
-	VALUES (:naam, :verbranding)";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':verbranding', $_POST['verbranding']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Records inserted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-try{
-    // Create prepared statement
-    $sql = "INSERT INTO drugs (naam, soort)
-	VALUES (:naam, :soort)";
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['drugsnaam']);
-    $stmt->bindParam(':soort', $_POST['soort']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Records inserted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-// Attempt insert query execution
-try{
-    // Create prepared statement
-    $sql = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email)
-	VALUES (:gebruiker, :wachtwoord, :email)";
-	//, :geboortedatum, :lengte, :gewicht, :geslacht)"; , geboortedatum, lengte, gewicht, geslacht)
-	
-	
-    $stmt = $pdo->prepare($sql);
-    
-    // Bind parameters to statement
-    $stmt->bindParam(':gebruiker', $_POST['gebruiker']);
-    $stmt->bindParam(':wachtwoord', $_POST['wachtwoord']);
-    $stmt->bindParam(':email', $_POST['email']);
-	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    //$stmt->bindParam(':lengte', $_POST['lengte']);
-    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
-	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
-    
-    // Execute the prepared statement
-    $stmt->execute();
-    echo "Records inserted successfully.";
-} catch(PDOException $e){
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
 // Close connection
