@@ -23,7 +23,9 @@
         <div class="headercontainer">
             <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Admin</h1>
-            <image class="settingsmenu" src="assets/images/settings.png" alt="settings">
+            <a class="settingsmenu" href="settings.php">
+                <image class="settingsimg" src="assets/images/settings.png" alt="settings">
+            </a>
         </div>
         <!-- content -->
 		welkom op de admin pagina De admin kan iemand admin maken. De admin kan iemand geen admin maken. De admin kan drugs, sport, eten en drinken wijzigen, verwijderen en toevoegen. De admin kan de gebruikers zien.
@@ -122,7 +124,7 @@ try{
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['soort'] . "</td>";
 				echo "<td><img onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				//echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrugs' value='" . $row['drugs_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditDrugs".$row['drugs_ID']."' style='display: none;'>";
 				echo "<form action='' method='post'>";
@@ -168,13 +170,13 @@ try{
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['verbranding'] . "</td>";
 				echo "<td><img onclick='addRowForEditSport(" . $row['sport_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				//echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDsport' value='" . $row['sport_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditSport".$row['sport_ID']."' style='display: none;'>";
 				echo "<form action='' method='post'>";
-				echo "<td><input id='editRecordDrugs' type='text' name='sport_ID' value='" . $row['sport_ID'] . "'></td>";
-                echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
-				echo "<td><input id='editRecordDrugs' type='text' name='verbranding' value='" . $row['verbranding'] . "'></td>";
+				echo "<td><input id='' type='text' name='sport_ID' value='" . $row['sport_ID'] . "'></td>";
+                echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
+				echo "<td><input id='' type='text' name='verbranding' value='" . $row['verbranding'] . "'></td>";
 				echo "<td><input type='submit'></td><td></td>";
 				echo "</form>";				
 			echo "</tr>";
@@ -204,6 +206,7 @@ try{
             echo "<tr>";
                 echo "<th>eten_id</th>";
                 echo "<th>etennaam</th>";
+                echo "<th>kcal</th>";
 				echo "<th>schijf_id</th>";
                 echo "<th>suiker_gram</th>";
 				echo "<th>wijzigen</th>";
@@ -213,11 +216,22 @@ try{
             echo "<tr>";
                 echo "<td>" . $row['eten_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
+                echo "<td>" . $row['kcal'] . "</td>";
 				echo "<td>" . $row['schijf_ID'] . "</td>";
                 echo "<td>" . $row['sugar'] . "</td>";
-				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
+				echo "<td><img onclick='addRowForEditEten(" . $row['eten_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
+			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
+				echo "<form action='' method='post'>";
+				echo "<td><input id='editRecordDrugs' type='text' name='eten_ID' value='" . $row['eten_ID'] . "'></td>";
+                echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='schijf_ID' value='" . $row['schijf_ID'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='sugar' value='" . $row['sugar'] . "'></td>";
+				echo "<td><input type='submit'></td><td></td>";
+				echo "</form>";				
+			echo "</tr>";
         }
 		echo "<form action='' method='post'>
 		<tr id='addRowEten' style='display: none;'><td>
@@ -245,6 +259,7 @@ try{
             echo "<tr>";
                 echo "<th>drank_id</th>";
                 echo "<th>dranknaam</th>";
+                echo "<th>kcal</th>";
 				echo "<th>suiker_gram</th>";
                 echo "<th>alcoholpercentage</th>";
                 echo "<th>schijf_id</th>";
@@ -255,12 +270,24 @@ try{
             echo "<tr>";
                 echo "<td>" . $row['drinken_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
-				echo "<td>" . $row['sugar'] . "</td>";
+                echo "<td>" . $row['kcal'] . "</td>";
+				echo "<td>" . $row['suiker'] . "</td>";
                 echo "<td>" . $row['alcohol'] . "</td>";
                 echo "<td>" . $row['schijf_ID'] . "</td>";
-				echo "<td><img class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<td><img class='bottomimg' src='assets/images/rubbish-bin.png'></td>";
+				echo "<td><img onclick='addRowForEditDrinken(" . $row['drinken_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrinken' value='" . $row['drinken_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
+			echo "<tr id='addRowEditDrinken".$row['drinken_ID']."' style='display: none;'>";
+				echo "<form action='' method='post'>";
+				echo "<td><input id='' type='text' name='drinken_ID' value='" . $row['drinken_ID'] . "'></td>";
+                echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
+                echo "<td><input id='' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
+				echo "<td><input id='' type='text' name='suiker' value='" . $row['suiker'] . "'></td>";
+				echo "<td><input id='' type='text' name='alcohol' value='" . $row['alcohol'] . "'></td>";
+				echo "<td><input id='' type='text' name='schijf_ID' value='" . $row['schijf_ID'] . "'></td>";
+				echo "<td><input type='submit'></td><td></td>";
+				echo "</form>";				
+			echo "</tr>";
         }
 		echo "<form action='' method='post'>
 		<tr id='addRowDrinken' style='display: none;'><td>
@@ -283,6 +310,66 @@ try{
 
 try{
     // Create prepared statement
+    $sql = "DELETE FROM drinken WHERE drinken_ID = (:verwijderDrinkenID)";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':verwijderDrinkenID', $_POST['verwijderIDdrinken'], PDO::PARAM_INT);
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "DELETE FROM eten WHERE eten_ID = (:verwijderEtenID)";	
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':verwijderEtenID', $_POST['verwijderIDeten'], PDO::PARAM_INT);
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "DELETE FROM sport WHERE sport_ID = (:verwijderSportID)";	
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':verwijderSportID', $_POST['verwijderIDsport'], PDO::PARAM_INT);
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "DELETE FROM drugs WHERE drugs_ID = (:verwijderDrugsID)";	
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':verwijderDrugsID', $_POST['verwijderIDdrugs'], PDO::PARAM_INT);
+    // Execute the prepared statement
+    $stmt->execute();
+    echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
     $sql = "DELETE FROM gebruiker WHERE gebruiker_ID = (:verwijderGebruikerID)";	
 	
     $stmt = $pdo->prepare($sql);
@@ -292,6 +379,43 @@ try{
     // Execute the prepared statement
     $stmt->execute();
     echo "Record deleted successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "UPDATE drinken SET drinken_ID = :drinken_ID, naam = :naam, kcal = :kcal, suiker =:suiker, schijf_ID = :schijf_ID, alcohol = :alcohol WHERE drinken_ID = :drinken_ID";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':drinken_ID', $_POST['drinken_ID']);
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':kcal', $_POST['kcal']);
+    $stmt->bindParam(':suiker', $_POST['suiker']);
+    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':alcohol', $_POST['alcohol']);
+    $stmt->execute();
+    echo "Record updated successfully.";
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+try{
+    // Create prepared statement
+    $sql = "UPDATE eten SET eten_ID = :eten_ID, naam = :naam, kcal = :kcal, sugar =:sugar, schijf_ID = :schijf_ID WHERE eten_ID = :eten_ID";
+	
+    $stmt = $pdo->prepare($sql);
+    
+    // Bind parameters to statement
+    $stmt->bindParam(':eten_ID', $_POST['eten_ID']);
+    $stmt->bindParam(':naam', $_POST['naam']);
+    $stmt->bindParam(':kcal', $_POST['kcal']);
+    $stmt->bindParam(':sugar', $_POST['sugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->execute();
+    echo "Record updated successfully.";
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }

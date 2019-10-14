@@ -34,6 +34,23 @@ function addRowForEditSport(ID){
 	}
 }
 
+function addRowForEditEten(ID){
+	if(document.getElementById('addRowEditEten'+ID).style.display=='none'){
+		document.getElementById('addRowEditEten'+ID).style.display='contents';
+	}
+	else{
+		document.getElementById('addRowEditEten'+ID).style.display='none';
+	}
+}
+
+function addRowForEditDrinken(ID){
+	if(document.getElementById('addRowEditDrinken'+ID).style.display=='none'){
+		document.getElementById('addRowEditDrinken'+ID).style.display='contents';
+	}
+	else{
+		document.getElementById('addRowEditDrinken'+ID).style.display='none';
+	}
+}
 
 function addRowForInputDrugs(){
 	if(document.getElementById('addRowDrugs').style.display=='none'){
