@@ -3,7 +3,7 @@
 
     class SaveForm
     {
-        function GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding,$gebruikersnaam){
+        function GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding,$gebruikersnaam){
             $gebruiker_ID = 0;
 
             $sql = "SELECT `gebruiker_ID` FROM `gebruiker` WHERE gebruikersnaam=?";
@@ -16,22 +16,21 @@
 
             //echo $id;
 
-            $this->SaveArbeid($conn,$Werkplek, $Werkdruk, $gebruiker_ID);
+            $this->SaveArbeid($conn,$Werkplek, $Werkdruk,$Werkdatum, $gebruiker_ID);
             $this->SaveDrinken($conn,$DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol,$gebruiker_ID);
             $this->SaveDrugs($conn, $DrugsNaam, $DrugsHoeveelheid, $gebruiker_ID);
             $this->SaveEten($conn,$EtenNaam,$EtenSuiker,$EtenKcalorie,$gebruiker_ID);
-            $this->SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit,$gebruiker_ID);
+            $this->SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit, $Slaapdatum, $gebruiker_ID);
             $this->SaveSport($conn,$SportNaam, $SportVerbranding,$gebruiker_ID);
 
         }
 
-        function SaveArbeid($conn,$Werkplek, $Werkdruk, $gebruiker_ID){
+        function SaveArbeid($conn,$Werkplek, $Werkdruk,$Werkdatum, $gebruiker_ID){
             $arbeid_ID = 0;
-            $datum = 0;
 
             $sql = "INSERT INTO `arbeid`(arbeid_ID, gebruiker_ID, werkplek, werkdruk, datum) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("iiiis", $arbeid_ID, $gebruiker_ID, $Werkplek, $Werkdruk, $datum);
+            $stmt->bind_param("iiiis", $arbeid_ID, $gebruiker_ID, $Werkplek, $Werkdruk, $Werkdatum);
             $stmt->execute();
             $stmt->close();
 
@@ -95,16 +94,13 @@
             $stmt->close();
         }
 
-        function SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit,$gebruiker_ID){
+        function SaveSlaap($conn,$SlaapHoeveelheid, $SlaapKwaliteit, $Slaapdatum, $gebruiker_ID){
 
             $slaap_ID = 0;
-            $uren = 0;
-            $beoordeling = 0;
-            $datum = 0;
 
-            $sql = "INSERT INTO `slaap`(slaap_ID, ebruiker_ID, uren, beoordeling, datum) VALUES (?,?,?,?,?)";
+            $sql = "INSERT INTO `slaap`(slaap_ID, gebruiker_ID, uren, beoordeling, datum) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("iiiis", $slaap_ID, $gebruiker_ID, $SlaapHoeveelheid, $SlaapKwaliteit, $datum);
+            $stmt->bind_param("iiiis", $slaap_ID, $gebruiker_ID, $SlaapHoeveelheid, $SlaapKwaliteit, $Slaapdatum);
             $stmt->execute();
             $stmt->close();
 

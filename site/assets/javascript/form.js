@@ -5,8 +5,9 @@ var divDrinken = document.getElementById("drinkenVragen");
 var divEten = document.getElementById("etenVragen");
 var divDrugs = document.getElementById("drugsVragen");
 var divSlaap = document.getElementById("slaapVragen");
-var divSport = document.getElementById("slaapVragen");
+var divSport = document.getElementById("sportVragen");
 var submitButton = document.getElementById("submitButton");
+var terugButton = document.getElementById("prevBtn");
 
 // call function on button clicks
 function PaginaCheck(c){
@@ -24,22 +25,23 @@ function PaginaCheck(c){
             break;
     }
     // check that divNummer cant go above and under certain values
-    if(divNummer >= 4){
-        divNummer = 3;
+    if(divNummer >= 7){
+        divNummer = 6;
     }
 
     if(divNummer == 0){
         divNummer = 1;
     }
 
-    // switch system to check which div to show and which one to hide
     switch (divNummer) {
         case 1:
+            divWerkplek.classList.remove("hidden");
             divDrinken.classList.add("hidden");
             divEten.classList.add("hidden");
             divDrugs.classList.add("hidden");
             divSlaap.classList.add("hidden");
             divSport.classList.add("hidden");
+            terugButton.classList.add("hidden");
             submitButton.classList.add("hidden");
             break;
         case 2:
@@ -49,6 +51,7 @@ function PaginaCheck(c){
             divDrugs.classList.add("hidden");
             divSlaap.classList.add("hidden");
             divSport.classList.add("hidden");
+            terugButton.classList.remove("hidden");
             submitButton.classList.add("hidden");
             break;
         case 3:
@@ -58,6 +61,7 @@ function PaginaCheck(c){
             divDrugs.classList.add("hidden");
             divSlaap.classList.add("hidden");
             divSport.classList.add("hidden");
+            terugButton.classList.remove("hidden");
             submitButton.classList.add("hidden");
             break;
         case 4:
@@ -67,6 +71,7 @@ function PaginaCheck(c){
             divDrugs.classList.remove("hidden");
             divSlaap.classList.add("hidden");
             divSport.classList.add("hidden");
+            terugButton.classList.remove("hidden");
             submitButton.classList.add("hidden");
             break;
         case 5:
@@ -76,6 +81,7 @@ function PaginaCheck(c){
             divDrugs.classList.add("hidden");
             divSlaap.classList.remove("hidden");
             divSport.classList.add("hidden");
+            terugButton.classList.remove("hidden");
             submitButton.classList.add("hidden");
             break;
         case 6:
@@ -85,13 +91,9 @@ function PaginaCheck(c){
             divDrugs.classList.add("hidden");
             divSlaap.classList.add("hidden");
             divSport.classList.remove("hidden");
+            terugButton.classList.remove("hidden");
             submitButton.classList.remove("hidden");
             break;
-        // case 3:
-        //     divEten.classList.add("hidden");
-        //     divDrugs.classList.remove("hidden");
-        //     submitButton.classList.remove("hidden");
-        //     break;
     }
 
 }

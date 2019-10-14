@@ -5,10 +5,12 @@ require 'assets/php/Connection.php';
 require 'assets/php/SaveForm.php';
 
 $Class = new SaveForm();
+//$Class = new getDrinksFoodData();
 
 if (isset($_POST['submit'])){
     $Werkplek = $conn->real_escape_string(htmlspecialchars($_POST['werkplek']));
     $Werkdruk = $conn->real_escape_string(htmlspecialchars($_POST['werkdruk']));
+    $Werkdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $DrinkenNaam = $conn->real_escape_string(htmlspecialchars($_POST['drankNaam']));
     $DrinkenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['drankCalorie']));
     $DrinkenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['drankSuiker']));
@@ -20,10 +22,11 @@ if (isset($_POST['submit'])){
     $DrugsHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['drugsHoeveelheid']));
     $SlaapHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['slaapHoeveelheid']));
     $SlaapKwaliteit = $conn->real_escape_string(htmlspecialchars($_POST['slaapKwaliteit']));
+    $Slaapdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit, $SportNaam, $SportVerbranding, $_SESSION['Username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
 
 }
 ?>
@@ -60,15 +63,20 @@ if (isset($_POST['submit'])){
               <!-- Werkplek -->
               <div id="werkVragen" class="">
                   <h3>Werkplek</h3>
-                  <p>Beoordeel uw werkplek?
+                  <p>Beoordeel uw werkplek:
                       <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkplek">
                   </p>
 
-                  Beoordeel uw werkdruk?
-                  <p><input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkdruk"></p>
+                  <p>Beoordeel uw werkdruk:
+                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkdruk">
+                  </p>
+
+                  Datum:
+                  <p>
+                      <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
+                  </p>
                   <div style="text-align:center;margin-top:40px;">
-                      <span class="step">1</span>
-                      <span class="step">2</span>
+                      <span class="step">1/6</span>
                   </div>
             </div>
 
@@ -78,9 +86,9 @@ if (isset($_POST['submit'])){
                 Welke drank(en) heb je gehad?
                   <p>
                     <select name="drankNaam">
-                      <option value=""></option>
-                      <option value=""></option>
-                      <option value=""></option>
+                      <option value="bier">bier</option>
+                      <option value="wodka">wodka</option>
+                      <option value="water">water</option>
                       <option value=""></option>
                     </select>
                   </p>
@@ -95,10 +103,7 @@ if (isset($_POST['submit'])){
                 <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
 
                 <div style="text-align:center;margin-top:40px;">
-                  <span class="step">1</span>
-                  <span class="step">2</span>
-                  <span class="step">3</span>
-                  <span class="step">4</span>
+                  <span class="step">2/6</span>
                 </div>
               </div>
 
@@ -122,9 +127,7 @@ if (isset($_POST['submit'])){
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenSuiker"></p>
 
                 <div style="text-align:center;margin-top:40px;">
-                  <span class="step">1</span>
-                  <span class="step">2</span>
-                  <span class="step">3</span>
+                  <span class="step">3/6</span>
                 </div>
             </div>
 
@@ -138,8 +141,7 @@ if (isset($_POST['submit'])){
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsHoeveelheid"></p>
 
                 <div style="text-align:center;margin-top:40px;">
-                  <span class="step">1</span>
-                  <span class="step">2</span>
+                  <span class="step">4/6</span>
                 </div>
             </div>
 
@@ -151,10 +153,13 @@ if (isset($_POST['submit'])){
 
                 Beoordeel uw slaap.
                   <p><input placeholder="vul hier uw antwoord in.." name="slaapKwaliteit"></p>
+                Datum:
+                <p>
+                    <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
+                </p>
 
                 <div style="text-align:center;margin-top:40px;">
-                    <span class="step">1</span>
-                    <span class="step">2</span>
+                    <span class="step">5/6</span>
                 </div>
             </div>
 
@@ -168,18 +173,17 @@ if (isset($_POST['submit'])){
                 <p><input placeholder="vul hier uw antwoord in.." name="sportVerbranding"></p>
 
                 <div style="text-align:center;margin-top:30px;">
-                  <span class="step">1</span>
-                  <span class="step">2</span>
-                  <span class="step">3</span>
-                  <span class="step">4</span>
+                  <span class="step">6/6</span>
                 </div>
             </div>
 
-            <input type="submit" name="submit" value="submit" class="hidden" id="submitButton">
+            <input type="submit" name="submit" value="Versturen" class="hidden" id="submitButton">
+                <div id="prevnext" style="overflow:auto;">
+                    <button type="button" id="prevBtn" class="hidden" onclick="PaginaCheck('terug');">Terug</button>
+                    <button type="button" id="nextBtn" onclick="PaginaCheck('verder');">Volgende</button>
+                </div>
             </form>
-            <button type="button" id="prevBtn" onclick="PaginaCheck('terug');">Terug</button>
-            <button type="button" id="nextBtn" onclick="PaginaCheck('verder');">Volgende</button>
-            <input type="submit" name="submit" value="submit" class="hidden" id="submitButton">
+
             <script src="assets/javascript/form.js"></script>
 
             <!-- bottom buttons-->

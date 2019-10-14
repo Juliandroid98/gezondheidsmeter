@@ -1,4 +1,6 @@
-<?php include 'assets/php/connection.php' ?>
+<?php include 'assets/php/connection.php';
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
