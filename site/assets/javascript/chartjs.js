@@ -42,8 +42,6 @@ $(function ()
             console.log(zaterdagDate);
             console.log(zondagDate);
 
-
-
             for(var i = 0; i < days.length; i++){
                 if(days[i] === dayName){
                     data[i] = datatoday;
