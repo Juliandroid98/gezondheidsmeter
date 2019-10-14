@@ -19,14 +19,14 @@ if (isset($_POST['submit'])){
     $EtenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['etenCalorie']));
     $EtenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['etenSuiker']));
     $DrugsNaam = $conn->real_escape_string(htmlspecialchars($_POST['drugsNaam']));
-    $DrugsHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['drugsHoeveelheid']));
+    $DrugsSoort = $conn->real_escape_string(htmlspecialchars($_POST['drugsSoort']));
     $SlaapHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['slaapHoeveelheid']));
     $SlaapKwaliteit = $conn->real_escape_string(htmlspecialchars($_POST['slaapKwaliteit']));
     $Slaapdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
 
 }
 ?>
@@ -63,11 +63,13 @@ if (isset($_POST['submit'])){
               <!-- Werkplek -->
               <div id="werkVragen" class="">
                   <h3>Werkplek</h3>
-                  <p>Beoordeel uw werkplek:
+                  Beoordeel uw werkplek:
+                  <p>
                       <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkplek">
                   </p>
 
-                  <p>Beoordeel uw werkdruk:
+                  Beoordeel uw werkdruk:
+                  <p>
                       <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkdruk">
                   </p>
 
@@ -82,16 +84,21 @@ if (isset($_POST['submit'])){
 
             <!-- Drinken -->
             <div id="drinkenVragen" class="hidden">
-                <h3>Drinken</h3>
-                Welke drank(en) heb je gehad?
-                  <p>
-                    <select name="drankNaam">
-                      <option value="bier">bier</option>
-                      <option value="wodka">wodka</option>
-                      <option value="water">water</option>
-                      <option value=""></option>
-                    </select>
-                  </p>
+            <h3>Drinken</h3>
+            Welke drank(en) heb je gehad?
+              <p>
+
+                <div id="alc"  style="display: block; position: relative; padding-left: 35px; cursor: pointer;">
+                    <h5>Alcohol</h5>
+                  <input type="checkbox" name="drankNaam" value="Water">Water<br>
+                  <input type="checkbox" name="drankNaam" value="Cola">Cola<br>
+                  <input type="checkbox" name="drankNaam" value="Appeljuice">Appeljuice<br>
+                </div>
+                  <input type="checkbox" name="drankNaam" value="Orangejuice">Orangejuice<br>
+                  <input type="checkbox" name="drankNaam" value="Bier">Bier<br>
+                  <input type="checkbox" name="drankNaam" value="Wijn">Wijn<br>
+
+              </p>
 
                 Hoeveel kilocalorie zit er erin?
                 <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
@@ -138,7 +145,7 @@ if (isset($_POST['submit'])){
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsNaam"></p>
 
                 Hoeveel mg heeft u in totaal gebruikt?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsHoeveelheid"></p>
+                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsSoort"></p>
 
                 <div style="text-align:center;margin-top:40px;">
                   <span class="step">4/6</span>
