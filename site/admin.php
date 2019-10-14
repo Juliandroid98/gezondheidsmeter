@@ -152,51 +152,7 @@ try{
     //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
-try{
-    $sql = "SELECT * FROM sport";
-    $result = $pdo->query($sql);
-    if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>sport</b><div class='responsiveTable'><table>";
-            echo "<tr>";
-                echo "<th>sport_id</th>";
-                echo "<th>sportnaam</th>";
-				echo "<th>verbrandingswaarde</th>";
-				echo "<th>wijzigen</th>";
-				echo "<th>verwijderen</th>";
-            echo "</tr>";
-        while($row = $result->fetch()){
-            echo "<tr>";
-                echo "<td>" . $row['sport_ID'] . "</td>";
-                echo "<td>" . $row['naam'] . "</td>";
-				echo "<td>" . $row['verbranding'] . "</td>";
-				echo "<td><img onclick='addRowForEditSport(" . $row['sport_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDsport' value='" . $row['sport_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
-            echo "</tr>";
-			echo "<tr id='addRowEditSport".$row['sport_ID']."' style='display: none;'>";
-				echo "<form action='refreshAdmin.php' method='post'>";
-				echo "<td><input id='' type='text' name='sport_ID' value='" . $row['sport_ID'] . "'></td>";
-                echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
-				echo "<td><input id='' type='text' name='verbranding' value='" . $row['verbranding'] . "'></td>";
-				echo "<td><input type='submit'></td><td></td>";
-				echo "</form>";				
-			echo "</tr>";
-			
-        }
-		echo "<form action='refreshAdmin.php' method='post'>
-		<tr id='addRowSport' style='display: none;'><td>
-		<input type='text' placeholder='naam' name='naam'></td>
-		<td><input type='text' placeholder='verbranding' name='verbranding'></td>
-		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputSport();'></td></tr>";
-		echo "</table></div>";
-        // Free result set
-        unset($result);
-    } else{
-        //echo "No records matching your query were found.";
-    }
-} catch(PDOException $e){
-    //die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
+
  
 try{
     $sql = "SELECT * FROM eten";
