@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="application/javascript" src="assets/javascript/index.js"></script>
+
     <title>Gezondheidsmeter - Meldingen</title>
 </head>
 
