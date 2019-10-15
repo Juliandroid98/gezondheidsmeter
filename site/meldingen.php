@@ -1,4 +1,8 @@
-<?php include 'assets/php/connection.php' ?>
+<?php include 'assets/php/connection.php';
+session_start();
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +16,6 @@
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/meldingen.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -31,9 +34,19 @@
         </div>
 
         <!-- content -->
-        <div class="melding icon2"><p>U heeft op dit moment geen meldingen.</p></div>
-        <div class="melding icon"><p>U bent te dik!</p></div>
-        <div class="melding icon"><p>U bent te dun!</p></div>
+        <?php
+        // Query to select the notification based on the user who is logged in
+        $sql = "SELECT `melding` FROM `melding` WHERE `gebruiker_ID` = " . $_SESSION["id"];
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo '<div class="melding icon"><p>' . $row["melding"] . '</p></div>';
+            }
+        } else {
+            echo '<div class="melding icon2"><p>U heeft op dit moment geen meldingen.</p></div>';
+        }
+        ?>
 
          <!-- bottom buttons-->
          <div class="bottomcontainer">

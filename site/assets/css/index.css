@@ -133,3 +133,29 @@ a:active {
     height: 50px;
     margin-top: 5px;
 }
+
+@media screen and (min-width: 750px) {
+    .bottombutton {
+        /* background-color: white;*/
+        background: -webkit-linear-gradient(top, #ffffff 0%,#D3D3D3 100%);
+        width: 25%;
+        height: 60px;
+        margin-top: 8px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border: 2px solid #b3b3b3;
+        border-radius: 5px;
+    }
+
+    .bottombutton_active {
+        /* background-color: white;*/
+        background: -webkit-linear-gradient(bottom, #ffffff 0%,#D3D3D3 100%);
+        width: 25%;
+        height: 60px;
+        margin-top: 8px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border: 2px solid #b3b3b3;
+        border-radius: 5px;
+    }
+}
