@@ -85,34 +85,26 @@ if (isset($_POST['submit'])){
             <!-- Drinken -->
             <div id="drinkenVragen" class="hidden">
             <h3>Drinken</h3>
-            Welke drank(en) heb je gehad?
-              <p>
 
-                <div id="alc"  style="display: block; position: relative; padding-left: 35px; cursor: pointer;">
-                    <h5>Alcohol</h5>
-                  <input type="checkbox" name="drankNaam" value="Water">Water<br>
-                  <input type="checkbox" name="drankNaam" value="Cola">Cola<br>
-                  <input type="checkbox" name="drankNaam" value="Appeljuice">Appeljuice<br>
-                </div>
-                  <input type="checkbox" name="drankNaam" value="Orangejuice">Orangejuice<br>
-                  <input type="checkbox" name="drankNaam" value="Bier">Bier<br>
-                  <input type="checkbox" name="drankNaam" value="Wijn">Wijn<br>
+            <div id="dynamic_field">Welke drank(en) heb je gehad?
+                <p><input placeholder="vul hier uw antwoord in.." name="drankNaam"></p>
+                <button type="button" name="add" id="add" class="btn-add">Add More</button>
+            </div>
 
-              </p>
 
-                Hoeveel kilocalorie zit er erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
+            Hoeveel kilocalorie zit er erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
 
-                Hoeveel gram suiker zit erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankSuiker"></p>
+            Hoeveel gram suiker zit erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankSuiker"></p>
 
-                Welk % alcohol zit erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
+            Welk % alcohol zit erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
 
-                <div style="text-align:center;margin-top:40px;">
-                  <span class="step">2/6</span>
-                </div>
-              </div>
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">2/6</span>
+            </div>
+          </div>
 
             <!-- Eten -->
             <div id="etenVragen" class="hidden">
