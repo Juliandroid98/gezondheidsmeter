@@ -1,4 +1,5 @@
 <?php
+/*
 $werkplek;
 $werkdruk;
 $gewicht;
@@ -9,12 +10,22 @@ $slaapkwaliteit;
 $sportDuur;
 $hoeveel;
 
-
+*/
 
 //arbeid
 //------------------------------------------------
 //
-$arbeid = $werkplek + $werkdruk / 2;
+
+
+function arbeid($werkplek, $werkdruk){
+
+
+    $arbeid = $werkplek + $werkdruk / 2;
+
+    return $arbeid;
+}
+
+
 //------------------------------------------------
 
 
@@ -22,7 +33,7 @@ $arbeid = $werkplek + $werkdruk / 2;
 //-------------------------------------------------
 //
 
-function slaap($slaapuren){
+function slaap($slaapuren, $slaapkwaliteit){
     switch ($slaapuren) {
         case 0:
         case 1:
@@ -71,11 +82,13 @@ function slaap($slaapuren){
             $slaaptijd = 0;
             break;
     }
-    return $slaaptijd;
+
+    $slaap = $slaaptijd + $slaapkwaliteit / 2;
+    return $slaap;
 }
 
 
-$slaap = $slaaptijd + $slaapkwaliteit / 2;
+
 
 
 //-------------------------------------------------
@@ -128,7 +141,7 @@ function drinken($calorien, $alcohol, $suiker){
 
 
 
-$punten_drinken = $alcohol_punten + $calorie_punten + $suiker_punten / 3;
+    $punten_drinken = $alcohol_punten + $calorie_punten + $suiker_punten / 3;
     return $punten_drinken;
 }
 
@@ -159,7 +172,7 @@ function eten($calorien, $suiker){
         $calorie_punten = 7;
     }elseif($calorien <= 2400){
         $calorie_punten = 5;
-    }elseif($calorien <=2600)){
+    }elseif($calorien <= 2600){
         $calorie_punten = 2;
     }else{
         $calorie_punten = 0;
@@ -195,19 +208,79 @@ function eten($calorien, $suiker){
 
 }
 
-
-
-
-
-
-
 //-------------------------------------------------
 
 
 
+//Sport
+//-------------------------------------------------
+//
+
+function sporten($calorien_verbrand)
+{
+    if ($calorien_verbrand <= 100) {
+        $calorie_punten = 0;
+    } elseif ($calorien_verbrand <= 200) {
+        $calorie_punten = 2;
+    } elseif ($calorien_verbrand <= 350) {
+        $calorie_punten = 4;
+    } elseif ($calorien_verbrand <= 450) {
+        $calorie_punten = 7;
+    } elseif ($calorien_verbrand <= 800 && $calorien_verbrand >= 550) {
+        $calorie_punten = 10;
+    } elseif ($calorien_verbrand <= 900) {
+        $calorie_punten = 8;
+    } elseif ($calorien_verbrand <= 1000) {
+        $calorie_punten = 6;
+    } elseif ($calorien_verbrand <= 1400) {
+        $calorie_punten = 3;
+    } else {
+        $calorie_punten = 0;
+    }
 
 
+    return $calorie_punten;
+}
 
+//------------------------------------------------
+
+
+//drugs
+//------------------------------------------------
+//
+
+
+function drugs($hoeveelheid_drugs){
+
+
+    if($hoeveelheid_drugs == 0){
+        $drugs_punten = 10;
+    }elseif($hoeveelheid_drugs <= 0.2){
+        $drugs_punten = 9;
+    }elseif($hoeveelheid_drugs <= 0.5){
+        $drugs_punten = 7;
+    }elseif($hoeveelheid_drugs <= 0.8){
+        $drugs_punten = 6;
+    }elseif($hoeveelheid_drugs <= 1){
+        $drugs_punten = 5;
+    }elseif($hoeveelheid_drugs <= 1.2){
+        $drugs_punten = 4;
+    }elseif($hoeveelheid_drugs <= 1.5){
+        $drugs_punten = 3;
+    }elseif($hoeveelheid_drugs <= 1.8){
+        $drugs_punten = 2;
+    }elseif($hoeveelheid_drugs <= 2){
+        $drugs_punten = 1;
+    }else{
+        $drugs_punten = 0;
+    }
+    return $drugs_punten;
+}
+
+
+//-------------------------------------------------
+
+/*
 if($user = 'man'){
     $voeding = (88.362 + (13.397 * $gewicht) + (4.799 * $lengte) - (5.677 * $leeftijd)) * $verbranding / 1000;
 }
@@ -257,6 +330,4 @@ if($sportDuur >= 0.5 && $sportDuur <= 2){
 }
 
 
-
-
-?>
+*/
