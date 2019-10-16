@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!isset($_SESSION['username'])){
     echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
 }
