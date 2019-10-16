@@ -98,16 +98,16 @@ function PaginaCheck(c){
 
 }
 
-// Adds new input fields for Drinks & Food
+// Adds new input fields for Drinks
 $(document).ready(function(){
     var i=1;
     $('#add').click(function(){
         i++;
-        $('#dynamic_field').append('<input type="text" name="name[]" placeholder="vul hier uw antwoord in.."/><button type="button" name="remove" id="'+i+'" class="btn_remove">x</button>');
+        $('#dynamic_field').append('<p id="row\'+i+\'"><input type="text" name="name[]" placeholder="vul hier uw antwoord in.." class="btn-remove"/><button type="button" name="remove" id="\'+i+\'" class="btn btn-danger btn_remove">x</button></p>');
     });
-    $(document).on('click', '.btn_remove', function(){
+    $(document).on('click', '.btn-remove', function(){
         var button_id = $(this).attr("id");
-        $('input'+button_id+'').remove();
+        $('#row'+button_id+'').remove();
     });
     $('#submit').click(function(){
         $.ajax({

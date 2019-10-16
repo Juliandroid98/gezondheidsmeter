@@ -106,7 +106,7 @@ if(isset($data)){
         </div>
         <div class="pos">
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible">Arbeid</button>
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="myChart"></canvas>
             </div>
@@ -116,7 +116,7 @@ if(isset($data)){
                 <canvas id="myCharts"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible">Drugs</button>
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="myCharts"></canvas>
             </div>
@@ -126,7 +126,7 @@ if(isset($data)){
                 <canvas id="myChart"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible">Sport</button>
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="myCharts"></canvas>
             </div>
