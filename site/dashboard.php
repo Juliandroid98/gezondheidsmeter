@@ -1,5 +1,33 @@
 <?php include 'assets/php/connection.php';
 session_start();
+
+$sql = "SELECT melding FROM melding WHERE datum = CURDATE() AND gebruiker_ID = " . $_SESSION['id'];
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+if(isset($row)){
+
+    if($row['melding'] === "Er is voor vandaag nog geen data ingevuld."){
+
+    }else{
+        $date = date("Y/m/d");
+        $id = $_SESSION['id'];
+        $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+
+        mysqli_query($conn, $query);
+    }
+}else{
+    /*
+    $date = date("Y/m/d");
+    $id = $_SESSION['id'];
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+
+    mysqli_query($conn, $query);
+    */
+    }
+
 ?>
 <!doctype html>
 <html lang="en">

@@ -19,14 +19,14 @@ if (isset($_POST['submit'])){
     $EtenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['etenCalorie']));
     $EtenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['etenSuiker']));
     $DrugsNaam = $conn->real_escape_string(htmlspecialchars($_POST['drugsNaam']));
-    $DrugsHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['drugsHoeveelheid']));
+    $DrugsSoort = $conn->real_escape_string(htmlspecialchars($_POST['drugsSoort']));
     $SlaapHoeveelheid = $conn->real_escape_string(htmlspecialchars($_POST['slaapHoeveelheid']));
     $SlaapKwaliteit = $conn->real_escape_string(htmlspecialchars($_POST['slaapKwaliteit']));
     $Slaapdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsHoeveelheid, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
 
 }
 ?>
@@ -63,11 +63,13 @@ if (isset($_POST['submit'])){
               <!-- Werkplek -->
               <div id="werkVragen" class="">
                   <h3>Werkplek</h3>
-                  <p>Beoordeel uw werkplek:
+                  Beoordeel uw werkplek:
+                  <p>
                       <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkplek">
                   </p>
 
-                  <p>Beoordeel uw werkdruk:
+                  Beoordeel uw werkdruk:
+                  <p>
                       <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkdruk">
                   </p>
 
@@ -82,30 +84,27 @@ if (isset($_POST['submit'])){
 
             <!-- Drinken -->
             <div id="drinkenVragen" class="hidden">
-                <h3>Drinken</h3>
-                Welke drank(en) heb je gehad?
-                  <p>
-                    <select name="drankNaam">
-                      <option value="bier">bier</option>
-                      <option value="wodka">wodka</option>
-                      <option value="water">water</option>
-                      <option value=""></option>
-                    </select>
-                  </p>
+            <h3>Drinken</h3>
 
-                Hoeveel kilocalorie zit er erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
+            <div id="dynamic_field">Welke drank(en) heb je gehad?
+                <p><input placeholder="vul hier uw antwoord in.." name="drankNaam"></p>
+                <button type="button" name="add" id="add" class="btn-add">Add More</button>
+            </div>
 
-                Hoeveel gram suiker zit erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankSuiker"></p>
 
-                Welk % alcohol zit erin?
-                <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
+            Hoeveel kilocalorie zit er erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
 
-                <div style="text-align:center;margin-top:40px;">
-                  <span class="step">2/6</span>
-                </div>
-              </div>
+            Hoeveel gram suiker zit erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankSuiker"></p>
+
+            Welk % alcohol zit erin?
+            <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
+
+            <div style="text-align:center;margin-top:40px;">
+              <span class="step">2/6</span>
+            </div>
+          </div>
 
             <!-- Eten -->
             <div id="etenVragen" class="hidden">
@@ -138,7 +137,7 @@ if (isset($_POST['submit'])){
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsNaam"></p>
 
                 Hoeveel mg heeft u in totaal gebruikt?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsHoeveelheid"></p>
+                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsSoort"></p>
 
                 <div style="text-align:center;margin-top:40px;">
                   <span class="step">4/6</span>
