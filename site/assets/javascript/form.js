@@ -97,3 +97,28 @@ function PaginaCheck(c){
     }
 
 }
+
+// Adds new input fields for Drinks & Food
+$(document).ready(function(){
+    var i=1;
+    $('#add').click(function(){
+        i++;
+        $('#dynamic_field').append('<input type="text" name="name[]" placeholder="vul hier uw antwoord in.."/><button type="button" name="remove" id="'+i+'" class="btn_remove">x</button>');
+    });
+    $(document).on('click', '.btn_remove', function(){
+        var button_id = $(this).attr("id");
+        $(''+button_id+'').remove();
+    });
+    $('#submit').click(function(){
+        $.ajax({
+            url:"vragenformulier.php",
+            method:"POST",
+            data:$('#add_name').serialize(),
+            success:function(data)
+            {
+                alert(data);
+                $('#add_name')[0].reset();
+            }
+        });
+    });
+});

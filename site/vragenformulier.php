@@ -88,9 +88,8 @@ if (isset($_POST['submit'])){
 
             <div id="dynamic_field">Welke drank(en) heb je gehad?
                 <p><input placeholder="vul hier uw antwoord in.." name="drankNaam"></p>
-                <button type="button" name="add" id="add" class="btn-add">Add More</button>
+                <button type="button" name="add" id="add" class="btn_add">+</button>
             </div>
-
 
             Hoeveel kilocalorie zit er erin?
             <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
@@ -110,14 +109,10 @@ if (isset($_POST['submit'])){
             <div id="etenVragen" class="hidden">
                 <h3>Eten</h3>
                 Welk eten heb je gehad?
-                  <p>
-                    <select class="custom-select" name="etenNaam">
-                      <option value=""></option>
-                      <option value=""></option>
-                      <option value=""></option>
-                      <option value=""></option>
-                    </select>
-                  </p>
+                <div id="dynamic_field">Welke drank(en) heb je gehad?
+                    <p><input placeholder="vul hier uw antwoord in.." name="etenNaam"></p>
+                    <button type="button" name="add" id="add" class="btn_add">+</button>
+                </div>
 
                 Hoeveel kilo caloriën zit er in?
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenCalorie"></p>
