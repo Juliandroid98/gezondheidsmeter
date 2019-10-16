@@ -3,6 +3,10 @@ session_start();
 if(!isset($_SESSION['username'])){
     echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
 }
+print_r($_SESSION);
+if($_SESSION['is_admin'] === '0'){
+    echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
+}
 ?>
 <!doctype html>
 <html lang="en">

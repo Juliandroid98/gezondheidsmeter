@@ -1,5 +1,12 @@
 <?php
-	//refresh html and execute sql
+if($_SESSION['is_admin'] === '0'){
+    echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
+}
+
+
+//refresh html and execute sql
+
+
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=gezondheidsmeter", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
