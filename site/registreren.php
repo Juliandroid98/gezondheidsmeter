@@ -6,12 +6,13 @@ if(isset($_SESSION['username'])){
 }
 
 include 'assets/php/Connection.php';
-if (isset($_POST["username"])){
+if (isset($_POST["username"])) {
 
     //setting the variables
     $username = "";
     $email = "";
     $password = "";
+    $repeatpassword = "";
     $length = "";
     $weight = "";
     $gender = "";
@@ -20,6 +21,7 @@ if (isset($_POST["username"])){
     //escaping special characters in al variables
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $repeatpassword = mysqli_real_escape_string($conn, $_POST['repeatpassword']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $datum = mysqli_real_escape_string($conn, $_POST['date']);
     $length = mysqli_real_escape_string($conn, $_POST['length']);
@@ -27,74 +29,102 @@ if (isset($_POST["username"])){
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
     //see if it is empty and if empty it wil return a error
-    if (empty($username)) { array_push($errors, "U moet een gebruikersnaam invullen."); echo "<script> alert('De gebruikersnaam moet nog ingevuld worden.')</script>";}
-    if (empty($email)) { array_push($errors, "Email moet worden ingevuld."); echo "<script> alert('het Email adres moet nog ingevuld worden.')</script>";}
-    if (empty($password)) { array_push($errors, "Wachtwoord moet worden ingevuld."); echo "<script> alert('Het wachtwoord moet nog ingevuld worden.')</script>";}
-    if (empty($datum)) { array_push($errors, "Datum moet worden ingevuld."); echo "<script> alert('De geboortedatum moet nog ingevuld worden.')</script>";}
-    if (empty($length)) { array_push($errors, "De lengte moet worden ingevuld."); echo "<script> alert('De lengte moet nog ingevuld worden.')</script>";}
-    if (empty($weight)) { array_push($errors, "Het gewicht moet worden ingevuld."); echo "<script> alert('Het gewicht moet nog ingevuld worden.')</script>";}
-    if (empty($gender)) { array_push($errors, "Het geslacht moet worden ingevuld."); echo "<script> alert('Het geslacht moet nog ingevuld worden.')</script>";}
-
-    //searching the name in the database to see if it already exists
-    $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
-    $result = mysqli_query($conn, $user_check_query);
-    $user = mysqli_fetch_assoc($result);
-
-    //returns text if name or email already exists
-    if ($user) {
-        if ($user['gebruiker'] === $username) {
-            array_push($errors, "Gebruikersnaam bestaat al.");
-        }
-
-        if ($user['email'] === $email) {
-            array_push($errors, "Email bestaat al.");
-        }
+    if (empty($username)) {
+        array_push($errors, "U moet een gebruikersnaam invullen.");
+        echo "<script> alert('De gebruikersnaam moet nog ingevuld worden.')</script>";
     }
-
-    //if there were no errors it will continue the code
-    if (count($errors) == 0) {
-        //hashing the password
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
-        //getting a unique id to put in the database and send with a mail
-        $uniekid = uniqid();
-
-        //puts data into database
-        $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
-  			  VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
-
-        mysqli_query($conn, $query);
-
+    if (empty($email)) {
+        array_push($errors, "Email moet worden ingevuld.");
+        echo "<script> alert('het Email adres moet nog ingevuld worden.')</script>";
+    }
+    if (empty($password)) {
+        array_push($errors, "Wachtwoord moet worden ingevuld.");
+        echo "<script> alert('Het wachtwoord moet nog ingevuld worden.')</script>";
+    }
+    if (empty($repeatpassword)) {
+        array_push($errors, "Wachtwoord moet worden ingevuld.");
+        echo "<script> alert('Het wachtwoord moet nog ingevuld worden.')</script>";
+    }
+    if (empty($datum)) {
+        array_push($errors, "Datum moet worden ingevuld.");
+        echo "<script> alert('De geboortedatum moet nog ingevuld worden.')</script>";
+    }
+    if (empty($length)) {
+        array_push($errors, "De lengte moet worden ingevuld.");
+        echo "<script> alert('De lengte moet nog ingevuld worden.')</script>";
+    }
+    if (empty($weight)) {
+        array_push($errors, "Het gewicht moet worden ingevuld.");
+        echo "<script> alert('Het gewicht moet nog ingevuld worden.')</script>";
+    }
+    if (empty($gender)) {
+        array_push($errors, "Het geslacht moet worden ingevuld.");
+        echo "<script> alert('Het geslacht moet nog ingevuld worden.')</script>";
+    }
+    if($password == $repeatpassword){
+        //searching the name in the database to see if it already exists
         $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check_query);
-        $gebruiker = mysqli_fetch_assoc($result);
+        $user = mysqli_fetch_assoc($result);
+
+        //returns text if name or email already exists
+        if ($user) {
+            if ($user['gebruiker'] === $username) {
+                array_push($errors, "Gebruikersnaam bestaat al.");
+            }
+
+            if ($user['email'] === $email) {
+                array_push($errors, "Email bestaat al.");
+            }
+        }
+
+        //if there were no errors it will continue the code
+        if (count($errors) == 0) {
+            //hashing the password
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            //getting a unique id to put in the database and send with a mail
+            $uniekid = uniqid();
+
+            //puts data into database
+            $query = "INSERT INTO gebruiker (gebruikersnaam, wachtwoord, email, geboortedatum, lengte, gewicht, geslacht, activeer_id) 
+                      VALUES('$username', '$password', '$email', '$datum', '$length', '$weight', '$gender', '$uniekid')";
+
+            mysqli_query($conn, $query);
+
+            $user_check_query = "SELECT * FROM gebruiker WHERE gebruikersnaam ='$username' OR email='$email' LIMIT 1";
+            $result = mysqli_query($conn, $user_check_query);
+            $gebruiker = mysqli_fetch_assoc($result);
 
 
-        //sets a mail to be send to the user to activate their account
-        $to = $email;
-        $subject = "Account activeren";
+            //sets a mail to be send to the user to activate their account
+            $to = $email;
+            $subject = "Account activeren";
 
-        $message = "
-        <html>
-        <head>
-        <title>Account activeren</title>
-        </head>
-        <body>
-        <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
-        <br>
-        <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php?email=$email&uniekid=$uniekid'>Activeer account</a>
-        </body>
-        </html>
-        ";
+            $message = "
+                <html>
+                <head>
+                <title>Account activeren</title>
+                </head>
+                <body>
+                <p>Bedankt voor het aanmaken van een account, maar voordat u kunt inloggen moet u uw account activeren u kunt dat hier doen</p>
+                <br>
+                <a href='http://localhost/periode%209/gezondheidsmeter/site/account_activeren.php?email=$email&uniekid=$uniekid'>Activeer account</a>
+                </body>
+                </html>
+                ";
 
 
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            $headers .= 'From: <no-reply@gmail.com>' . "\r\n";
 
-        mail($to,$subject,$message,$headers);
-        //gives alert to user and sends them to index page
-        echo "<script> alert('Er is een mail naar u gestuurd,u kunt nu uw account verifieren.'); window.location.href='index.php';</script>";
+            mail($to, $subject, $message, $headers);
+            //gives alert to user and sends them to index page
+            echo "<script> alert('Er is een mail naar u gestuurd,u kunt nu uw account verifieren.'); window.location.href='index.php';</script>";
+        }
+    }else{
+        echo "<script> alert('De Wachtwoorden zijn niet hetzelfde.')</script>";
     }
 }
 ?>

@@ -10,24 +10,24 @@ if(isset($_SESSION['username'])){
 if (isset($_POST["username"])) {
     //kijkt of er iets leeg is
     if (isset($_POST["username"]) && !empty($_POST["username"]) && !empty($_POST["password"])) {
-        //zet de post data in variabelen
-        $wachtwoord = $_POST["password"];
-        $gebruikersnaam = $_POST["username"];
+            //zet de post data in variabelen
+            $wachtwoord = $_POST["password"];
+            $gebruikersnaam = $_POST["username"];
 
-        //haalt met de gegevens data op uit de database
-        $error = "";
-        $sql = "SELECT wachtwoord, gebruiker_ID, is_admin FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+            //haalt met de gegevens data op uit de database
+            $error = "";
+            $sql = "SELECT wachtwoord, gebruiker_ID, is_admin FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-        //checkt of de wachtwoorden hetzelfde zijn
-        if (password_verify($wachtwoord, $row['wachtwoord'])){
-            //maakt een session aan met gebruikers data
-            session_start();
-            $_SESSION['username'] = $gebruikersnaam;
-            $_SESSION['id'] = $row['gebruiker_ID'];
-            $_SESSION['is_admin'] = $row['is_admin'];
-            header( 'Location: dashboard.php');
+            //checkt of de wachtwoorden hetzelfde zijn
+            if (password_verify($wachtwoord, $row['wachtwoord'])){
+                //maakt een session aan met gebruikers data
+                session_start();
+                $_SESSION['username'] = $gebruikersnaam;
+                $_SESSION['id'] = $row['gebruiker_ID'];
+                $_SESSION['is_admin'] = $row['is_admin'];
+                header( 'Location: dashboard.php');
 
         }
     } else {
