@@ -1,5 +1,6 @@
 <?php
-include '';
+include 'berekening/berekeningen.php';
+
 $servername = "localhost";
 $username_DB = "root";
 $password_DB = "";
