@@ -40,6 +40,7 @@ session_start();
             <div class="meter sport">Sport<br>-</div>
             <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
         </div>
+        <div class="pos">
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
             <button type="button" class="collapsible">Slaap</button>
             <div class="content" style="margin-bottom: 100px;">
@@ -65,7 +66,7 @@ session_start();
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="myCharts"></canvas>
             </div>
-        </div>
+        </div></div>
         <!-- bottom buttons-->
         <div class="bottomcontainer">
             <div class="bottombuttongroup">

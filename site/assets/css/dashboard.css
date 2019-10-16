@@ -116,6 +116,8 @@
     text-align: center;
 }
 
+
+
 .chart-btnGroup button:hover {
     background-color: #3e8e41;
 }
@@ -129,5 +131,8 @@
     position: absolute;
 }
 @media only screen and (max-width: 1100px){
-    .chart-btnGroup .content { width: 100%;}
+    .chart-btnGroup button { 
+        width: 19%;
+        text-align: center;
+    }
 }
