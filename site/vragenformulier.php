@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
 require 'assets/php/Connection.php';
 require 'assets/php/SaveForm.php';
 
@@ -27,7 +31,7 @@ if (isset($_POST['submit'])){
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
     $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
-
+    header( "Location: dashboard.php" );
 }
 ?>
 <!doctype html>
