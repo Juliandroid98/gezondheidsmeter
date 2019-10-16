@@ -52,7 +52,8 @@ session_start();
             <div class="closebutton">X</div>
             <h4>Algemene instellingen</h4>
         </div>
-        <a class="settingscontainer resetten" href="ww_vergeten.php">wachtwoord resetten</a>
+        <a class="settingscontainer resetten" href="ww_vergeten.php">Wachtwoord resetten</a><br>
+        <a class="settingscontainer resetten" href="meter_resetten.php">Meter resetten</a>
         <div class="settingscontainer verwijder">Account verwijderen</div>
     </div>
     <!-- confirmation modal -->
