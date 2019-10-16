@@ -107,7 +107,7 @@ $(document).ready(function(){
     });
     $(document).on('click', '.btn_remove', function(){
         var button_id = $(this).attr("id");
-        $(''+button_id+'').remove();
+        $('input'+button_id+'').remove();
     });
     $('#submit').click(function(){
         $.ajax({
