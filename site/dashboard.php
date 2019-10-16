@@ -1,6 +1,10 @@
 <?php include 'assets/php/connection.php';
 session_start();
 
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
 $sql = "SELECT melding FROM melding WHERE datum = CURDATE() AND gebruiker_ID = " . $_SESSION['id'];
 $result = mysqli_query($conn,$sql);
 $data = mysqli_fetch_array($result,MYSQLI_ASSOC);
