@@ -1,55 +1,31 @@
 $(function ()
 {
-    $.ajax({
-        url: 'assets/php/chartQuery.php',
-        data: "",
+    //get range of first and last day of the week
+    var today = new Date;
+    var last = today.getDate() - today.getDay() + 1;
+    var first = last + 6;
 
+    //format date data
+    var firstDay = new Date(today.setDate(last)).toISOString().slice(0,10);
+    var lastDay = new Date(today.setDate(first)).toISOString().slice(0,10);
+    $.ajax(
+        {
+        type: "POST",
+        url: "assets/php/chartQuery.php",
+        data: {firstDay: firstDay, lastDay: lastDay},
         dataType: 'json',
         success: function(data)
         {
-            var datatoday = data[1][1];
-            var datum = data[0][2];
-            console.log(datum);
+            //chart
             var ctx = document.getElementById('myChart').getContext('2d');
 
-            var days = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
-            var dateString = Date.now();
-            var date = new Date(dateString);
-            var dayName = days[date.getDay() - 1];
-
-            var curr = new Date;
-            var maandag = curr.getDate() - curr.getDay() + 1;
-            var dinsdag = maandag + 1;
-            var woensdag = maandag + 2;
-            var donderdag = maandag + 3;
-            var vrijdag = maandag + 4;
-            var zaterdag = maandag + 5;
-            var zondag = maandag + 6;
-
-            var maandagDate = new Date(curr.setDate(maandag)).toISOString().slice(0,10);
-            var dinsdagDate = new Date(curr.setDate(dinsdag)).toISOString().slice(0,10);
-            var woensdagDate = new Date(curr.setDate(woensdag)).toISOString().slice(0,10);
-            var donderdagDate = new Date(curr.setDate(donderdag)).toISOString().slice(0,10);
-            var vrijdagDate = new Date(curr.setDate(vrijdag)).toISOString().slice(0,10);
-            var zaterdagDate = new Date(curr.setDate(zaterdag)).toISOString().slice(0,10);
-            var zondagDate = new Date(curr.setDate(zondag)).toISOString().slice(0,10);
-
-            console.log(maandagDate);
-            console.log(dinsdagDate);
-            console.log(woensdagDate);
-            console.log(donderdagDate);
-            console.log(vrijdagDate);
-            console.log(zaterdagDate);
-            console.log(zondagDate);
-
-            for(var i = 0; i < days.length; i++){
-                if(days[i] === dayName){
-                    data[i] = datatoday;
-                }
-                else{
-                    data[i] = data;
-                }
+            //fill data
+            var result = [];
+            console.log(data);
+            for(i = 0; i < data.length; i++){
+                result.push(data[i][0]);
             }
+            console.log(result);
 
 
             var chart = new Chart(ctx, {
@@ -58,7 +34,7 @@ $(function ()
                     labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
                     datasets: [{
                         label: 'Levensstijl',
-                        data: data
+                        data: result
                     }]
                 },
                 options: {
@@ -96,11 +72,9 @@ $(function ()
                         }
                     }
                 ]
+
+
             });
         }
     });
-
-
-
-
 });
