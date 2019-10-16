@@ -3,30 +3,66 @@ session_start();
 
 $sql = "SELECT melding FROM melding WHERE datum = CURDATE() AND gebruiker_ID = " . $_SESSION['id'];
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+$data = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-if(isset($row)){
+if(isset($data)){
 
-    if($row['melding'] === "Er is voor vandaag nog geen data ingevuld."){
+    $sql = "
+        SELECT arbeid.datum , koppel_user_drinks.datum, koppel_user_drugs.datum, koppel_user_eten.datum, koppel_user_sport.datum, slaap.datum
+        FROM arbeid 
+        LEFT JOIN koppel_user_drinks ON arbeid.gebruiker_ID = koppel_user_drinks.gebruiker_ID
+        LEFT JOIN koppel_user_drugs ON arbeid.gebruiker_ID = koppel_user_drugs.gebruiker_ID
+        LEFT JOIN koppel_user_eten ON arbeid.gebruiker_ID = koppel_user_eten.gebruiker_ID
+        LEFT JOIN koppel_user_sport ON arbeid.gebruiker_ID = koppel_user_sport.gebruiker_ID
+        LEFT JOIN slaap ON arbeid.gebruiker_ID = slaap.gebruiker_ID
+        WHERE arbeid.datum AND koppel_user_drinks.datum AND koppel_user_drugs.datum AND koppel_user_eten.datum AND koppel_user_sport.datum AND slaap.datum = CURDATE() AND arbeid.gebruiker_ID AND koppel_user_drinks.gebruiker_ID AND koppel_user_drugs.gebruiker_ID AND koppel_user_eten.gebruiker_ID AND koppel_user_sport.gebruiker_ID AND slaap.gebruiker_ID =" . $_SESSION['id'];
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-    }else{
-        $date = date("Y/m/d");
+    if(isset($row)){
+        $date = date("Y-m-d");
         $id = $_SESSION['id'];
-        $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
-  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+
+        $query = "DELETE FROM melding WHERE datum = '$date' AND gebruiker_ID = '$id'";
 
         mysqli_query($conn, $query);
+    }else{
+
     }
 }else{
     /*
-    $date = date("Y/m/d");
+    $date = date("Y-m-d");
     $id = $_SESSION['id'];
     $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
-  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
 
     mysqli_query($conn, $query);
     */
+
+    $sql = "
+    SELECT arbeid.datum , koppel_user_drinks.datum, koppel_user_drugs.datum, koppel_user_eten.datum, koppel_user_sport.datum, slaap.datum
+    FROM arbeid 
+    LEFT JOIN koppel_user_drinks ON arbeid.gebruiker_ID = koppel_user_drinks.gebruiker_ID
+    LEFT JOIN koppel_user_drugs ON arbeid.gebruiker_ID = koppel_user_drugs.gebruiker_ID
+    LEFT JOIN koppel_user_eten ON arbeid.gebruiker_ID = koppel_user_eten.gebruiker_ID
+    LEFT JOIN koppel_user_sport ON arbeid.gebruiker_ID = koppel_user_sport.gebruiker_ID
+    LEFT JOIN slaap ON arbeid.gebruiker_ID = slaap.gebruiker_ID
+    WHERE arbeid.datum AND koppel_user_drinks.datum AND koppel_user_drugs.datum AND koppel_user_eten.datum AND koppel_user_sport.datum AND slaap.datum = CURDATE() AND arbeid.gebruiker_ID AND koppel_user_drinks.gebruiker_ID AND koppel_user_drugs.gebruiker_ID AND koppel_user_eten.gebruiker_ID AND koppel_user_sport.gebruiker_ID AND slaap.gebruiker_ID =" . $_SESSION['id'];
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    if(isset($row)){
+
+    }else{
+        $date = date("Y-m-d");
+        $id = $_SESSION['id'];
+
+        $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
+
+        mysqli_query($conn, $query);
     }
+}
 
 ?>
 <!doctype html>
