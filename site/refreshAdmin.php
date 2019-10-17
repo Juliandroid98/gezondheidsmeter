@@ -165,19 +165,20 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruiker, geboortedatum = :geboortedatum, email = :email WHERE gebruiker_ID = :gebruikerID";
+    $sql = "UPDATE gebruiker SET is_admin = :is_admin, gebruikersnaam = :gebruiker, email = :email, gewicht = :gewicht, lengte = :lengte, geboortedatum = :geboortedatum, geslacht = :geslacht, geactiveerd = :geactiveerd WHERE gebruiker_ID = :gebruikerID";
 	
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
-    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':is_admin', $_POST['isAdmin']);
     $stmt->bindParam(':gebruikerID', $_POST['gebruikerID']);
-	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    //$stmt->bindParam(':lengte', $_POST['lengte']);
-    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
-	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
+    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
+    $stmt->bindParam(':lengte', $_POST['lengte']);
+    $stmt->bindParam(':gewicht', $_POST['gewicht']);
+	$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    $stmt->bindParam(':geactiveerd', $_POST['geactiveerd']);
     
     // Execute the prepared statement
     $stmt->execute();
