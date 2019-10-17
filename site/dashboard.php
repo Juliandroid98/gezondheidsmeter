@@ -37,7 +37,10 @@ if(isset($data)){
     /*
     $date = date("Y-m-d");
     $id = $_SESSION['id'];
-    $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID)
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+=======
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID)
   			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
 
     mysqli_query($conn, $query);
@@ -90,61 +93,67 @@ if(isset($data)){
     <title>Gezondheidsmeter - Dashboard</title>
 </head>
 <body>
-    <div class="sitecontainer">
-        <!-- header -->
-        <div class="headercontainer">
-            <image class="logosmall" src="assets/images/logo.png" alt="logo">
+<div class="sitecontainer">
+    <!-- header -->
+    <div class="headercontainer">
+        <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Dashboard</h1>
             <a class="settingsmenu" href="settings.php">
                 <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
-        </div>
-        <!-- content -->
-        <div class="metercontainer">
-            <div class="meter arbeid">Arbeid<br>-</div>
-            <div class="meter voeding">Voeding<br>-</div>
-            <div class="meter drugs">Drugs<br>-</div>
-            <div class="meter slaap">Slaap<br>-</div>
-            <div class="meter sport">Sport<br>-</div>
-            <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
-        </div>
-        <div class="pos">
+    </div>
+    <!-- content -->
+    <div class="metercontainer">
+        <div class="meter arbeid">Arbeid<br>-</div>
+        <div class="meter voeding">Voeding<br>-</div>
+        <div class="meter drugs">Drugs<br>-</div>
+        <div class="meter slaap">Slaap<br>-</div>
+        <div class="meter sport">Sport<br>-</div>
+        <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
+    </div>
+    <div class="pos">
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
-            <button type="button" class="collapsible">Arbeid</button>
+            <button type="button" class="collapsible" id="arbeid">Arbeidsomstandigheden</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Voeding</button>
+            <button type="button" class="collapsible" id="Sport">sport</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSport"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Drugs</button>
+            <button type="button" class="collapsible" id="slaap">Slaap</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSlaap"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="eten">Eten</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartEten"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Sport</button>
+            <button type="button" class="collapsible" id="drinken">Drinken</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartDrinken"></canvas>
             </div>
-        </div></div>
-        <!-- bottom buttons-->
-        <div class="bottomcontainer">
-            <div class="bottombuttongroup">
-                <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
-                <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
-                <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
+            <button type="button" class="collapsible" id="drugs">Drugs</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="chartDrugs"></canvas>
             </div>
         </div>
     </div>
-    <script src="assets/javascript/dashboard.js"></script>
-    <script src="assets/javascript/chartjs.js"></script>
+    <!-- bottom buttons-->
+    <div class="bottomcontainer">
+        <div class="bottombuttongroup">
+            <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
+            <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
+            <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
+        </div>
+    </div>
+</div>
+<script src="assets/javascript/chartjs.js"></script>
+<script src="assets/javascript/dashboard.js"></script>
+<script src="assets/javascript/berekening.js"></script>
 </body>
 </html>
