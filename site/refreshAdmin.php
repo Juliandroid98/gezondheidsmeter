@@ -1,4 +1,6 @@
 <?php
+include 'assets/php/Connection.php';
+session_start();
 if($_SESSION['is_admin'] === '0'){
     echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
 }
