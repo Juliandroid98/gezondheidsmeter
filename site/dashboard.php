@@ -21,7 +21,7 @@ if(isset($row)){
     /*
     $date = date("Y/m/d");
     $id = $_SESSION['id'];
-    $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID)
   			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
 
     mysqli_query($conn, $query);
@@ -69,29 +69,33 @@ if(isset($row)){
             <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
         </div>
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="arbeid">Arbeidsomstandigheden</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Voeding</button>
+            <button type="button" class="collapsible" id="Sport">sport</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSport"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="slaap">Slaap</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSlaap"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="eten">Eten</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartEten"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="drinken">Drinken</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartDrinken"></canvas>
+            </div>
+            <button type="button" class="collapsible" id="drugs">Drugs</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="chartDrugs"></canvas>
             </div>
         </div>
         <!-- bottom buttons-->
@@ -103,7 +107,8 @@ if(isset($row)){
             </div>
         </div>
     </div>
-    <script src="assets/javascript/dashboard.js"></script>
     <script src="assets/javascript/chartjs.js"></script>
+    <script src="assets/javascript/dashboard.js"></script>
+    <script src="assets/javascript/berekening.js"></script>
 </body>
 </html>

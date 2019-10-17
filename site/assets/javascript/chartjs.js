@@ -1,5 +1,6 @@
-$(function ()
+function chart(chartSoort)
 {
+
     //get range of first and last day of the week
     var today = new Date;
     var last = today.getDate() - today.getDay() + 1;
@@ -12,14 +13,40 @@ $(function ()
         {
         type: "POST",
         url: "assets/php/chartQuery.php",
-        data: {firstDay: firstDay, lastDay: lastDay},
+        data: {firstDay: firstDay, lastDay: lastDay, soort: chartSoort},
         dataType: 'json',
         success: function(data)
         {
+            console.log(data);
+            // var arbeid = arbeid();
+            // var sport = sporten(600);
+            // var drugs = drugs();
+            // var eten = eten();
+            // var drinken = drinken();
+            // var slapen = slaap();
             //chart
-            var ctx = document.getElementById('myChart').getContext('2d');
-
-            //fill data
+            var collapseChart;
+            switch(chartSoort){
+                case 'arbeid':
+                    collapseChart = document.getElementById('chartArbeid').getContext('2d');
+                    break;
+                case 'drugs':
+                    collapseChart = document.getElementById('chartDrugs').getContext('2d');
+                    break;
+                case 'slaap':
+                    collapseChart = document.getElementById('chartSlaap').getContext('2d');
+                    break;
+                case 'drinken':
+                    collapseChart = document.getElementById('chartDrinken').getContext('2d');
+                    break;
+                case 'eten':
+                    collapseChart = document.getElementById('chartEten').getContext('2d');
+                    break;
+                case 'sport':
+                    collapseChart = document.getElementById('chartSport').getContext('2d');
+                    break;
+            }
+                        //fill data
             var result = [];
             console.log(data);
             for(i = 0; i < data.length; i++){
@@ -28,7 +55,7 @@ $(function ()
             console.log(result);
 
 
-            var chart = new Chart(ctx, {
+            var chart = new Chart(collapseChart, {
                 type: 'line',
                 data: {
                     labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
@@ -77,4 +104,4 @@ $(function ()
             });
         }
     });
-});
+}

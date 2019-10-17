@@ -106,13 +106,6 @@
     width: 10%;
     text-align: center;
 }
-
-.chart-btnGroup button:hover {
-    background-color: #3e8e41;
-}
-.chart-btnGroup button:focus {
-    background-color: green;
-}
 .chart-btnGroup .content {
     width: 60%;
     margin:0 auto;
