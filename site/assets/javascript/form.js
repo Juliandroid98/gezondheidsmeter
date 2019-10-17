@@ -95,30 +95,4 @@ function PaginaCheck(c){
             submitButton.classList.remove("hidden");
             break;
     }
-
 }
-
-// Adds new input fields for Drinks
-$(document).ready(function(){
-    var i=1;
-    $('#add').click(function(){
-        i++;
-        $('#dynamic_field').append('<p id="row\'+i+\'"><input type="text" name="name[]" placeholder="vul hier uw antwoord in.." class="btn-remove"/><button type="button" name="remove" id="\'+i+\'" class="btn btn-danger btn_remove">x</button></p>');
-    });
-    $(document).on('click', '.btn-remove', function(){
-        var button_id = $(this).attr("id");
-        $('#row'+button_id+'').remove();
-    });
-    $('#submit').click(function(){
-        $.ajax({
-            url:"vragenformulier.php",
-            method:"POST",
-            data:$('#add_name').serialize(),
-            success:function(data)
-            {
-                alert(data);
-                $('#add_name')[0].reset();
-            }
-        });
-    });
-});
