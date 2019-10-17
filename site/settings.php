@@ -63,7 +63,7 @@ if(!isset($_SESSION['username'])){
     <div class="confirmmodal">
         <div class="modaltext">Weet u zeker dat u uw account wilt verwijderen?</div>
         <div class="modalbuttongroup">
-            <form type="POST" action="">
+            <form type="POST" action="assets/php/account_verwijderen.php">
                 <input class="modalbutton modalyes" type="submit" name="delete" value="Ja">
                 <div class="modalbutton modalno">Nee</div>
             </form>

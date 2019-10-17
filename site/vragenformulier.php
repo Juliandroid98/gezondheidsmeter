@@ -69,12 +69,12 @@ if (isset($_POST['submit'])){
                   <h3>Werkplek</h3>
                   Beoordeel uw werkplek:
                   <p>
-                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkplek">
+                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkplek">
                   </p>
 
                   Beoordeel uw werkdruk:
                   <p>
-                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." name="werkdruk">
+                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkdruk">
                   </p>
 
                   Datum:
@@ -92,7 +92,6 @@ if (isset($_POST['submit'])){
 
             <div id="dynamic_field">Welke drank(en)heeft u gehad?
                 <p><input placeholder="vul hier uw antwoord in.." name="drankNaam"></p>
-                <button type="button" name="add" id="add" class="btn_add">+</button>
             </div>
 
             Hoeveel kilocalorieën zit er erin?
@@ -115,7 +114,6 @@ if (isset($_POST['submit'])){
                 Welk eten heeft u gehad?
                 <div id="dynamic_field">
                     <p><input placeholder="vul hier uw antwoord in.." name="etenNaam"></p>
-                    <button type="button" name="add" id="add" class="btn_add">+</button>
                 </div>
 
                 Hoeveel kilocalorieën zit er in?
@@ -151,10 +149,10 @@ if (isset($_POST['submit'])){
             <div id="slaapVragen" class="hidden">
                 <h3>Slaap</h3>
                 Hoeveel uren heeft u geslapen?
-                  <p><input placeholder="vul hier uw antwoord in.." name="slaapHoeveelheid"></p>
+                  <p><input placeholder="vul hier uw antwoord in.." required size="3" minlength="0" maxlength="2" name="slaapHoeveelheid"></p>
 
                 Beoordeel uw slaap.
-                  <p><input placeholder="vul hier uw beoordeling van 1 tot 10.." name="slaapKwaliteit"></p>
+                  <p><input placeholder="vul hier uw beoordeling van 1 tot 10.."  required size="3" minlength="0" maxlength="2" name="slaapKwaliteit"></p>
                 Datum:
                 <p>
                     <input placeholder="vul hier de huidige datum in.." type="date" name="datum">

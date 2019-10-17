@@ -49,10 +49,14 @@
     background-color: lightgray;
 }
 
-.voeding {
+.eten {
     background-color: lightgray;
     margin-left: 4%;
     margin-right: 4%;
+}
+
+.drinken {
+    background-color: lightgray;
 }
 
 .drugs {
@@ -61,6 +65,7 @@
 
 .slaap {
     background-color: lightgray;
+    margin-left: 4%;
     margin-right: 4%;
 }
 
