@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
+if($_SESSION['is_admin'] === '0'){
+    echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +120,7 @@ try{
     $sql = "SELECT * FROM drugs";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table id='drugs'>";
             echo "<tr>";
                 echo "<th>drugs_id</th>";
                 echo "<th>drugs_naam</th>";
@@ -158,7 +168,7 @@ try{
     $sql = "SELECT * FROM eten";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table id='eten'>";
             echo "<tr>";
                 echo "<th>eten_id</th>";
                 echo "<th>etennaam</th>";
@@ -180,21 +190,21 @@ try{
             echo "</tr>";
 			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
-				echo "<td><input id='editRecordDrugs' type='text' name='eten_ID' value='" . $row['eten_ID'] . "'></td>";
-                echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
-				echo "<td><input id='editRecordDrugs' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
-				echo "<td><input id='editRecordDrugs' type='text' name='schijf_ID' value='" . $row['schijf_ID'] . "'></td>";
-				echo "<td><input id='editRecordDrugs' type='text' name='sugar' value='" . $row['sugar'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='Editeten_ID' value='" . $row['eten_ID'] . "'></td>";
+                echo "<td><input id='editRecordDrugs' type='text' name='EditEtennaam' value='" . $row['naam'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='EditEtenkcal' value='" . $row['kcal'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='EditEtenschijf_ID' value='" . $row['schijf_ID'] . "'></td>";
+				echo "<td><input id='editRecordDrugs' type='text' name='EditEtensugar' value='" . $row['sugar'] . "'></td>";
 				echo "<td><input type='submit'></td><td></td>";
 				echo "</form>";				
 			echo "</tr>";
         }
 		echo "<form action='refreshAdmin.php' method='post'>
 		<tr id='addRowEten' style='display: none;'><td>
-		<input type='text' placeholder='naam' name='naam'></td>
-		<td><input type='text' placeholder='kcal' name='kcal'></td>
-		<td><input type='text' placeholder='schijf' name='schijf_ID'></td>
-		<td><input type='text' placeholder='suiker' name='sugar'></td>
+		<input type='text' placeholder='naam' name='AddEtennaam'></td>
+		<td><input type='text' placeholder='kcal' name='AddEtenkcal'></td>
+		<td><input type='text' placeholder='schijf' name='AddEtenschijf_ID'></td>
+		<td><input type='text' placeholder='suiker' name='AddEtensugar'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
 		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
 		echo "</table></div>";
@@ -211,7 +221,7 @@ try{
     $sql = "SELECT * FROM drinken";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table id='drinken'>";
             echo "<tr>";
                 echo "<th>drank_id</th>";
                 echo "<th>dranknaam</th>";

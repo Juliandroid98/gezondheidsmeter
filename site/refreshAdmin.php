@@ -1,5 +1,14 @@
 <?php
-	//refresh html and execute sql
+include 'assets/php/Connection.php';
+session_start();
+if($_SESSION['is_admin'] === '0'){
+    echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
+}
+
+
+//refresh html and execute sql
+
+
 try{
     $pdo = new PDO("mysql:host=localhost;dbname=gezondheidsmeter", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -108,11 +117,11 @@ try{
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':eten_ID', $_POST['eten_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':eten_ID', $_POST['Editeten_ID']);
+    $stmt->bindParam(':naam', $_POST['EditEtennaam']);
+    $stmt->bindParam(':kcal', $_POST['EditEtenkcal']);
+    $stmt->bindParam(':sugar', $_POST['EditEtensugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['EditEtenschijf_ID']);
     $stmt->execute();
     //echo "Record updated successfully.";
 } catch(PDOException $e){
@@ -156,19 +165,20 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE gebruiker SET gebruikersnaam = :gebruiker, geboortedatum = :geboortedatum, email = :email WHERE gebruiker_ID = :gebruikerID";
+    $sql = "UPDATE gebruiker SET is_admin = :is_admin, gebruikersnaam = :gebruiker, email = :email, gewicht = :gewicht, lengte = :lengte, geboortedatum = :geboortedatum, geslacht = :geslacht, geactiveerd = :geactiveerd WHERE gebruiker_ID = :gebruikerID";
 	
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
-    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':is_admin', $_POST['isAdmin']);
     $stmt->bindParam(':gebruikerID', $_POST['gebruikerID']);
-	//$stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
-    //$stmt->bindParam(':lengte', $_POST['lengte']);
-    //$stmt->bindParam(':gewicht', $_POST['gewicht']);
-	//$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    $stmt->bindParam(':gebruiker', $_POST['gebruikersnaam']);
+    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':geboortedatum', $_POST['geboortedatum']);
+    $stmt->bindParam(':lengte', $_POST['lengte']);
+    $stmt->bindParam(':gewicht', $_POST['gewicht']);
+	$stmt->bindParam(':geslacht', $_POST['geslacht']);
+    $stmt->bindParam(':geactiveerd', $_POST['geactiveerd']);
     
     // Execute the prepared statement
     $stmt->execute();
@@ -207,10 +217,10 @@ try{
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':naam', $_POST['AddEtennaam']);
+    $stmt->bindParam(':kcal', $_POST['AddEtenkcal']);
+    $stmt->bindParam(':sugar', $_POST['AddEtensugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['AddEtenschijf_ID']);
     
     // Execute the prepared statement
     $stmt->execute();

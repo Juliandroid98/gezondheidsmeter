@@ -16,19 +16,22 @@ if (isset($_POST["username"])) {
 
         //haalt met de gegevens data op uit de database
         $error = "";
-        $sql = "SELECT wachtwoord, gebruiker_ID, is_admin FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
+        $sql = "SELECT wachtwoord, geactiveerd, gebruiker_ID, is_admin FROM gebruiker WHERE gebruikersnaam = '$gebruikersnaam'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-        //checkt of de wachtwoorden hetzelfde zijn
-        if (password_verify($wachtwoord, $row['wachtwoord'])){
-            //maakt een session aan met gebruikers data
-            session_start();
-            $_SESSION['username'] = $gebruikersnaam;
-            $_SESSION['id'] = $row['gebruiker_ID'];
-            $_SESSION['is_admin'] = $row['is_admin'];
-            header( 'Location: dashboard.php');
-
+        if($row['geactiveerd'] === "1") {
+            //checkt of de wachtwoorden hetzelfde zijn
+            if (password_verify($wachtwoord, $row['wachtwoord'])) {
+                //maakt een session aan met gebruikers data
+                session_start();
+                $_SESSION['username'] = $gebruikersnaam;
+                $_SESSION['id'] = $row['gebruiker_ID'];
+                $_SESSION['is_admin'] = $row['is_admin'];
+                header('Location: dashboard.php');
+            }
+        }else{
+            echo "<script> alert('U moet uw account nog activeren voor dat u kunt inloggen.')</script>";
         }
     } else {
         echo "<script> alert('Nog niet alle velden zijn ingevuld!!!')</script>";

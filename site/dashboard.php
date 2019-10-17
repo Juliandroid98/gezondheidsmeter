@@ -1,32 +1,75 @@
 <?php include 'assets/php/connection.php';
 session_start();
 
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
 $sql = "SELECT melding FROM melding WHERE datum = CURDATE() AND gebruiker_ID = " . $_SESSION['id'];
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+$data = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-if(isset($row)){
+if(isset($data)){
 
-    if($row['melding'] === "Er is voor vandaag nog geen data ingevuld."){
+    $sql = "
+        SELECT arbeid.datum , koppel_user_drinks.datum, koppel_user_drugs.datum, koppel_user_eten.datum, koppel_user_sport.datum, slaap.datum
+        FROM arbeid 
+        LEFT JOIN koppel_user_drinks ON arbeid.gebruiker_ID = koppel_user_drinks.gebruiker_ID
+        LEFT JOIN koppel_user_drugs ON arbeid.gebruiker_ID = koppel_user_drugs.gebruiker_ID
+        LEFT JOIN koppel_user_eten ON arbeid.gebruiker_ID = koppel_user_eten.gebruiker_ID
+        LEFT JOIN koppel_user_sport ON arbeid.gebruiker_ID = koppel_user_sport.gebruiker_ID
+        LEFT JOIN slaap ON arbeid.gebruiker_ID = slaap.gebruiker_ID
+        WHERE arbeid.datum AND koppel_user_drinks.datum AND koppel_user_drugs.datum AND koppel_user_eten.datum AND koppel_user_sport.datum AND slaap.datum = CURDATE() AND arbeid.gebruiker_ID AND koppel_user_drinks.gebruiker_ID AND koppel_user_drugs.gebruiker_ID AND koppel_user_eten.gebruiker_ID AND koppel_user_sport.gebruiker_ID AND slaap.gebruiker_ID =" . $_SESSION['id'];
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-    }else{
-        $date = date("Y/m/d");
+    if(isset($row)){
+        $date = date("Y-m-d");
         $id = $_SESSION['id'];
-        $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
-  			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+
+        $query = "DELETE FROM melding WHERE datum = '$date' AND gebruiker_ID = '$id'";
 
         mysqli_query($conn, $query);
+    }else{
+
     }
 }else{
     /*
-    $date = date("Y/m/d");
+    $date = date("Y-m-d");
     $id = $_SESSION['id'];
-    $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID)
   			  VALUES('Er is voor vandaag nog geen data ingevuld.', $date, $id)";
+=======
+    $query = "INSERT INTO melding (melding, datum, gebruiker_ID)
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
 
     mysqli_query($conn, $query);
     */
+
+    $sql = "
+    SELECT arbeid.datum , koppel_user_drinks.datum, koppel_user_drugs.datum, koppel_user_eten.datum, koppel_user_sport.datum, slaap.datum
+    FROM arbeid 
+    LEFT JOIN koppel_user_drinks ON arbeid.gebruiker_ID = koppel_user_drinks.gebruiker_ID
+    LEFT JOIN koppel_user_drugs ON arbeid.gebruiker_ID = koppel_user_drugs.gebruiker_ID
+    LEFT JOIN koppel_user_eten ON arbeid.gebruiker_ID = koppel_user_eten.gebruiker_ID
+    LEFT JOIN koppel_user_sport ON arbeid.gebruiker_ID = koppel_user_sport.gebruiker_ID
+    LEFT JOIN slaap ON arbeid.gebruiker_ID = slaap.gebruiker_ID
+    WHERE arbeid.datum AND koppel_user_drinks.datum AND koppel_user_drugs.datum AND koppel_user_eten.datum AND koppel_user_sport.datum AND slaap.datum = CURDATE() AND arbeid.gebruiker_ID AND koppel_user_drinks.gebruiker_ID AND koppel_user_drugs.gebruiker_ID AND koppel_user_eten.gebruiker_ID AND koppel_user_sport.gebruiker_ID AND slaap.gebruiker_ID =" . $_SESSION['id'];
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    if(isset($row)){
+
+    }else{
+        $date = date("Y-m-d");
+        $id = $_SESSION['id'];
+
+        $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
+  			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
+
+        mysqli_query($conn, $query);
     }
+}
 
 ?>
 <!doctype html>
@@ -50,61 +93,69 @@ if(isset($row)){
     <title>Gezondheidsmeter - Dashboard</title>
 </head>
 <body>
-    <div class="sitecontainer">
-        <!-- header -->
-        <div class="headercontainer">
-            <image class="logosmall" src="assets/images/logo.png" alt="logo">
+<div class="sitecontainer">
+    <!-- header -->
+    <div class="headercontainer">
+        <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Dashboard</h1>
             <a class="settingsmenu" href="settings.php">
                 <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
-        </div>
-        <!-- content -->
-        <div class="metercontainer">
-            <div class="meter arbeid">Arbeid<br>-</div>
-            <div class="meter voeding">Voeding<br>-</div>
-            <div class="meter drugs">Drugs<br>-</div>
-            <div class="meter slaap">Slaap<br>-</div>
-            <div class="meter sport">Sport<br>-</div>
-            <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
-        </div>
-        <div class="pos">
+    </div>
+    <!-- content -->
+    <div class="metercontainer">
+        <div class="meter arbeid">Arbeid<br>-</div>
+        <div class="meter eten">Eten<br>-</div>
+        <div class="meter drinken">Drinken<br>-</div>
+        <div class="meter drugs">Drugs<br>-</div>
+        <div class="meter slaap">Slaap<br>-</div>
+        <div class="meter sport">Sport<br>-</div>
+        <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
+    </div>
+    <div class="pos">
         <div class="chart-btnGroup" id="accordion" style="position: relative;">
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="arbeid">Arbeidsomstandigheden</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Voeding</button>
+            <button type="button" class="collapsible" id="sport">sport</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSport"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="slaap">Slaap</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartSlaap"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="eten">Eten</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myChart"></canvas>
+                <canvas id="chartEten"></canvas>
             </div>
 
-            <button type="button" class="collapsible">Slaap</button>
+            <button type="button" class="collapsible" id="drinken">Drinken</button>
             <div class="content" style="margin-bottom: 100px;">
-                <canvas id="myCharts"></canvas>
+                <canvas id="chartDrinken"></canvas>
             </div>
-        </div></div>
-        <!-- bottom buttons-->
-        <div class="bottomcontainer">
-            <div class="bottombuttongroup">
-                <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
-                <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
-                <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
+            <button type="button" class="collapsible" id="drugs">Drugs</button>
+            <div class="content" style="margin-bottom: 100px;">
+                <canvas id="chartDrugs"></canvas>
             </div>
         </div>
     </div>
-    <script src="assets/javascript/dashboard.js"></script>
-    <script src="assets/javascript/chartjs.js"></script>
+    <!-- bottom buttons-->
+    <div class="bottomcontainer">
+        <div class="bottombuttongroup">
+            <a class="bottombutton_active" href="#"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
+            <a class="bottombutton" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
+            <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
+        </div>
+    </div>
+</div>
+<script src="assets/javascript/berekening.js"></script>
+<script src="assets/javascript/chartjs.js"></script>
+<script src="assets/javascript/dashboard.js"></script>
+
 </body>
 </html>

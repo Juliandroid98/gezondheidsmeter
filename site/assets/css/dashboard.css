@@ -49,10 +49,14 @@
     background-color: lightgray;
 }
 
-.voeding {
+.eten {
     background-color: lightgray;
     margin-left: 4%;
     margin-right: 4%;
+}
+
+.drinken {
+    background-color: lightgray;
 }
 
 .drugs {
@@ -61,6 +65,7 @@
 
 .slaap {
     background-color: lightgray;
+    margin-left: 4%;
     margin-right: 4%;
 }
 
@@ -112,9 +117,6 @@
     text-align: center;
     border-radius: 5px;
 }
-
-
-
 .chart-btnGroup button:hover {
     background-color: #3e8e41;
 }
@@ -128,7 +130,7 @@
     position: absolute;
 }
 @media only screen and (max-width: 1100px){
-    .chart-btnGroup button { 
+    .chart-btnGroup button {
         width: 19%;
         text-align: center;
 
