@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
+if($_SESSION['is_admin'] === '0'){
+    echo "<script> alert('U bent geen admin.'); window.location.href='dashboard.php';</script>";
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +120,7 @@ try{
     $sql = "SELECT * FROM drugs";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table id='drugs'>";
             echo "<tr>";
                 echo "<th>drugs_id</th>";
                 echo "<th>drugs_naam</th>";
@@ -158,7 +168,7 @@ try{
     $sql = "SELECT * FROM eten";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table id='eten'>";
             echo "<tr>";
                 echo "<th>eten_id</th>";
                 echo "<th>etennaam</th>";
@@ -211,7 +221,7 @@ try{
     $sql = "SELECT * FROM drinken";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table>";
+        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table id='drinken'>";
             echo "<tr>";
                 echo "<th>drank_id</th>";
                 echo "<th>dranknaam</th>";

@@ -1,5 +1,8 @@
 <?php include 'assets/php/connection.php';
 session_start();
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
 ?>
 
 <!doctype html>
@@ -53,7 +56,7 @@ session_start();
             <h4>Algemene instellingen</h4>
         </div>
         <a class="settingscontainer resetten" href="ww_vergeten.php">Wachtwoord resetten</a><br>
-        <a class="settingscontainer resetten" href="meter_resetten.php">Meter resetten</a>
+        <a class="settingscontainer resetten" href="assets/php/meter_resetten.php">Meter resetten</a>
         <div class="settingscontainer verwijder">Account verwijderen</div>
     </div>
     <!-- confirmation modal -->

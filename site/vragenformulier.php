@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['username'])){
+    echo "<script> alert('U bent nog niet ingelogt.'); window.location.href='inloggen.php';</script>";
+}
+
 require 'assets/php/Connection.php';
 require 'assets/php/SaveForm.php';
 
@@ -27,7 +31,7 @@ if (isset($_POST['submit'])){
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
     $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
-
+    header( "Location: dashboard.php" );
 }
 ?>
 <!doctype html>
@@ -86,18 +90,18 @@ if (isset($_POST['submit'])){
             <div id="drinkenVragen" class="hidden">
             <h3>Drinken</h3>
 
-            <div id="dynamic_field">Welke drank(en) heb je gehad?
+            <div id="dynamic_field">Welke drank(en)heeft u gehad?
                 <p><input placeholder="vul hier uw antwoord in.." name="drankNaam"></p>
                 <button type="button" name="add" id="add" class="btn_add">+</button>
             </div>
 
-            Hoeveel kilocalorie zit er erin?
+            Hoeveel kilocalorieën zit er erin?
             <p><input placeholder="vul hier uw antwoord in.." name="drankCalorie"></p>
 
             Hoeveel gram suiker zit erin?
             <p><input placeholder="vul hier uw antwoord in.." name="drankSuiker"></p>
 
-            Welk % alcohol zit erin?
+            Hoeveel % alcohol zit erin?
             <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
 
             <div style="text-align:center;margin-top:40px;">
@@ -108,13 +112,13 @@ if (isset($_POST['submit'])){
             <!-- Eten -->
             <div id="etenVragen" class="hidden">
                 <h3>Eten</h3>
-                Welk eten heb je gehad?
-                <div id="dynamic_field">Welke drank(en) heb je gehad?
+                Welk eten heeft u gehad?
+                <div id="dynamic_field">
                     <p><input placeholder="vul hier uw antwoord in.." name="etenNaam"></p>
                     <button type="button" name="add" id="add" class="btn_add">+</button>
                 </div>
 
-                Hoeveel kilo caloriën zit er in?
+                Hoeveel kilocalorieën zit er in?
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenCalorie"></p>
 
                 Hoeveel gram suiker zit erin?
@@ -128,9 +132,13 @@ if (isset($_POST['submit'])){
             <!-- Drugs -->
             <div id="drugsVragen" class="hidden">
                 <h3>Drugs</h3>
-                Welke drug(s) heb je gehad?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsNaam"></p>
-
+                Welke drugs heeft u gehad?
+                <p><select name="drugsNaam">
+                    <option value=""></option>
+                    <option value="softdrugs">Softdrugs</option>
+                    <option value="harddrugs">Harddrugs</option>
+                </select><br>
+                </p>
                 Hoeveel mg heeft u in totaal gebruikt?
                   <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsSoort"></p>
 
@@ -146,7 +154,7 @@ if (isset($_POST['submit'])){
                   <p><input placeholder="vul hier uw antwoord in.." name="slaapHoeveelheid"></p>
 
                 Beoordeel uw slaap.
-                  <p><input placeholder="vul hier uw antwoord in.." name="slaapKwaliteit"></p>
+                  <p><input placeholder="vul hier uw beoordeling van 1 tot 10.." name="slaapKwaliteit"></p>
                 Datum:
                 <p>
                     <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
@@ -160,7 +168,7 @@ if (isset($_POST['submit'])){
             <!-- Sport -->
             <div id="sportVragen" class="hidden">
                 <h3>Sport</h3>
-                Welke sport(en) heb je gedaan?
+                Welke sport heeft u gedaan?
                 <p><input placeholder="vul hier uw antwoord in.." name="sportNaam"></p>
 
                 Hoeveel colorieën heb je daarmee verbrandt?
