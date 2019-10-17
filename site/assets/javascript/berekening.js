@@ -2,15 +2,13 @@
 //------------------------------------------------
 //
 
-
 function arbeid(werkplek, werkdruk){
 
 
-    arbeid = werkplek + werkdruk / 2;
+    arbeids = (parseInt(werkplek) + parseInt(werkdruk)) / 2;
 
-    return arbeid;
+    return arbeids;
 }
-
 
 //------------------------------------------------
 
@@ -21,57 +19,57 @@ function arbeid(werkplek, werkdruk){
 
 function slaap(slaapuren, slaapkwaliteit){
     switch (slaapuren) {
-        case 0:
-        case 1:
-        case 2:
-            slaaptijd = 0;
+        case '0':
+        case '1':
+        case '2':
+            var slaaptijd = 0;
             break;
-        case 3:
+        case '3':
             slaaptijd = 2;
             break;
-        case 4:
+        case '4':
             slaaptijd = 4;
             break;
-        case 5:
+        case '5':
             slaaptijd = 6;
             break;
-        case 6:
+        case '6':
             slaaptijd = 8;
             break;
-        case 7:
-        case 8:
+        case '7':
+        case '8':
             slaaptijd = 10;
             break;
-        case 9:
-        case 10:
+        case '9':
+        case '10':
             slaaptijd = 8;
             break;
-        case 11:
-        case 12:
+        case '11':
+        case '12':
             slaaptijd = 7;
             break;
-        case 13:
+        case '13':
             slaaptijd = 5;
             break;
-        case 14:
+        case '14':
             slaaptijd = 3;
             break;
-        case 15:
+        case '15':
             slaaptijd = 2;
             break;
-        case 16:
+        case '16':
             slaaptijd = 1;
             break;
-        case 17:
-        case 18:
-        case 19:
-        case 20:
+        case '17':
+        case '18':
+        case '19':
+        case '20':
             slaaptijd = 0;
             break;
     }
 
-    slaap = slaaptijd + slaapkwaliteit / 2;
-    return slaap;
+    slapen = (parseInt(slaaptijd) + parseInt(slaapkwaliteit)) / 2;
+    return slapen;
 }
 
 
@@ -99,17 +97,17 @@ function drinken(calorien, alcohol, suiker){
     }
 
     if(calorien === 0){
-        calorie_punten = 10;
+        drinken_calorie_punten = 10;
     }else if(calorien <= 30){
-        calorie_punten = 8;
+        drinken_calorie_punten = 8;
     }else if(calorien <= 70){
-        calorie_punten = 6;
+        drinken_calorie_punten = 6;
     }else if(calorien <= 100){
-        calorie_punten = 4;
+        drinken_calorie_punten = 4;
     }else if(calorien <= 150) {
-        calorie_punten = 2;
+        drinken_calorie_punten = 2;
     }else{
-        calorie_punten = 0;
+        drinken_calorie_punten = 0;
     }
 
     if(suiker === 0){
@@ -128,7 +126,7 @@ function drinken(calorien, alcohol, suiker){
 
 
 
-    punten_drinken = alcohol_punten + calorie_punten + suiker_punten / 3;
+    punten_drinken = (parseInt(alcohol_punten) + parseInt(drinken_calorie_punten) + parseInt(suiker_punten)) / 3;
     return punten_drinken;
 }
 
@@ -146,23 +144,23 @@ function drinken(calorien, alcohol, suiker){
 
 function eten(calorien, suiker){
     if(calorien <= 1000){
-        calorie_punten = 0;
+        eten_calorie_punten = 0;
     }else if(calorien <= 1300){
-        calorie_punten = 3;
+        eten_calorie_punten = 3;
     }else if(calorien <= 1500){
-        calorie_punten = 6;
+        eten_calorie_punten = 6;
     }else if(calorien <= 1800) {
-        calorie_punten = 8;
+        eten_calorie_punten = 8;
     }else if(calorien <= 2100 && calorien >= 1801){
-        calorie_punten = 10;
+        eten_calorie_punten = 10;
     }else if(calorien <= 2200){
-        calorie_punten = 7;
+        eten_calorie_punten = 7;
     }else if(calorien <= 2400){
-        calorie_punten = 5;
+        eten_calorie_punten = 5;
     }else if(calorien <= 2600){
-        calorie_punten = 2;
+        eten_calorie_punten = 2;
     }else{
-        calorie_punten = 0;
+        eten_calorie_punten = 0;
     }
 
 
@@ -190,7 +188,7 @@ function eten(calorien, suiker){
         suiker_punten = 0;
     }
 
-    eten_punten = suiker_punten + calorie_punten / 2;
+    eten_punten = (parseInt(suiker_punten) + parseInt(eten_calorie_punten)) / 2;
     return eten_punten;
 
 }
@@ -208,24 +206,22 @@ function sporten(calorien_verbrand)
     if (calorien_verbrand <= 100) {
         calorie_punten = 0;
     } else if (calorien_verbrand <= 200) {
-    calorie_punten = 2;
-} else if (calorien_verbrand <= 350) {
-    calorie_punten = 4;
-} else if (calorien_verbrand <= 450) {
-    calorie_punten = 7;
-} else if (calorien_verbrand <= 800 && calorien_verbrand >= 550) {
-    calorie_punten = 10;
-} else if (calorien_verbrand <= 900) {
-    calorie_punten = 8;
-} else if (calorien_verbrand <= 1000) {
-    calorie_punten = 6;
-} else if (calorien_verbrand <= 1400) {
-    calorie_punten = 3;
-} else {
-    calorie_punten = 0;
-}
-
-
+        calorie_punten = 2;
+    } else if (calorien_verbrand <= 350) {
+        calorie_punten = 4;
+    } else if (calorien_verbrand <= 450) {
+        calorie_punten = 7;
+    } else if (calorien_verbrand <= 800 && calorien_verbrand >= 550) {
+        calorie_punten = 10;
+    } else if (calorien_verbrand <= 900) {
+        calorie_punten = 8;
+    } else if (calorien_verbrand <= 1000) {
+        calorie_punten = 6;
+    } else if (calorien_verbrand <= 1400) {
+        calorie_punten = 3;
+    } else {
+        calorie_punten = 0;
+    }
     return calorie_punten;
 }
 
@@ -237,9 +233,8 @@ function sporten(calorien_verbrand)
 //
 
 
-function drugs(hoeveelheid_drugs){
-
-
+function drugs(hoeveelheid_drugs)
+{
     if(hoeveelheid_drugs === 0){
         drugs_punten = 10;
     }else if(hoeveelheid_drugs <= 0.2){

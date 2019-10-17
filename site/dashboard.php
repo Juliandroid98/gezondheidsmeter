@@ -118,7 +118,7 @@ if(isset($data)){
                 <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible" id="Sport">sport</button>
+            <button type="button" class="collapsible" id="sport">sport</button>
             <div class="content" style="margin-bottom: 100px;">
                 <canvas id="chartSport"></canvas>
             </div>
@@ -152,8 +152,9 @@ if(isset($data)){
         </div>
     </div>
 </div>
+<script src="assets/javascript/berekening.js"></script>
 <script src="assets/javascript/chartjs.js"></script>
 <script src="assets/javascript/dashboard.js"></script>
-<script src="assets/javascript/berekening.js"></script>
+
 </body>
 </html>
