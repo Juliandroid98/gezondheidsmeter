@@ -117,11 +117,11 @@ try{
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':eten_ID', $_POST['eten_ID']);
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':eten_ID', $_POST['Editeten_ID']);
+    $stmt->bindParam(':naam', $_POST['EditEtennaam']);
+    $stmt->bindParam(':kcal', $_POST['EditEtenkcal']);
+    $stmt->bindParam(':sugar', $_POST['EditEtensugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['EditEtenschijf_ID']);
     $stmt->execute();
     //echo "Record updated successfully.";
 } catch(PDOException $e){
@@ -217,10 +217,10 @@ try{
     $stmt = $pdo->prepare($sql);
     
     // Bind parameters to statement
-    $stmt->bindParam(':naam', $_POST['naam']);
-    $stmt->bindParam(':kcal', $_POST['kcal']);
-    $stmt->bindParam(':sugar', $_POST['sugar']);
-    $stmt->bindParam(':schijf_ID', $_POST['schijf_ID']);
+    $stmt->bindParam(':naam', $_POST['AddEtennaam']);
+    $stmt->bindParam(':kcal', $_POST['AddEtenkcal']);
+    $stmt->bindParam(':sugar', $_POST['AddEtensugar']);
+    $stmt->bindParam(':schijf_ID', $_POST['AddEtenschijf_ID']);
     
     // Execute the prepared statement
     $stmt->execute();
