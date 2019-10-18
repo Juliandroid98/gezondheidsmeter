@@ -119,7 +119,7 @@ if(isset($data)){
                 <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible" id="sport">sport</button>
+            <button type="button" class="collapsible" id="sport">Sport</button>
             <div class="content">
                 <canvas id="chartSport"></canvas>
             </div>
