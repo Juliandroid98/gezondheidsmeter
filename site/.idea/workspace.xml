@@ -14,8 +14,8 @@
       <file leaf-file-name="chartjs.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/javascript/chartjs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            <state relative-caret-position="420">
+              <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -31,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/javascript/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
@@ -53,24 +53,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chartQuery.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chartQuery.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="30" column="235" lean-forward="false" selection-start-line="30" selection-start-column="235" selection-end-line="30" selection-end-column="235" />
+            <state relative-caret-position="546">
+              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
               <folding>
-                <marker date="1571385041316" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
-                <marker date="1571385041316" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
-                <marker date="1571385041316" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
-                <marker date="1571385041316" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
-                <marker date="1571385041316" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
-                <marker date="1571385041316" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
-                <marker date="1571385041316" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
-                <marker date="1571385041316" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
-                <marker date="1571385041316" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
-                <marker date="1571385041316" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
-                <marker date="1571385041316" expanded="true" signature="1663:1865" ph="SELECT verbr... sport" />
+                <marker date="1571387265847" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
+                <marker date="1571387265847" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
+                <marker date="1571387265847" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
+                <marker date="1571387265847" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
+                <marker date="1571387265847" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
+                <marker date="1571387265847" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
+                <marker date="1571387265847" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
+                <marker date="1571387265847" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
+                <marker date="1571387265847" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
+                <marker date="1571387265847" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chartQueryAll.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/php/chartQueryAll.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,9 +145,9 @@
         <option value="$PROJECT_DIR$/assets/javascript/berekening.js" />
         <option value="$PROJECT_DIR$/dashboard.php" />
         <option value="$PROJECT_DIR$/assets/css/dashboard.css" />
-        <option value="$PROJECT_DIR$/assets/php/chartQuery.php" />
-        <option value="$PROJECT_DIR$/assets/javascript/chartjs.js" />
         <option value="$PROJECT_DIR$/assets/javascript/dashboard.js" />
+        <option value="$PROJECT_DIR$/assets/javascript/chartjs.js" />
+        <option value="$PROJECT_DIR$/assets/php/chartQuery.php" />
       </list>
     </option>
   </component>
@@ -240,18 +249,17 @@
       <option name="presentableId" value="Default" />
       <updated>1571057230271</updated>
       <workItem from="1571057232551" duration="52212000" />
-      <workItem from="1571381765951" duration="3793000" />
+      <workItem from="1571381765951" duration="4533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56005000" />
+    <option name="totallyTimeSpent" value="56745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25349087" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25349087" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -324,17 +332,16 @@
         <state relative-caret-position="210">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1571385041316" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
-            <marker date="1571385041316" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
-            <marker date="1571385041316" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
-            <marker date="1571385041316" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
-            <marker date="1571385041316" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
-            <marker date="1571385041316" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
-            <marker date="1571385041316" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
-            <marker date="1571385041316" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
-            <marker date="1571385041316" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
-            <marker date="1571385041316" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
-            <marker date="1571385041316" expanded="true" signature="1663:1865" ph="SELECT verbr... sport" />
+            <marker date="1571387265847" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
+            <marker date="1571387265847" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
+            <marker date="1571387265847" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
+            <marker date="1571387265847" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
+            <marker date="1571387265847" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
+            <marker date="1571387265847" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
+            <marker date="1571387265847" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
+            <marker date="1571387265847" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
+            <marker date="1571387265847" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
+            <marker date="1571387265847" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
           </folding>
         </state>
       </provider>
@@ -398,24 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascript/berekening.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1351">
-          <caret line="213" column="34" lean-forward="false" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="68" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascript/chartjs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -430,31 +419,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="30" column="235" lean-forward="false" selection-start-line="30" selection-start-column="235" selection-end-line="30" selection-end-column="235" />
-          <folding>
-            <marker date="1571385041316" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
-            <marker date="1571385041316" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
-            <marker date="1571385041316" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
-            <marker date="1571385041316" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
-            <marker date="1571385041316" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
-            <marker date="1571385041316" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
-            <marker date="1571385041316" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
-            <marker date="1571385041316" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
-            <marker date="1571385041316" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
-            <marker date="1571385041316" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
-            <marker date="1571385041316" expanded="true" signature="1663:1865" ph="SELECT verbr... sport" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascript/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascript/chartjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascript/berekening.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1351">
+          <caret line="213" column="34" lean-forward="false" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="68" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/php/chartQueryAll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+          <folding>
+            <marker date="1571387265847" expanded="true" signature="327:465" ph="SELECT hoeve... koppel_user_drugs" />
+            <marker date="1571387265847" expanded="true" signature="529:615" ph="SELECT uren,... slaap" />
+            <marker date="1571387265847" expanded="true" signature="681:688" ph="SELECT kcal,... koppel_user_drinks" />
+            <marker date="1571387265847" expanded="true" signature="681:750" ph="SELECT * FRO... FROM" />
+            <marker date="1571387265847" expanded="true" signature="681:757" ph="SELECT * FRO... drinken" />
+            <marker date="1571387265847" expanded="true" signature="681:840" ph="SELECT * FRO... drinken" />
+            <marker date="1571387265847" expanded="true" signature="681:902" ph="SELECT drink... drinken" />
+            <marker date="1571387265847" expanded="true" signature="967:1102" ph="SELECT werkp... arbeid" />
+            <marker date="1571387265847" expanded="true" signature="1165:1361" ph="SELECT kcal,... eten" />
+            <marker date="1571387265847" expanded="true" signature="1425:1627" ph="SELECT verbr... sport" />
+          </folding>
         </state>
       </provider>
     </entry>

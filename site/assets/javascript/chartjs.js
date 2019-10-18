@@ -19,7 +19,6 @@ function chart(chartSoort) {
             success: function (data) {
                 var collapseChart;
                 var result = [];
-                console.log(data);
                 for (i = 0; i < data.length; i++) {
                     switch (chartSoort) {
                         case 'arbeid':
