@@ -28,7 +28,7 @@ if($soort === 'eten'){
 if($soort === 'sport'){
     $query = mysqli_query($conn, "SELECT verbranding, DATE_FORMAT(datum, '%d') AS datum FROM sport INNER JOIN koppel_user_sport ON sport.sport_ID = koppel_user_sport.sport_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
-
+$query = mysqli_query($conn, "SELECT verbranding, DATE_FORMAT(datum, '%d') AS datum FROM sport INNER JOIN koppel_user_sport ON sport.sport_ID = koppel_user_sport.sport_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 $rows = array();
 while($r = mysqli_fetch_array($query)) {
     $rows[] = $r;

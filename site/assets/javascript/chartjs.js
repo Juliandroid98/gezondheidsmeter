@@ -17,7 +17,6 @@ function chart(chartSoort) {
             data: {firstDay: firstDay, lastDay: lastDay, soort: chartSoort},
             dataType: 'json',
             success: function (data) {
-                console.log(chartSoort);
                 var collapseChart;
                 var result = [];
                 console.log(data);
