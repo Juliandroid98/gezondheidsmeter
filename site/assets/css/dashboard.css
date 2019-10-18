@@ -102,18 +102,20 @@
 .chart-btnGroup{
     width: 100%;
     display: flex;
-    justify-content: center;
+    text-align: center;
+    /*justify-content: center;*/
 }
 .chart-btnGroup button {
     display: inline-block;
-    padding: 1em 2.1em 1.1em;
-    margin: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     background-color: #4CAF50;
     border: 1px solid green;
+    width: 100%;
+    height: 100%;
     color: white;
-    padding: 10px 24px;
     cursor: pointer;
-    width: 10%;
     text-align: center;
     border-radius: 5px;
 }
@@ -124,23 +126,8 @@
     background-color: green;
 }
 .chart-btnGroup .content {
-    width: 60%;
-    margin:0 auto;
+    width: 100%;
     display: none;
     position: absolute;
-}
-@media only screen and (max-width: 1100px){
-    .chart-btnGroup button {
-        width: 19%;
-        text-align: center;
-
-        
-    }
-
-    .pos {
-        margin: 0 auto;
-        width: 90%;
-        padding: 20px;
-      }
-      
+    margin-bottom: 150px;
 }
