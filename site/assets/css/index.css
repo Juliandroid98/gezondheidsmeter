@@ -87,6 +87,7 @@ a:active {
     background-color: #34cfe3;
     border-top: 3px solid #2daaba;
     bottom: 0;
+    z-index: 101;
 }
 
 .bottombuttongroup {
