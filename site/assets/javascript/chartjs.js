@@ -2,6 +2,8 @@ function chart(chartSoort) {
 
     //get range of first and last day of the week
     var today = new Date;
+    var DayToday = today.getDate();
+    console.log(today);
     var last = today.getDate() - today.getDay() + 1;
     var first = last + 6;
 
@@ -15,6 +17,7 @@ function chart(chartSoort) {
             data: {firstDay: firstDay, lastDay: lastDay, soort: chartSoort},
             dataType: 'json',
             success: function (data) {
+                console.log(chartSoort);
                 var collapseChart;
                 var result = [];
                 console.log(data);
@@ -44,6 +47,20 @@ function chart(chartSoort) {
                             result.push(sporten(data[i][0]));
                             collapseChart = document.getElementById('chartSport').getContext('2d');
                             break;
+                    }
+                    if(data[i]['datum'] === DayToday.toString()){
+                        var arbeidVandaag = Math.round(arbeid(data[i][0], data[i][1]) * 10 ) / 10;
+                        var drugsVandaag = Math.round(drugs(data[i][0]) * 10 ) / 10;
+                        var slaapVandaag = Math.round(slaap(data[i][0], data[i][1]) * 10 ) / 10;
+                        var drinkenVandaag = Math.round(drinken(data[i][0], data[i][1], data[i][2]) * 10 ) / 10;
+                        var etenVandaag = Math.round(eten(data[i][0], data[i][1]) * 10 ) / 10;
+                        var sportVandaag = Math.round(sporten(data[i][0]) * 10 ) / 10;
+                        document.getElementById('arbeid').innerHTML = "Arbeid <br>" + arbeidVandaag;
+                        document.getElementById('eten').innerHTML = "Eten <br>" + drugsVandaag;
+                        document.getElementById('drinken').innerHTML = "Drinken <br>" + slaapVandaag;
+                        document.getElementById('drugs').innerHTML = "Drugs <br>" + drinkenVandaag;
+                        document.getElementById('slaap').innerHTML = "Slaap <br>" + etenVandaag;
+                        document.getElementById('sport').innerHTML = "Sport <br>" + sportVandaag;
                     }
                 }
                 console.log(result);

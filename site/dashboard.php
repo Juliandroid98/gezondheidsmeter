@@ -104,12 +104,12 @@ if(isset($data)){
     </div>
     <!-- content -->
     <div class="metercontainer">
-        <div class="meter arbeid">Arbeid<br>-</div>
-        <div class="meter eten">Eten<br>-</div>
-        <div class="meter drinken">Drinken<br>-</div>
-        <div class="meter drugs">Drugs<br>-</div>
-        <div class="meter slaap">Slaap<br>-</div>
-        <div class="meter sport">Sport<br>-</div>
+        <div class="meter arbeid" id="arbeid">Arbeid<br>-</div>
+        <div class="meter eten" id="eten">Eten<br>-</div>
+        <div class="meter drinken" id="drinken">Drinken<br>-</div>
+        <div class="meter drugs" id="drugs">Drugs<br>-</div>
+        <div class="meter slaap" id="slaap">Slaap<br>-</div>
+        <div class="meter sport" id="sport">Sport<br>-</div>
         <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
     </div>
     <div class="pos">

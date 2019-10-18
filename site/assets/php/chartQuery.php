@@ -11,22 +11,22 @@ $lastDay = $_POST['lastDay'];
 $soort = $_POST['soort'];
 
 if($soort === 'drugs'){
-    $query = mysqli_query($conn, "SELECT hoeveelheid, DATE_FORMAT(datum, '%d') FROM koppel_user_drugs WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT hoeveelheid, DATE_FORMAT(datum, '%d') AS datum FROM koppel_user_drugs WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
 if($soort === 'slaap'){
-    $query = mysqli_query($conn, "SELECT uren, beoordeling, DATE_FORMAT(datum, '%d') FROM slaap  ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT uren, beoordeling, DATE_FORMAT(datum, '%d') AS datum FROM slaap  ORDER BY datum");
 }
 if($soort === 'drinken'){
-    $query = mysqli_query($conn, "SELECT kcal, suiker, alcohol, DATE_FORMAT(datum, '%d') FROM drinken INNER JOIN koppel_user_drinks ON drinken.drinken_ID = koppel_user_drinks.drinks_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT kcal, suiker, alcohol, DATE_FORMAT(datum, '%d') AS datum FROM drinken INNER JOIN koppel_user_drinks ON drinken.drinken_ID = koppel_user_drinks.drinks_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
 if($soort === 'arbeid'){
-    $query = mysqli_query($conn, "SELECT werkplek, werkdruk , DATE_FORMAT(datum, '%d') FROM arbeid WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT werkplek, werkdruk , DATE_FORMAT(datum, '%d') AS datum FROM arbeid WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
 if($soort === 'eten'){
-    $query = mysqli_query($conn, "SELECT kcal, sugar, DATE_FORMAT(datum, '%d') FROM eten INNER JOIN koppel_user_eten ON eten.eten_ID = koppel_user_eten.eten_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT kcal, sugar, DATE_FORMAT(datum, '%d') AS datum FROM eten INNER JOIN koppel_user_eten ON eten.eten_ID = koppel_user_eten.eten_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
 if($soort === 'sport'){
-    $query = mysqli_query($conn, "SELECT verbranding, DATE_FORMAT(datum, '%d') FROM sport INNER JOIN koppel_user_sport ON sport.sport_ID = koppel_user_sport.sport_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
+    $query = mysqli_query($conn, "SELECT verbranding, DATE_FORMAT(datum, '%d') AS datum FROM sport INNER JOIN koppel_user_sport ON sport.sport_ID = koppel_user_sport.sport_ID WHERE datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");
 }
 
 $rows = array();
