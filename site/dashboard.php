@@ -120,27 +120,27 @@ if(isset($data)){
             </div>
 
             <button type="button" class="collapsible" id="sport">Sport</button>
-            <div class="content">
+            <div class="content"><br><br><br>
                 <canvas id="chartSport"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="slaap">Slaap</button>
-            <div class="content">
+            <div class="content"><br><br><br>
                 <canvas id="chartSlaap"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="eten">Eten</button>
-            <div class="content">
+            <div class="content"><br><br><br>
                 <canvas id="chartEten"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="drinken">Drinken</button>
-            <div class="content">
+            <div class="content"><br><br><br>
                 <canvas id="chartDrinken"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="drugs">Drugs</button>
-            <div class="content">
+            <div class="content"><br><br><br>
                 <canvas id="chartDrugs"></canvas>
             </div>
         </div>
