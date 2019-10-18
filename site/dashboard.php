@@ -113,33 +113,34 @@ if(isset($data)){
         <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
     </div>
     <div class="pos">
-        <div class="chart-btnGroup" id="accordion" style="position: relative;">
-            <button type="button" class="collapsible" id="arbeid">Arbeidsomstandigheden</button>
-            <div class="content" style="margin-bottom: 100px;">
+        <div class="chart-btnGroup" id="accordion">
+            <button type="button" class="collapsible" id="arbeid">Arbeid</button>
+            <div class="content"><br><br><br>
                 <canvas id="chartArbeid"></canvas>
             </div>
 
-            <button type="button" class="collapsible" id="sport">sport</button>
-            <div class="content" style="margin-bottom: 100px;">
+            <button type="button" class="collapsible" id="sport">Sport</button>
+            <div class="content">
                 <canvas id="chartSport"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="slaap">Slaap</button>
-            <div class="content" style="margin-bottom: 100px;">
+            <div class="content">
                 <canvas id="chartSlaap"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="eten">Eten</button>
-            <div class="content" style="margin-bottom: 100px;">
+            <div class="content">
                 <canvas id="chartEten"></canvas>
             </div>
 
             <button type="button" class="collapsible" id="drinken">Drinken</button>
-            <div class="content" style="margin-bottom: 100px;">
+            <div class="content">
                 <canvas id="chartDrinken"></canvas>
             </div>
+
             <button type="button" class="collapsible" id="drugs">Drugs</button>
-            <div class="content" style="margin-bottom: 100px;">
+            <div class="content">
                 <canvas id="chartDrugs"></canvas>
             </div>
         </div>
