@@ -1,7 +1,7 @@
 var collapse = document.getElementsByClassName("collapsible");
 var i;
 $( function() {
-    chart("arbeid");
+    chart('arbeid');
     $( "#accordion" ).accordion();
 } );
 
