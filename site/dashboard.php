@@ -110,7 +110,7 @@ if(isset($data)){
         <div class="meter drugs" id="drugs">Drugs<br>-</div>
         <div class="meter slaap" id="slaap">Slaap<br>-</div>
         <div class="meter sport" id="sport">Sport<br>-</div>
-        <div class="bigmeter algemeen">Gemiddelde cijfer<br>-</div>
+        <div class="bigmeter algemeen" id="totaal">Gemiddelde cijfer<br>-</div>
     </div>
     <div class="pos">
         <div class="chart-btnGroup" id="accordion">
@@ -154,9 +154,9 @@ if(isset($data)){
         </div>
     </div>
 </div>
-<script src="assets/javascript/berekening.js"></script>
-<script src="assets/javascript/chartjs.js"></script>
 <script src="assets/javascript/dashboard.js"></script>
+<script src="assets/javascript/chartjs.js"></script>
+<script src="assets/javascript/berekening.js"></script>
 
 </body>
 </html>

@@ -93,7 +93,7 @@ function drinken(calorien, alcohol, suiker){
     }else if(alcohol <= 40){
         alcohol_punten = 3;
     }else{
-        alcohol_punten = 0;
+        alcohol_punten = 1;
     }
 
     if(calorien === 0){
@@ -107,7 +107,7 @@ function drinken(calorien, alcohol, suiker){
     }else if(calorien <= 150) {
         drinken_calorie_punten = 2;
     }else{
-        drinken_calorie_punten = 0;
+        drinken_calorie_punten = 1;
     }
 
     if(suiker === 0){
@@ -121,7 +121,7 @@ function drinken(calorien, alcohol, suiker){
     }else if(suiker <= 20){
         suiker_punten = 2;
     }else{
-        suiker_punten = 0;
+        suiker_punten = 1;
     }
 
 
@@ -144,7 +144,7 @@ function drinken(calorien, alcohol, suiker){
 
 function eten(calorien, suiker){
     if(calorien <= 1000){
-        eten_calorie_punten = 0;
+        eten_calorie_punten = 1;
     }else if(calorien <= 1300){
         eten_calorie_punten = 3;
     }else if(calorien <= 1500){
@@ -160,12 +160,12 @@ function eten(calorien, suiker){
     }else if(calorien <= 2600){
         eten_calorie_punten = 2;
     }else{
-        eten_calorie_punten = 0;
+        eten_calorie_punten = 1;
     }
 
 
     if(suiker === 0){
-        suiker_punten = 0;
+        suiker_punten = 1;
     }else if(suiker <= 10){
         suiker_punten = 2;
     }else if(suiker <= 20){
@@ -185,7 +185,7 @@ function eten(calorien, suiker){
     }else if(suiker <= 100){
         suiker_punten = 2;
     }else{
-        suiker_punten = 0;
+        suiker_punten = 1;
     }
 
     eten_punten = (parseInt(suiker_punten) + parseInt(eten_calorie_punten)) / 2;
@@ -204,7 +204,7 @@ function eten(calorien, suiker){
 function sporten(calorien_verbrand)
 {
     if (calorien_verbrand <= 100) {
-        calorie_punten = 0;
+        calorie_punten = 1;
     } else if (calorien_verbrand <= 200) {
         calorie_punten = 2;
     } else if (calorien_verbrand <= 350) {
@@ -220,7 +220,7 @@ function sporten(calorien_verbrand)
     } else if (calorien_verbrand <= 1400) {
         calorie_punten = 3;
     } else {
-        calorie_punten = 0;
+        calorie_punten = 1;
     }
     return calorie_punten;
 }
@@ -254,7 +254,7 @@ function drugs(hoeveelheid_drugs)
     }else if(hoeveelheid_drugs <= 2){
         drugs_punten = 1;
     }else{
-        drugs_punten = 0;
+        drugs_punten = 1;
     }
     return drugs_punten;
 }
