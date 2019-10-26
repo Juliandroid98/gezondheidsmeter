@@ -1,4 +1,6 @@
 <?php
+session_start();
+var_dump($_SESSION['id']);
 $servername = "localhost";
 $username_DB = "root";
 $password_DB = "";
@@ -42,7 +44,7 @@ if($soort === 'alles'){
                                         INNER JOIN drugs ON koppel_user_drugs.drug_ID = drugs.drugs_ID 
                                         INNER JOIN koppel_user_drinks ON gebruiker.gebruiker_ID = koppel_user_drinks.gebruiker_ID 
                                         INNER JOIN drinken ON koppel_user_drinks.drinks_ID = drinken.drinken_ID 
-                                        WHERE koppel_user_sport.datum = '$today' AND arbeid.gebruiker_ID = '4' AND koppel_user_drinks.gebruiker_ID = '4' AND koppel_user_drugs.gebruiker_ID = '4' AND koppel_user_eten.gebruiker_ID = '4' AND koppel_user_sport.gebruiker_ID = '4' AND slaap.gebruiker_ID = '4'");
+                                        WHERE koppel_user_sport.datum = '$today' AND arbeid.gebruiker_ID = " . $_SESSION['id'] . " AND koppel_user_drinks.gebruiker_ID = " . $_SESSION['id'] . " AND koppel_user_drugs.gebruiker_ID = " . $_SESSION['id'] . " AND koppel_user_eten.gebruiker_ID = " . $_SESSION['id'] . " AND koppel_user_sport.gebruiker_ID = " . $_SESSION['id'] . " AND slaap.gebruiker_ID = " . $_SESSION['id'] . "");
 }
 
 $rows = array();
