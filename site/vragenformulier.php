@@ -15,6 +15,11 @@ if (isset($_POST['submit'])){
     $Werkplek = $conn->real_escape_string(htmlspecialchars($_POST['werkplek']));
     $Werkdruk = $conn->real_escape_string(htmlspecialchars($_POST['werkdruk']));
     $Werkdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Slapendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Etendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Drinkendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Drugsdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Sportdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $DrinkenNaam = $conn->real_escape_string(htmlspecialchars($_POST['drankNaam']));
     $DrinkenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['drankCalorie']));
     $DrinkenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['drankSuiker']));
@@ -30,7 +35,7 @@ if (isset($_POST['submit'])){
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $Slapendatum, $Etendatum, $Drinkendatum, $Drugsdatum, $Sportdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
     header( "Location: dashboard.php" );
 }
 ?>
@@ -153,10 +158,6 @@ if (isset($_POST['submit'])){
 
                 Beoordeel uw slaap.
                   <p><input placeholder="vul hier uw beoordeling van 1 tot 10.."  required size="3" minlength="0" maxlength="2" name="slaapKwaliteit"></p>
-                Datum:
-                <p>
-                    <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
-                </p>
 
                 <div style="text-align:center;margin-top:40px;">
                     <span class="step">5/6</span>

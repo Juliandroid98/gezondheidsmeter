@@ -24,30 +24,30 @@
       <file leaf-file-name="vragenformulier.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vragenformulier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="588">
+              <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveForm.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SaveForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/php/SaveForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
               <folding>
-                <marker date="1571210784741" expanded="true" signature="374:435" ph="SELECT `gebr... gebruiker" />
-                <marker date="1571210784741" expanded="true" signature="1389:1480" ph="INSERT INTO `arbeid`... " />
-                <marker date="1571210784741" expanded="true" signature="1885:1966" ph="INSERT INTO `drinken`... " />
-                <marker date="1571210784741" expanded="true" signature="2269:2346" ph="INSERT INTO koppel_user_drinks... " />
-                <marker date="1571210784741" expanded="true" signature="2663:2720" ph="INSERT INTO `drugs`... " />
-                <marker date="1571210784741" expanded="true" signature="2977:3066" ph="INSERT INTO koppel_user_drugs... " />
-                <marker date="1571210784741" expanded="true" signature="3381:3441" ph="INSERT INTO `eten`... " />
-                <marker date="1571210784741" expanded="true" signature="3713:3786" ph="INSERT INTO koppel_user_eten... " />
-                <marker date="1571210784741" expanded="true" signature="4077:4165" ph="INSERT INTO `slaap`... " />
-                <marker date="1571210784741" expanded="true" signature="4549:4612" ph="INSERT INTO `sport`... " />
-                <marker date="1571210784741" expanded="true" signature="4876:4951" ph="INSERT INTO koppel_user_sport... " />
+                <marker date="1572087276375" expanded="true" signature="442:503" ph="SELECT `gebr... gebruiker" />
+                <marker date="1572087276375" expanded="true" signature="1513:1604" ph="INSERT INTO `arbeid`... " />
+                <marker date="1572087276375" expanded="true" signature="2001:2082" ph="INSERT INTO `drinken`... " />
+                <marker date="1572087276375" expanded="true" signature="2385:2462" ph="INSERT INTO koppel_user_drinks... " />
+                <marker date="1572087276375" expanded="true" signature="2751:2808" ph="INSERT INTO `drugs`... " />
+                <marker date="1572087276375" expanded="true" signature="3065:3154" ph="INSERT INTO koppel_user_drugs... " />
+                <marker date="1572087276375" expanded="true" signature="3463:3523" ph="INSERT INTO `eten`... " />
+                <marker date="1572087276375" expanded="true" signature="3795:3868" ph="INSERT INTO koppel_user_eten... " />
+                <marker date="1572087276375" expanded="true" signature="4163:4251" ph="INSERT INTO `slaap`... " />
+                <marker date="1572087276375" expanded="true" signature="4624:4687" ph="INSERT INTO `sport`... " />
+                <marker date="1572087276375" expanded="true" signature="4951:5026" ph="INSERT INTO koppel_user_sport... " />
               </folding>
             </state>
           </provider>
@@ -85,7 +85,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chartQuery.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chartQuery.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -153,6 +153,8 @@
       <find>datum</find>
       <find>link</find>
       <find>while</find>
+      <find>date</find>
+      <find>etendatum</find>
     </findStrings>
     <replaceStrings>
       <replace>else if</replace>
@@ -176,6 +178,8 @@
         <option value="$PROJECT_DIR$/dashboard.php" />
         <option value="$PROJECT_DIR$/assets/javascript/chartjs.js" />
         <option value="$PROJECT_DIR$/assets/php/chartQuery.php" />
+        <option value="$PROJECT_DIR$/vragenformulier.php" />
+        <option value="$PROJECT_DIR$/assets/php/SaveForm.php" />
       </list>
     </option>
   </component>
@@ -255,12 +259,12 @@
       <updated>1571057230271</updated>
       <workItem from="1571057232551" duration="52212000" />
       <workItem from="1571381765951" duration="10905000" />
-      <workItem from="1571934552695" duration="15241000" />
+      <workItem from="1571934552695" duration="17043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78358000" />
+    <option name="totallyTimeSpent" value="80160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -516,34 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vragenformulier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/php/SaveForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <marker date="1571210784741" expanded="true" signature="374:435" ph="SELECT `gebr... gebruiker" />
-            <marker date="1571210784741" expanded="true" signature="1389:1480" ph="INSERT INTO `arbeid`... " />
-            <marker date="1571210784741" expanded="true" signature="1885:1966" ph="INSERT INTO `drinken`... " />
-            <marker date="1571210784741" expanded="true" signature="2269:2346" ph="INSERT INTO koppel_user_drinks... " />
-            <marker date="1571210784741" expanded="true" signature="2663:2720" ph="INSERT INTO `drugs`... " />
-            <marker date="1571210784741" expanded="true" signature="2977:3066" ph="INSERT INTO koppel_user_drugs... " />
-            <marker date="1571210784741" expanded="true" signature="3381:3441" ph="INSERT INTO `eten`... " />
-            <marker date="1571210784741" expanded="true" signature="3713:3786" ph="INSERT INTO koppel_user_eten... " />
-            <marker date="1571210784741" expanded="true" signature="4077:4165" ph="INSERT INTO `slaap`... " />
-            <marker date="1571210784741" expanded="true" signature="4549:4612" ph="INSERT INTO `sport`... " />
-            <marker date="1571210784741" expanded="true" signature="4876:4951" ph="INSERT INTO koppel_user_sport... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -556,6 +532,34 @@
             <marker date="1572020366957" expanded="true" signature="1255:1451" ph="SELECT kcal,... eten" />
             <marker date="1572020366957" expanded="true" signature="1515:1717" ph="SELECT verbr... sport" />
             <marker date="1572020366957" expanded="true" signature="1781:3473" ph="SELECT arbei... gebruiker" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vragenformulier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/php/SaveForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding>
+            <marker date="1572087276375" expanded="true" signature="442:503" ph="SELECT `gebr... gebruiker" />
+            <marker date="1572087276375" expanded="true" signature="1513:1604" ph="INSERT INTO `arbeid`... " />
+            <marker date="1572087276375" expanded="true" signature="2001:2082" ph="INSERT INTO `drinken`... " />
+            <marker date="1572087276375" expanded="true" signature="2385:2462" ph="INSERT INTO koppel_user_drinks... " />
+            <marker date="1572087276375" expanded="true" signature="2751:2808" ph="INSERT INTO `drugs`... " />
+            <marker date="1572087276375" expanded="true" signature="3065:3154" ph="INSERT INTO koppel_user_drugs... " />
+            <marker date="1572087276375" expanded="true" signature="3463:3523" ph="INSERT INTO `eten`... " />
+            <marker date="1572087276375" expanded="true" signature="3795:3868" ph="INSERT INTO koppel_user_eten... " />
+            <marker date="1572087276375" expanded="true" signature="4163:4251" ph="INSERT INTO `slaap`... " />
+            <marker date="1572087276375" expanded="true" signature="4624:4687" ph="INSERT INTO `sport`... " />
+            <marker date="1572087276375" expanded="true" signature="4951:5026" ph="INSERT INTO koppel_user_sport... " />
           </folding>
         </state>
       </provider>
