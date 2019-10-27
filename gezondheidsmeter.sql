@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 01:25 PM
+-- Generation Time: Oct 28, 2019 at 12:51 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -36,21 +36,6 @@ CREATE TABLE `arbeid` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `arbeid`
---
-
-INSERT INTO `arbeid` (`arbeid_ID`, `gebruiker_ID`, `werkplek`, `werkdruk`, `datum`) VALUES
-(1, 4, 7, 6, '2019-10-14'),
-(2, 5, 9, 9, '2019-10-19'),
-(3, 4, 8, 8, '2019-10-17'),
-(4, 4, 9, 9, '2019-10-25'),
-(5, 4, 0, 0, '0000-00-00'),
-(6, 5, 8, 8, '2019-10-15'),
-(7, 5, 8, 8, '2019-10-15'),
-(8, 5, 8, 8, '2019-10-15'),
-(9, 5, 2, 2, '2019-10-02');
-
 -- --------------------------------------------------------
 
 --
@@ -65,20 +50,6 @@ CREATE TABLE `drinken` (
   `schijf_ID` int(11) NOT NULL,
   `alcohol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `drinken`
---
-
-INSERT INTO `drinken` (`drinken_ID`, `naam`, `kcal`, `suiker`, `schijf_ID`, `alcohol`) VALUES
-(1, 'pizza', 188, 99.99, 1, '8'),
-(2, 'cola', 600, 99.99, 0, '10'),
-(3, 'cola', 500, 5.00, 0, '5'),
-(4, 'cake', 444, 4.00, 0, '4'),
-(5, 'cola', 0, 0.00, 0, '0'),
-(9, 'fanta', 300, 5.00, 0, '3'),
-(10, 'faf', 500, 99.99, 0, '5'),
-(11, '2', 2, 2.00, 0, '2');
 
 -- --------------------------------------------------------
 
@@ -102,8 +73,20 @@ INSERT INTO `drugs` (`drugs_ID`, `naam`, `soort`) VALUES
 (3, 'harddrugs', '2'),
 (4, 'harddrugs', '0'),
 (5, '', ''),
-(6, 'harddrugs', '55'),
-(7, 'softdrugs', '2');
+(6, 'softdrugs', '60'),
+(7, 'softdrugs', '2'),
+(8, 'softdrugs', '1'),
+(9, 'softdrugs', '123'),
+(10, 'harddrugs', '5'),
+(11, 'softdrugs', '2'),
+(12, 'harddrugs', '3'),
+(13, 'softdrugs', '4'),
+(14, 'test321', 'soft'),
+(15, 'harddrugs', '5'),
+(16, 'harddrugs', '8'),
+(17, 'softdrugs', '2'),
+(18, 'softdrugs', '2'),
+(19, 'softdrugs', '2');
 
 -- --------------------------------------------------------
 
@@ -124,13 +107,16 @@ CREATE TABLE `eten` (
 --
 
 INSERT INTO `eten` (`eten_ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) VALUES
-(3, 'zibbi', 13, 0.01, 0),
-(4, 'pizza', 800, 3.00, 0),
-(5, 'pizza', 500, 4.00, 0),
-(6, 'cola', 555, 5.00, 0),
-(7, '', 0, 0.00, 0),
-(8, 'pyy', 555, 99.99, 0),
-(9, '2', 2, 2.00, 0);
+(11, 'testkoppeltabel', 123, 99.99, 0),
+(12, '5', 5, 5.00, 0),
+(13, '2', 2, 2.00, 0),
+(14, '3', 3, 3.00, 0),
+(15, '4', 4, 4.00, 0),
+(16, '5', 5, 5.00, 0),
+(17, '8', 8, 8.00, 0),
+(18, '2', 2, 2.00, 0),
+(19, '2', 2, 2.00, 0),
+(20, '2', 2, 2.00, 0);
 
 -- --------------------------------------------------------
 
@@ -183,8 +169,30 @@ CREATE TABLE `koppel_user_drinks` (
 --
 
 INSERT INTO `koppel_user_drinks` (`gebruiker_ID`, `drinks_ID`, `datum`) VALUES
-(4, 2, '2019-10-25'),
-(5, 10, '2019-10-15');
+(1, 5, '0000-00-00'),
+(1, 6, '0000-00-00'),
+(1, 7, '0000-00-00'),
+(1, 8, '0000-00-00'),
+(2, 1, '2019-10-16'),
+(4, 2, '0000-00-00'),
+(4, 3, '0000-00-00'),
+(4, 4, '0000-00-00'),
+(4, 5, '0000-00-00'),
+(7, 9, '2019-10-18'),
+(5, 10, '0000-00-00'),
+(5, 11, '0000-00-00'),
+(5, 12, '0000-00-00'),
+(5, 13, '0000-00-00'),
+(5, 14, '2019-10-04'),
+(5, 15, '0000-00-00'),
+(5, 16, '0000-00-00'),
+(5, 17, '0000-00-00'),
+(5, 18, '2019-10-27'),
+(5, 19, '0000-00-00'),
+(5, 20, '2019-10-27'),
+(5, 21, '2019-10-28'),
+(5, 22, '2019-10-27'),
+(5, 23, '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -207,10 +215,16 @@ INSERT INTO `koppel_user_drugs` (`gebruiker_ID`, `drug_ID`, `hoeveelheid`, `datu
 (1, 1, 7, '2019-10-18'),
 (2, 1, 6, '2019-10-15'),
 (3, 1, 2, '2019-10-13'),
-(4, 1, 4, '2019-10-25'),
-(5, 1, 9, '2019-10-17'),
+(4, 1, 4, '2019-10-27'),
+(5, 1, 9, '2019-10-27'),
 (6, 1, 8, '2019-10-14'),
-(7, 1, 5, '2019-10-20');
+(7, 1, 5, '2019-10-20'),
+(5, 13, 1, '2019-10-27'),
+(5, 15, 5, '0000-00-00'),
+(5, 16, 8, '2019-10-27'),
+(5, 17, 2, '2019-10-28'),
+(5, 18, 2, '2019-10-27'),
+(5, 19, 2, '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -229,9 +243,11 @@ CREATE TABLE `koppel_user_eten` (
 --
 
 INSERT INTO `koppel_user_eten` (`gebruiker_ID`, `eten_ID`, `datum`) VALUES
-(1, 3, '2019-10-16'),
-(4, 4, '2019-10-25'),
-(5, 7, '2019-10-18');
+(5, 11, '0000-00-00'),
+(5, 17, '2019-10-27'),
+(5, 18, '2019-10-28'),
+(5, 19, '2019-10-27'),
+(5, 20, '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -250,9 +266,12 @@ CREATE TABLE `koppel_user_sport` (
 --
 
 INSERT INTO `koppel_user_sport` (`gebruiker_ID`, `sport_ID`, `datum`) VALUES
-(4, 1, '2019-10-25'),
-(5, 1, '2019-10-18'),
-(6, 2, '2019-10-19');
+(4, 1, '2019-10-16'),
+(5, 5, '0000-00-00'),
+(5, 14, '2019-10-27'),
+(5, 15, '2019-10-28'),
+(5, 16, '2019-10-27'),
+(5, 17, '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -274,8 +293,7 @@ CREATE TABLE `melding` (
 INSERT INTO `melding` (`melding_ID`, `melding`, `datum`, `gebruiker_ID`) VALUES
 (1, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-17', 4),
 (2, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-18', 5),
-(3, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-25', 5),
-(4, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-26', 5);
+(3, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-26', 5);
 
 -- --------------------------------------------------------
 
@@ -309,12 +327,22 @@ CREATE TABLE `slaap` (
 INSERT INTO `slaap` (`slaap_ID`, `gebruiker_ID`, `uren`, `beoordeling`, `datum`) VALUES
 (1, 1, 3, '3', '2019-10-16'),
 (2, 4, 8, '8', '2019-10-14'),
-(3, 4, 8, '9', '2019-10-18'),
-(4, 4, 5, '5', '2019-10-25'),
+(3, 4, 8, '9', '2019-10-17'),
+(4, 4, 5, '5', '2019-10-18'),
 (5, 4, 0, '0', '0000-00-00'),
-(6, 6, 0, '0', '0000-00-00'),
-(7, 5, 55, '5', '2019-10-15'),
-(8, 5, 2, '2', '2019-10-02');
+(6, 5, 6, '10', '2019-10-18'),
+(7, 5, 2, '2', '2019-10-02'),
+(8, 5, 1, '1', '0000-00-00'),
+(9, 5, 12, '21', '2019-10-19'),
+(10, 5, 5, '5', '2019-10-04'),
+(11, 5, 2, '2', '2019-10-05'),
+(12, 5, 3, '3', '2019-10-03'),
+(13, 5, 4, '4', '2019-10-04'),
+(14, 5, 5, '5', '2019-10-12'),
+(15, 5, 8, '8', '2019-10-27'),
+(16, 5, 2, '2', '2019-10-28'),
+(17, 5, 2, '2', '2019-10-27'),
+(18, 5, 2, '2', '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -337,8 +365,19 @@ INSERT INTO `sport` (`sport_ID`, `naam`, `verbranding`) VALUES
 (2, 'voetbal', '400'),
 (3, 'tennis', '505'),
 (4, '', '0'),
-(5, 'voetbal', '400'),
-(6, '2', '2');
+(5, 'rennen', '1000'),
+(6, '2', '2'),
+(7, '1', '1'),
+(8, '3213', '3123'),
+(9, '5', '5'),
+(10, '2', '2'),
+(11, '3', '3'),
+(12, '4', '4'),
+(13, '5', '5'),
+(14, '8', '8'),
+(15, '2', '2'),
+(16, '2', '2'),
+(17, '2', '2');
 
 --
 -- Indexes for dumped tables
@@ -378,15 +417,13 @@ ALTER TABLE `gebruiker`
 -- Indexes for table `koppel_user_drinks`
 --
 ALTER TABLE `koppel_user_drinks`
-  ADD PRIMARY KEY (`gebruiker_ID`),
-  ADD KEY `drinks_drinks_ID_drinken_drinken_ID` (`drinks_ID`);
+  ADD KEY `user_ID_user_ID` (`gebruiker_ID`),
+  ADD KEY `drinks_ID` (`drinks_ID`);
 
 --
 -- Indexes for table `koppel_user_drugs`
 --
 ALTER TABLE `koppel_user_drugs`
-  ADD PRIMARY KEY (`gebruiker_ID`),
-  ADD UNIQUE KEY `gebruiker_ID` (`gebruiker_ID`),
   ADD KEY `drugs_ID_drugs_ID` (`drug_ID`),
   ADD KEY `drugs_user_ID_user_ID` (`gebruiker_ID`);
 
@@ -394,7 +431,6 @@ ALTER TABLE `koppel_user_drugs`
 -- Indexes for table `koppel_user_eten`
 --
 ALTER TABLE `koppel_user_eten`
-  ADD PRIMARY KEY (`gebruiker_ID`),
   ADD KEY `eten_user_ID_user_ID` (`gebruiker_ID`),
   ADD KEY `eten_eten_ID_food_ID` (`eten_ID`);
 
@@ -402,7 +438,8 @@ ALTER TABLE `koppel_user_eten`
 -- Indexes for table `koppel_user_sport`
 --
 ALTER TABLE `koppel_user_sport`
-  ADD PRIMARY KEY (`gebruiker_ID`);
+  ADD KEY `gebruiker_ID` (`gebruiker_ID`),
+  ADD KEY `sport_ID` (`sport_ID`);
 
 --
 -- Indexes for table `melding`
@@ -436,32 +473,27 @@ ALTER TABLE `sport`
 -- AUTO_INCREMENT for table `arbeid`
 --
 ALTER TABLE `arbeid`
-  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `drinken`
 --
 ALTER TABLE `drinken`
-  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `eten`
 --
 ALTER TABLE `eten`
-  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
   MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `koppel_user_drinks`
---
-ALTER TABLE `koppel_user_drinks`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `melding`
 --
@@ -476,12 +508,12 @@ ALTER TABLE `schijf`
 -- AUTO_INCREMENT for table `slaap`
 --
 ALTER TABLE `slaap`
-  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- Constraints for dumped tables
 --
@@ -490,15 +522,14 @@ ALTER TABLE `sport`
 -- Constraints for table `koppel_user_drinks`
 --
 ALTER TABLE `koppel_user_drinks`
-  ADD CONSTRAINT `drinks_drinks_ID_drinken_drinken_ID` FOREIGN KEY (`drinks_ID`) REFERENCES `drinken` (`drinken_ID`),
-  ADD CONSTRAINT `drinks_user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+  ADD CONSTRAINT `user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
 -- Constraints for table `koppel_user_drugs`
 --
 ALTER TABLE `koppel_user_drugs`
   ADD CONSTRAINT `drugs_ID_drugs_ID` FOREIGN KEY (`drug_ID`) REFERENCES `drugs` (`drugs_ID`),
-  ADD CONSTRAINT `koppel_user_drugs_ibfk_1` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+  ADD CONSTRAINT `drugs_user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
 
 --
 -- Constraints for table `koppel_user_eten`
@@ -506,6 +537,13 @@ ALTER TABLE `koppel_user_drugs`
 ALTER TABLE `koppel_user_eten`
   ADD CONSTRAINT `eten_eten_ID_food_ID` FOREIGN KEY (`eten_ID`) REFERENCES `eten` (`eten_ID`),
   ADD CONSTRAINT `eten_user_ID_user_ID` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`);
+
+--
+-- Constraints for table `koppel_user_sport`
+--
+ALTER TABLE `koppel_user_sport`
+  ADD CONSTRAINT `koppel_user_sport_ibfk_1` FOREIGN KEY (`gebruiker_ID`) REFERENCES `gebruiker` (`gebruiker_ID`),
+  ADD CONSTRAINT `koppel_user_sport_ibfk_2` FOREIGN KEY (`sport_ID`) REFERENCES `sport` (`sport_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

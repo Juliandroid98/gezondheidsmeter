@@ -15,6 +15,11 @@ if (isset($_POST['submit'])){
     $Werkplek = $conn->real_escape_string(htmlspecialchars($_POST['werkplek']));
     $Werkdruk = $conn->real_escape_string(htmlspecialchars($_POST['werkdruk']));
     $Werkdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Slapendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Etendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Drinkendatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Drugsdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
+    $Sportdatum = $conn->real_escape_string(htmlspecialchars($_POST['datum']));
     $DrinkenNaam = $conn->real_escape_string(htmlspecialchars($_POST['drankNaam']));
     $DrinkenKcalorie = $conn->real_escape_string(htmlspecialchars($_POST['drankCalorie']));
     $DrinkenSuiker = $conn->real_escape_string(htmlspecialchars($_POST['drankSuiker']));
@@ -30,7 +35,7 @@ if (isset($_POST['submit'])){
     $SportNaam = $conn->real_escape_string(htmlspecialchars($_POST['sportNaam']));
     $SportVerbranding = $conn->real_escape_string(htmlspecialchars($_POST['sportVerbranding']));
 
-    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
+    $Class->GetData($conn,$Werkplek, $Werkdruk,$Werkdatum, $Slapendatum, $Etendatum, $Drinkendatum, $Drugsdatum, $Sportdatum, $DrinkenNaam, $DrinkenKcalorie, $DrinkenSuiker, $DrinkenAlcohol, $EtenNaam, $EtenKcalorie, $EtenSuiker, $DrugsNaam, $DrugsSoort, $SlaapHoeveelheid, $SlaapKwaliteit,$Slaapdatum, $SportNaam, $SportVerbranding, $_SESSION['username']);
     header( "Location: dashboard.php" );
 }
 ?>
@@ -52,42 +57,42 @@ if (isset($_POST['submit'])){
     <script type="application/javascript" src="assets/javascript/form.js"></script>
     <title>Gezondheidsmeter - Vragenformulier</title>
 </head>
-    <body>
-        <div class="sitecontainer">
-            <!-- header -->
-            <div class="headercontainer">
-                <image class="logosmall" src="assets/images/logo.png" alt="logo">
-                <h2>Vragenformulier</h2>
-                <a class="settingsmenu" href="settings.php">
-                    <image class="settingsimg" src="assets/images/settings.png" alt="settings">
-                </a>
+<body>
+<div class="sitecontainer">
+    <!-- header -->
+    <div class="headercontainer">
+        <image class="logosmall" src="assets/images/logo.png" alt="logo">
+            <h2>Vragenformulier</h2>
+            <a class="settingsmenu" href="settings.php">
+                <image class="settingsimg" src="assets/images/settings.png" alt="settings">
+            </a>
+    </div>
+    <!-- content -->
+    <form id="regForm" action="vragenformulier.php" method="post">
+        <!-- Werkplek -->
+        <div id="werkVragen" class="">
+            <h3>Werkplek</h3>
+            Beoordeel uw werkplek:
+            <p>
+                <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkplek">
+            </p>
+
+            Beoordeel uw werkdruk:
+            <p>
+                <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkdruk">
+            </p>
+
+            Datum:
+            <p>
+                <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
+            </p>
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step">1/6</span>
             </div>
-            <!-- content -->
-            <form id="regForm" action="vragenformulier.php" method="post">
-              <!-- Werkplek -->
-              <div id="werkVragen" class="">
-                  <h3>Werkplek</h3>
-                  Beoordeel uw werkplek:
-                  <p>
-                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkplek">
-                  </p>
+        </div>
 
-                  Beoordeel uw werkdruk:
-                  <p>
-                      <input placeholder="vul hier uw beoordeling van 1 tot 10.." required size="3" minlength="0" maxlength="2" name="werkdruk">
-                  </p>
-
-                  Datum:
-                  <p>
-                      <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
-                  </p>
-                  <div style="text-align:center;margin-top:40px;">
-                      <span class="step">1/6</span>
-                  </div>
-            </div>
-
-            <!-- Drinken -->
-            <div id="drinkenVragen" class="hidden">
+        <!-- Drinken -->
+        <div id="drinkenVragen" class="hidden">
             <h3>Drinken</h3>
 
             <div id="dynamic_field">Welke drank(en)heeft u gehad?
@@ -104,95 +109,92 @@ if (isset($_POST['submit'])){
             <p><input placeholder="vul hier uw antwoord in.." name="drankAlcohol"></p>
 
             <div style="text-align:center;margin-top:40px;">
-              <span class="step">2/6</span>
+                <span class="step">2/6</span>
             </div>
-          </div>
+        </div>
 
-            <!-- Eten -->
-            <div id="etenVragen" class="hidden">
-                <h3>Eten</h3>
-                Welk eten heeft u gehad?
-                <div id="dynamic_field">
-                    <p><input placeholder="vul hier uw antwoord in.." name="etenNaam"></p>
-                </div>
-
-                Hoeveel kilocalorieën zit er in?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenCalorie"></p>
-
-                Hoeveel gram suiker zit erin?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenSuiker"></p>
-
-                <div style="text-align:center;margin-top:40px;">
-                  <span class="step">3/6</span>
-                </div>
+        <!-- Eten -->
+        <div id="etenVragen" class="hidden">
+            <h3>Eten</h3>
+            Welk eten heeft u gehad?
+            <div id="dynamic_field">
+                <p><input placeholder="vul hier uw antwoord in.." name="etenNaam"></p>
             </div>
 
-            <!-- Drugs -->
-            <div id="drugsVragen" class="hidden">
-                <h3>Drugs</h3>
-                Welke drugs heeft u gehad?
-                <p><select name="drugsNaam">
+            Hoeveel kilocalorieën zit er in?
+            <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenCalorie"></p>
+
+            Hoeveel gram suiker zit erin?
+            <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="etenSuiker"></p>
+
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step">3/6</span>
+            </div>
+        </div>
+
+        <!-- Drugs -->
+        <div id="drugsVragen" class="hidden">
+            <h3>Drugs</h3>
+            Welke drugs heeft u gehad?
+            <p><select name="drugsNaam">
                     <option value=""></option>
                     <option value="softdrugs">Softdrugs</option>
                     <option value="harddrugs">Harddrugs</option>
                 </select><br>
-                </p>
-                Hoeveel mg heeft u in totaal gebruikt?
-                  <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsSoort"></p>
+            </p>
+            Hoeveel mg heeft u in totaal gebruikt?
+            <p><input placeholder="vul hier uw antwoord in.." oninput="this.className = ''" name="drugsSoort"></p>
 
-                <div style="text-align:center;margin-top:40px;">
-                  <span class="step">4/6</span>
-                </div>
-            </div>
-
-            <!-- Slaap -->
-            <div id="slaapVragen" class="hidden">
-                <h3>Slaap</h3>
-                Hoeveel uren heeft u geslapen?
-                  <p><input placeholder="vul hier uw antwoord in.." required size="3" minlength="0" maxlength="2" name="slaapHoeveelheid"></p>
-
-                Beoordeel uw slaap.
-                  <p><input placeholder="vul hier uw beoordeling van 1 tot 10.."  required size="3" minlength="0" maxlength="2" name="slaapKwaliteit"></p>
-                Datum:
-                <p>
-                    <input placeholder="vul hier de huidige datum in.." type="date" name="datum">
-                </p>
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step">5/6</span>
-                </div>
-            </div>
-
-            <!-- Sport -->
-            <div id="sportVragen" class="hidden">
-                <h3>Sport</h3>
-                Welke sport heeft u gedaan?
-                <p><input placeholder="vul hier uw antwoord in.." name="sportNaam"></p>
-
-                Hoeveel colorieën heb je daarmee verbrandt?
-                <p><input placeholder="vul hier uw antwoord in.." name="sportVerbranding"></p>
-
-                <div style="text-align:center;margin-top:30px;">
-                  <span class="step">6/6</span>
-                </div>
-            </div>
-
-            <input type="submit" name="submit" value="Versturen" class="hidden" id="submitButton">
-                <div id="prevnext" style="overflow:auto;">
-                    <button type="button" id="prevBtn" class="hidden" onclick="PaginaCheck('terug');">Terug</button>
-                    <button type="button" id="nextBtn" onclick="PaginaCheck('verder');">Volgende</button>
-                </div>
-            </form>
-
-            <script src="assets/javascript/form.js"></script>
-
-            <!-- bottom buttons-->
-            <div class="bottomcontainer">
-                <div class="bottombuttongroup">
-                    <a class="bottombutton" href="dashboard.php"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
-                    <a class="bottombutton_active" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
-                    <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
-                </div>
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step">4/6</span>
             </div>
         </div>
-    </body>
+
+        <!-- Slaap -->
+        <div id="slaapVragen" class="hidden">
+            <h3>Slaap</h3>
+            Hoeveel uren heeft u geslapen?
+            <p><input placeholder="vul hier uw antwoord in.." required size="3" minlength="0" maxlength="2" name="slaapHoeveelheid"></p>
+
+            Beoordeel uw slaap.
+            <p><input placeholder="vul hier uw beoordeling van 1 tot 10.."  required size="3" minlength="0" maxlength="2" name="slaapKwaliteit"></p>
+
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step">5/6</span>
+            </div>
+        </div>
+
+        <!-- Sport -->
+        <div id="sportVragen" class="hidden">
+            <h3>Sport</h3>
+            Welke sport heeft u gedaan?
+            <p><input placeholder="vul hier uw antwoord in.." name="sportNaam"></p>
+
+            Hoeveel colorieën heb je daarmee verbrandt?
+            <p><input placeholder="vul hier uw antwoord in.." name="sportVerbranding"></p>
+
+            <div style="text-align:center;margin-top:30px;">
+                <span class="step">6/6</span>
+            </div>
+        </div>
+
+        <input type="submit" name="submit" value="Versturen" class="hidden" id="submitButton">
+        <div id="prevnext" style="overflow:auto;">
+            <button type="button" id="prevBtn" class="hidden" onclick="PaginaCheck('terug');">Terug</button>
+            <button type="button" id="nextBtn" onclick="PaginaCheck('verder');">Volgende</button>
+        </div>
+    </form>
+
+    <script src="assets/javascript/form.js"></script>
+
+    <!-- bottom buttons-->
+    <div class="bottomcontainer">
+        <div class="bottombuttongroup">
+            <a class="bottombutton" href="dashboard.php"><img class="bottomimg" src="assets/images/dashboard.png" alt="dashboard"></a>
+            <a class="bottombutton_active" href="vragenformulier.php"><img class="bottomimg" src="assets/images/questions.png" alt="vragenformulier"></a>
+            <a class="bottombutton" href="meldingen.php"><img class="bottomimg" src="assets/images/notifications.png" alt="meldingen"></a>
+        </div>
+    </div>
+</div>
+</body>
 </html>

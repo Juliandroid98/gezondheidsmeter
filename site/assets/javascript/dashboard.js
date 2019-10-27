@@ -3,7 +3,6 @@ var i;
 $( function() {
     chart('arbeid');
     chart('alles');
-    console.log("LOOLOL");
     $( "#accordion" ).accordion();
 } );
 for (i = 0; i < collapse.length; i++) {

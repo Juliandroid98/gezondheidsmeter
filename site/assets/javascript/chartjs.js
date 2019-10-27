@@ -1,17 +1,15 @@
 function chart(chartSoort) {
-
-    var result = [0];
+    var collapseChart;
+    var result = [];
     var today = new Date;
-    var DayToday = today.getDate();
-    var first = today.getDate() - today.getDay() + 1;
+    var first = today.getDate() - today.getDay() + 2;
     var last = first + 6;
-    var dateNow = today.getDate();
-    console.log(dateNow);
+    var DayToday = today.getDate() + 1;
 
-    //format date data
+    var now = new Date(today.setDate(DayToday)).toISOString().slice(0, 10);
     var firstDay = new Date(today.setDate(first)).toISOString().slice(0, 10);
     var lastDay = new Date(today.setDate(last)).toISOString().slice(0, 10);
-    var now = new Date(today.setDate(dateNow)).toISOString().slice(0, 10);
+
     switch (chartSoort) {
         case 'arbeid':
             collapseChart = document.getElementById('chartArbeid').getContext('2d');
@@ -39,9 +37,7 @@ function chart(chartSoort) {
             data: {firstDay: firstDay, lastDay: lastDay, today: now, soort: chartSoort},
             dataType: 'json',
             success: function (data) {
-                var collapseChart;
-                console.log(result);
-                for (i = 0; i < dataLength; i++) {
+                for (i = 0; i < data.length; i++) {
                     switch (chartSoort) {
                         case 'arbeid':
                             result.push(arbeid(data[i][0], data[i][1]));
@@ -62,10 +58,8 @@ function chart(chartSoort) {
                             result.push(sporten(data[i][0]));
                             break;
                         case 'alles':
-                            console.log("yolo");
                             var arbeidVandaag = Math.round(arbeid(data[i][0], data[i][1]) * 10 ) / 10;
                             var drugsVandaag = Math.round(drugs(data[i][2]) * 10 ) / 10;
-                            console.log(data[i][0]);
                             var slaapVandaag = Math.round(slaap(data[i][3], data[i][4]) * 10 ) / 10;
                             var drinkenVandaag = Math.round(drinken(data[i][5], data[i][6], data[i][7]) * 10 ) / 10;
                             var etenVandaag = Math.round(eten(data[i][8], data[i][9]) * 10 ) / 10;
@@ -78,64 +72,113 @@ function chart(chartSoort) {
                             document.getElementById('slaap').innerHTML = "Slaap <br>" + slaapVandaag;
                             document.getElementById('sport').innerHTML = "Sport <br>" + sportVandaag;
                             document.getElementById('totaal').innerHTML = "Gemiddelde cijfer <br>" + totaalVandaag;
-                            result = false;
                             break;
                     }
 
                 }
-                console.log(result);
+                var chart = new Chart(collapseChart, {
+                    type: 'line',
+
+                    data: {
+                        labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
+                        datasets: [{
+                            label: 'Levensstijl',
+                            data: result
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        responsiveAnimationDuration: 2000,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    suggestedMin: 0,
+                                    beginAtZero: true,
+                                    max: 10
+                                }
+                            }]
+                        }
+                    },
+                    plugins: [
+                        {
+                            afterLayout: function (chart) {
+                                var scales = chart.scales;
+
+                                var borderColor = chart.ctx.createLinearGradient(
+                                    scales["x-axis-0"].left,
+                                    scales["y-axis-0"].bottom,
+                                    scales["y-axis-0"].right,
+                                    scales["y-axis-0"].top
+                                );
+
+                                borderColor.addColorStop(0, "red");
+                                borderColor.addColorStop(0.25, "orange");
+                                borderColor.addColorStop(0.5, "yellow");
+                                borderColor.addColorStop(0.75, "lime");
+                                borderColor.addColorStop(1, "green");
+
+                                chart.data.datasets[0].borderColor = borderColor;
+                            }
+                        }
+                    ]
 
 
+                });
 
+
+            },
+            error: function (data){
+                var chart = new Chart(collapseChart, {
+                    type: 'line',
+
+                    data: {
+                        labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
+                        datasets: [{
+                            label: 'Levensstijl',
+                            data: result
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        responsiveAnimationDuration: 1300,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    suggestedMin: 0,
+                                    beginAtZero: true,
+                                    max: 10
+                                }
+                            }]
+                        }
+                    },
+                    plugins: [
+                        {
+                            afterLayout: function (chart) {
+                                var scales = chart.scales;
+
+                                var borderColor = chart.ctx.createLinearGradient(
+                                    scales["x-axis-0"].left,
+                                    scales["y-axis-0"].bottom,
+                                    scales["y-axis-0"].right,
+                                    scales["y-axis-0"].top
+                                );
+
+                                borderColor.addColorStop(0, "red");
+                                borderColor.addColorStop(0.25, "orange");
+                                borderColor.addColorStop(0.5, "yellow");
+                                borderColor.addColorStop(0.75, "lime");
+                                borderColor.addColorStop(1, "green");
+
+                                chart.data.datasets[0].borderColor = borderColor;
+                            }
+                        }
+                    ]
+
+
+                });
             }
         });
-    var chart = new Chart(collapseChart, {
-        type: 'line',
 
-        data: {
-            labels: ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'],
-            datasets: [{
-                label: 'Levensstijl',
-                data: result
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            responsiveAnimationDuration: 1000,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        suggestedMin: 0,
-                        beginAtZero: true,
-                        max: 10
-                    }
-                }]
-            }
-        },
-        plugins: [
-            {
-                afterLayout: function (chart) {
-                    var scales = chart.scales;
-
-                    var borderColor = chart.ctx.createLinearGradient(
-                        scales["x-axis-0"].left,
-                        scales["y-axis-0"].bottom,
-                        scales["y-axis-0"].right,
-                        scales["y-axis-0"].top
-                    );
-
-                    borderColor.addColorStop(0, "red");
-                    borderColor.addColorStop(0.25, "orange");
-                    borderColor.addColorStop(0.5, "yellow");
-                    borderColor.addColorStop(0.75, "lime");
-                    borderColor.addColorStop(1, "green");
-
-                    chart.data.datasets[0].borderColor = borderColor;
-                }
-            }
-        ]
-
-
-    });
 }
