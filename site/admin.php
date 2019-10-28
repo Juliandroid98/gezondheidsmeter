@@ -75,8 +75,8 @@ try{
 				echo "<td>" . $row['gewicht'] . "</td>";
 				echo "<td>" . $row['geslacht'] . "</td>";
 				echo "<td>" . $row['geactiveerd'] . "</td>";
-				echo "<td><img onclick='addRowForEdit(" . $row['gebruiker_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<td><img id='penciltrash' onclick='addRowForEdit(" . $row['gebruiker_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderID' value='" . $row['gebruiker_ID'] . "'><input id='penciltrash' type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
 			echo "</tr>";
 			echo "<tr id='addRowEdit".$row['gebruiker_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
@@ -104,7 +104,7 @@ try{
 		<td><input type='text' placeholder='geslacht' name='geslacht'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
 		echo "<tr class='toevoegen'><td>toevoegen</td>
-		<td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
+		<td><img id='penciltrash' class='bottomimg' src='assets/images/plus.png' onclick='addRowForInput();'></td></tr>";
 		echo "</table></div>";
         // Free result set
         unset($result);
@@ -133,8 +133,8 @@ try{
                 //echo "<td>" . $row['drugs_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['soort'] . "</td>";
-				echo "<td><img onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrugs' value='" . $row['drugs_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<td><img id='penciltrash' onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrugs' value='" . $row['drugs_ID'] . "'><input id='penciltrash' type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditDrugs".$row['drugs_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
@@ -151,7 +151,7 @@ try{
 		<input type='text' placeholder='drugsnaam' name='drugsnaam'></td>
 		<td><input type='text' placeholder='soort' name='soort'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrugs();'></td></tr>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img id='penciltrash' class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrugs();'></td></tr>";
 		echo "</table></div>";
         // Free result set
         unset($result);
@@ -185,8 +185,8 @@ try{
                 echo "<td>" . $row['kcal'] . "</td>";
 				echo "<td>" . $row['schijf_ID'] . "</td>";
                 echo "<td>" . $row['sugar'] . "</td>";
-				echo "<td><img onclick='addRowForEditEten(" . $row['eten_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<td><img id='penciltrash' onclick='addRowForEditEten(" . $row['eten_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input id='penciltrash' type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
@@ -206,7 +206,7 @@ try{
 		<td><input type='text' placeholder='schijf' name='AddEtenschijf_ID'></td>
 		<td><input type='text' placeholder='suiker' name='AddEtensugar'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img id='penciltrash' class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputEten();'></td></tr>";
 		echo "</table></div>";
         // Free result set
         unset($result);
@@ -240,8 +240,8 @@ try{
 				echo "<td>" . $row['suiker'] . "</td>";
                 echo "<td>" . $row['alcohol'] . "</td>";
                 echo "<td>" . $row['schijf_ID'] . "</td>";
-				echo "<td><img onclick='addRowForEditDrinken(" . $row['drinken_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrinken' value='" . $row['drinken_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<td><img id='penciltrash' onclick='addRowForEditDrinken(" . $row['drinken_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDdrinken' value='" . $row['drinken_ID'] . "'><input id='penciltrash' type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditDrinken".$row['drinken_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
@@ -263,7 +263,7 @@ try{
 		<td><input type='text' placeholder='suiker' name='sugar'></td>
 		<td><input type='text' placeholder='alcohol' name='alcohol'></td>
 		<td><input type='submit' value='toevoegen'></td></tr></form>";
-		echo "<tr class='toevoegen'><td>toevoegen</td><td><img class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrinken();'></td></tr>";
+		echo "<tr class='toevoegen'><td>toevoegen</td><td><img id='penciltrash' class='bottomimg' src='assets/images/plus.png' onclick='addRowForInputDrinken();'></td></tr>";
 		echo "</table></div>";
         // Free result set
         unset($result);

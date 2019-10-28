@@ -33,3 +33,9 @@ td, th{
 	margin-right: auto;
 	border-collapse: collapse;
 }
+@media only screen and (min-width: 600px) {
+  #penciltrash {
+    width: 25px;
+	height: 25px;
+  }
+}
