@@ -106,20 +106,20 @@
       <file leaf-file-name="chartQuery.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="48" column="84" lean-forward="false" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+            <state relative-caret-position="672">
+              <caret line="47" column="112" lean-forward="false" selection-start-line="47" selection-start-column="112" selection-end-line="47" selection-end-column="112" />
               <folding>
-                <marker date="1572248053279" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
-                <marker date="1572248053279" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
-                <marker date="1572248053279" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
-                <marker date="1572248053279" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
-                <marker date="1572248053279" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
-                <marker date="1572248053279" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
-                <marker date="1572248053279" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
-                <marker date="1572248053279" expanded="true" signature="1975:3362" ph="SELECT arbei... gebruiker" />
-                <marker date="1572248053279" expanded="true" signature="1975:3404" ph="SELECT arbei... gebruiker" />
-                <marker date="1572248053279" expanded="true" signature="1975:3472" ph="SELECT arbei... gebruiker" />
-                <marker date="1572248053279" expanded="true" signature="1975:3679" ph="SELECT arbei... gebruiker" />
+                <marker date="1572248414444" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
+                <marker date="1572248414444" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
+                <marker date="1572248414444" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
+                <marker date="1572248414444" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
+                <marker date="1572248414444" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
+                <marker date="1572248414444" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
+                <marker date="1572248414444" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
+                <marker date="1572248414444" expanded="true" signature="1975:3368" ph="SELECT arbei... gebruiker" />
+                <marker date="1572248414444" expanded="true" signature="1975:3410" ph="SELECT arbei... gebruiker" />
+                <marker date="1572248414444" expanded="true" signature="1975:3478" ph="SELECT arbei... gebruiker" />
+                <marker date="1572248414444" expanded="true" signature="1975:3685" ph="SELECT arbei... gebruiker" />
               </folding>
             </state>
           </provider>
@@ -306,12 +306,12 @@
       <updated>1571057230271</updated>
       <workItem from="1571057232551" duration="52212000" />
       <workItem from="1571381765951" duration="10905000" />
-      <workItem from="1571934552695" duration="35269000" />
+      <workItem from="1571934552695" duration="35760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98386000" />
+    <option name="totallyTimeSpent" value="98877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -401,17 +401,17 @@
         <state relative-caret-position="882">
           <caret line="42" column="2" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
           <folding>
-            <marker date="1572248053279" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
-            <marker date="1572248053279" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
-            <marker date="1572248053279" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
-            <marker date="1572248053279" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
-            <marker date="1572248053279" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
-            <marker date="1572248053279" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
-            <marker date="1572248053279" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3362" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3404" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3472" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3679" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
+            <marker date="1572248414444" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
+            <marker date="1572248414444" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
+            <marker date="1572248414444" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
+            <marker date="1572248414444" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
+            <marker date="1572248414444" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
+            <marker date="1572248414444" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3368" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3410" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3478" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3685" ph="SELECT arbei... gebruiker" />
           </folding>
         </state>
       </provider>
@@ -479,17 +479,17 @@
         <state relative-caret-position="210">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1572248053279" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
-            <marker date="1572248053279" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
-            <marker date="1572248053279" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
-            <marker date="1572248053279" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
-            <marker date="1572248053279" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
-            <marker date="1572248053279" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
-            <marker date="1572248053279" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3362" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3404" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3472" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3679" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
+            <marker date="1572248414444" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
+            <marker date="1572248414444" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
+            <marker date="1572248414444" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
+            <marker date="1572248414444" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
+            <marker date="1572248414444" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
+            <marker date="1572248414444" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3368" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3410" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3478" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3685" ph="SELECT arbei... gebruiker" />
           </folding>
         </state>
       </provider>
@@ -659,20 +659,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/php/chartQuery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="48" column="84" lean-forward="false" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+        <state relative-caret-position="672">
+          <caret line="47" column="112" lean-forward="false" selection-start-line="47" selection-start-column="112" selection-end-line="47" selection-end-column="112" />
           <folding>
-            <marker date="1572248053279" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
-            <marker date="1572248053279" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
-            <marker date="1572248053279" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
-            <marker date="1572248053279" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
-            <marker date="1572248053279" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
-            <marker date="1572248053279" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
-            <marker date="1572248053279" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3362" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3404" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3472" ph="SELECT arbei... gebruiker" />
-            <marker date="1572248053279" expanded="true" signature="1975:3679" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="396:577" ph="SELECT hoeve... koppel_user_drugs" />
+            <marker date="1572248414444" expanded="true" signature="641:798" ph="SELECT uren,... slaap" />
+            <marker date="1572248414444" expanded="true" signature="864:1110" ph="SELECT kcal,... drinken" />
+            <marker date="1572248414444" expanded="true" signature="1175:1335" ph="SELECT werkp... arbeid" />
+            <marker date="1572248414444" expanded="true" signature="1398:1619" ph="SELECT kcal,... eten" />
+            <marker date="1572248414444" expanded="true" signature="1683:1910" ph="SELECT verbr... sport" />
+            <marker date="1572248414444" expanded="true" signature="1975:2262" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3368" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3410" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3478" ph="SELECT arbei... gebruiker" />
+            <marker date="1572248414444" expanded="true" signature="1975:3685" ph="SELECT arbei... gebruiker" />
           </folding>
         </state>
       </provider>

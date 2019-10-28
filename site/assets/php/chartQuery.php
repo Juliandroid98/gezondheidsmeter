@@ -36,8 +36,8 @@ if($soort === 'sport'){
 if($soort === 'alles'){
     $query = mysqli_query($conn, "SELECT arbeid.werkplek, arbeid.werkdruk, koppel_user_drugs.hoeveelheid, slaap.uren, slaap.beoordeling, drinken.kcal, drinken.alcohol, drinken.suiker, eten.kcal, eten.sugar, sport.verbranding
                                         FROM gebruiker 
-                                        INNER JOIN slaap ON gebruiker.gebruiker_ID = slaap.slaap_ID
-                                        INNER JOIN arbeid ON gebruiker.gebruiker_ID = arbeid.arbeid_ID 
+                                        INNER JOIN slaap ON gebruiker.gebruiker_ID = slaap.gebruiker_ID
+                                        INNER JOIN arbeid ON gebruiker.gebruiker_ID = arbeid.gebruiker_ID
                                         INNER JOIN koppel_user_sport ON gebruiker.gebruiker_ID = koppel_user_sport.gebruiker_ID 
                                         INNER JOIN sport ON koppel_user_sport.sport_ID = sport.sport_ID 
                                         INNER JOIN koppel_user_eten ON gebruiker.gebruiker_ID = koppel_user_eten.gebruiker_ID 
