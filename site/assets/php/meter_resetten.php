@@ -33,6 +33,20 @@ $stmt->bind_param("s", $userid);
 $stmt->execute();
 $stmt->close();
 
+// Delete slaap data
+$stmt = $conn->prepare("DELETE FROM `slaap` WHERE `gebruiker_ID` = ?;");
+$stmt->bind_param("s", $userid);
+
+$stmt->execute();
+$stmt->close();
+
+// Delete arbeid data
+$stmt = $conn->prepare("DELETE FROM `arbeid` WHERE `gebruiker_ID` = ?;");
+$stmt->bind_param("s", $userid);
+
+$stmt->execute();
+$stmt->close();
+
 // When everything is done, send the user back to the dashboard
 header( 'Location: ../../dashboard.php');
 ?>
