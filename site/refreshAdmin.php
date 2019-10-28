@@ -93,7 +93,7 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE drinken SET drinken_ID = :drinken_ID, naam = :naam, kcal = :kcal, suiker =:suiker, schijf_ID = :schijf_ID, alcohol = :alcohol WHERE drinken_ID = :drinken_ID";
+    $sql = "UPDATE drinken SET naam = :naam, kcal = :kcal, suiker =:suiker, schijf_ID = :schijf_ID, alcohol = :alcohol WHERE drinken_ID = :drinken_ID";
 	
     $stmt = $pdo->prepare($sql);
     
@@ -112,7 +112,7 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE eten SET eten_ID = :eten_ID, naam = :naam, kcal = :kcal, sugar =:sugar, schijf_ID = :schijf_ID WHERE eten_ID = :eten_ID";
+    $sql = "UPDATE eten SET naam = :naam, kcal = :kcal, sugar =:sugar, schijf_ID = :schijf_ID WHERE eten_ID = :eten_ID";
 	
     $stmt = $pdo->prepare($sql);
     
@@ -131,7 +131,7 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE sport SET sport_ID = :sport_ID, naam = :naam, verbranding = :verbranding WHERE sport_ID = :sport_ID";
+    $sql = "UPDATE sport SET naam = :naam, verbranding = :verbranding WHERE sport_ID = :sport_ID";
 	
     $stmt = $pdo->prepare($sql);
     
@@ -148,7 +148,7 @@ try{
 
 try{
     // Create prepared statement
-    $sql = "UPDATE drugs SET drugs_ID = :drugs_ID, naam = :naam, soort = :soort WHERE drugs_ID = :drugs_ID";
+    $sql = "UPDATE drugs SET naam = :naam, soort = :soort WHERE drugs_ID = :drugs_ID";
 	
     $stmt = $pdo->prepare($sql);
     

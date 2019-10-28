@@ -52,8 +52,8 @@ try{
     if($result->rowCount() > 0){
         echo "<br><b class='tabelTitel'>gebruiker</b><div class='responsiveTable'><table id='gebruiker'>";
             echo "<tr>";
-                echo "<th>is_admin</th>";
-                echo "<th>gebruiker_id</th>";
+                echo "<th>admin</th>";
+                //echo "<th>gebruikers id</th>";
 				echo "<th>gebruikersnaam</th>";
                 echo "<th>email</th>";
 				echo "<th>geboortedatum</th>";
@@ -67,7 +67,7 @@ try{
         while($row = $result->fetch()){
             echo "<tr>";
 				echo "<td>" . $row['is_admin'] . "</td>";
-                echo "<td>" . $row['gebruiker_ID'] . "</td>";
+                //echo "<td>" . $row['gebruiker_ID'] . "</td>";
 				echo "<td>" . $row['gebruikersnaam'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . $row['geboortedatum'] . "</td>";
@@ -81,7 +81,7 @@ try{
 			echo "<tr id='addRowEdit".$row['gebruiker_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
 				echo "<td><input id='editRecord' type='text' name='isAdmin' value='" . $row['is_admin'] . "'></td>";
-                echo "<td><input id='editRecord' type='text' name='gebruikerID' value='" . $row['gebruiker_ID'] . "'></td>";
+                echo "<input id='editRecord' type='hidden' name='gebruikerID' value='" . $row['gebruiker_ID'] . "'>";
 				echo "<td><input id='editRecord' type='text' name='gebruikersnaam' value='" . $row['gebruikersnaam'] . "'></td>";
                 echo "<td><input id='editRecord' type='text' name='email' value='" . $row['email'] . "'></td>";
 				echo "<td><input id='editRecord' type='text' name='geboortedatum' value='" . $row['geboortedatum'] . "'></td>";
@@ -122,15 +122,15 @@ try{
     if($result->rowCount() > 0){
         echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table id='drugs'>";
             echo "<tr>";
-                echo "<th>drugs_id</th>";
-                echo "<th>drugs_naam</th>";
-				echo "<th>soort_drugs</th>";
+                //echo "<th>drugs id</th>";
+                echo "<th>drugsnaam</th>";
+				echo "<th>soort</th>";
 				echo "<th>wijzigen</th>";
 				echo "<th>verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['drugs_ID'] . "</td>";
+                //echo "<td>" . $row['drugs_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
 				echo "<td>" . $row['soort'] . "</td>";
 				echo "<td><img onclick='addRowForEditDrugs(" . $row['drugs_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
@@ -138,7 +138,7 @@ try{
             echo "</tr>";
 			echo "<tr id='addRowEditDrugs".$row['drugs_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
-				echo "<td><input id='editRecordDrugs' type='text' name='drugs_ID' value='" . $row['drugs_ID'] . "'></td>";
+				echo "<input id='editRecordDrugs' type='hidden' name='drugs_ID' value='" . $row['drugs_ID'] . "'>";
                 echo "<td><input id='editRecordDrugs' type='text' name='naam' value='" . $row['naam'] . "'></td>";
 				echo "<td><input id='editRecordDrugs' type='text' name='soort' value='" . $row['soort'] . "'></td>";
 				echo "<td><input type='submit'></td><td></td>";
@@ -170,17 +170,17 @@ try{
     if($result->rowCount() > 0){
         echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table id='eten'>";
             echo "<tr>";
-                echo "<th>eten_id</th>";
+                //echo "<th>eten id</th>";
                 echo "<th>etennaam</th>";
                 echo "<th>kcal</th>";
-				echo "<th>schijf_id</th>";
-                echo "<th>suiker_gram</th>";
+				echo "<th>schijf id</th>";
+                echo "<th>suiker gram</th>";
 				echo "<th>wijzigen</th>";
 				echo "<th>verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['eten_ID'] . "</td>";
+                //echo "<td>" . $row['eten_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
                 echo "<td>" . $row['kcal'] . "</td>";
 				echo "<td>" . $row['schijf_ID'] . "</td>";
@@ -190,7 +190,7 @@ try{
             echo "</tr>";
 			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
-				echo "<td><input id='editRecordDrugs' type='text' name='Editeten_ID' value='" . $row['eten_ID'] . "'></td>";
+				echo "<input id='editRecordDrugs' type='hidden' name='Editeten_ID' value='" . $row['eten_ID'] . "'>";
                 echo "<td><input id='editRecordDrugs' type='text' name='EditEtennaam' value='" . $row['naam'] . "'></td>";
 				echo "<td><input id='editRecordDrugs' type='text' name='EditEtenkcal' value='" . $row['kcal'] . "'></td>";
 				echo "<td><input id='editRecordDrugs' type='text' name='EditEtenschijf_ID' value='" . $row['schijf_ID'] . "'></td>";
@@ -223,18 +223,18 @@ try{
     if($result->rowCount() > 0){
         echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table id='drinken'>";
             echo "<tr>";
-                echo "<th>drank_id</th>";
+                //echo "<th>drank id</th>";
                 echo "<th>dranknaam</th>";
                 echo "<th>kcal</th>";
-				echo "<th>suiker_gram</th>";
+				echo "<th>suiker gram</th>";
                 echo "<th>alcoholpercentage</th>";
-                echo "<th>schijf_id</th>";
+                echo "<th>schijf id</th>";
 				echo "<th>wijzigen</th>";
 				echo "<th>verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
-                echo "<td>" . $row['drinken_ID'] . "</td>";
+                //echo "<td>" . $row['drinken_ID'] . "</td>";
                 echo "<td>" . $row['naam'] . "</td>";
                 echo "<td>" . $row['kcal'] . "</td>";
 				echo "<td>" . $row['suiker'] . "</td>";
@@ -245,7 +245,7 @@ try{
             echo "</tr>";
 			echo "<tr id='addRowEditDrinken".$row['drinken_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
-				echo "<td><input id='' type='text' name='drinken_ID' value='" . $row['drinken_ID'] . "'></td>";
+				echo "<input id='' type='hidden' name='drinken_ID' value='" . $row['drinken_ID'] . "'>";
                 echo "<td><input id='' type='text' name='naam' value='" . $row['naam'] . "'></td>";
                 echo "<td><input id='' type='text' name='kcal' value='" . $row['kcal'] . "'></td>";
 				echo "<td><input id='' type='text' name='suiker' value='" . $row['suiker'] . "'></td>";
