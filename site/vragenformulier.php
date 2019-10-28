@@ -67,6 +67,7 @@ if (isset($_POST['submit'])){
                 <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
     </div>
+    <?php echo "<p class='usernameheader'>" . $_SESSION['username'] . "</p>";?>
     <!-- content -->
     <form id="regForm" action="vragenformulier.php" method="post">
         <!-- Werkplek -->

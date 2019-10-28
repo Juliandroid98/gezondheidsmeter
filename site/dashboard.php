@@ -98,12 +98,15 @@ if(isset($data)){
     <div class="headercontainer">
         <image class="logosmall" src="assets/images/logo.png" alt="logo">
             <h1>Dashboard</h1>
-                
-            <?php echo "<h3 class='usernameheader'>" . $_SESSION['username'] . "</h3>";?>
+
+
+
             <a class="settingsmenu" href="settings.php">
                 <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
+
     </div>
+    <?php echo "<p class='usernameheader'>" . $_SESSION['username'] . "</p>";?>
     <!-- content -->
     <div class="metercontainer">
         <div class="meter arbeid" id="arbeid">Arbeid<br>-</div>

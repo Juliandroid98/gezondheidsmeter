@@ -34,6 +34,7 @@ if(!isset($_SESSION['username'])){
                 <image class="settingsimg" src="assets/images/settings.png" alt="settings">
             </a>
         </div>
+        <?php echo "<p class='usernameheader'>" . $_SESSION['username'] . "</p>";?>
 
         <!-- content -->
         <?php
