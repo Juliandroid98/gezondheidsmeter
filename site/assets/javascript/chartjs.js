@@ -5,8 +5,6 @@ function chart(chartSoort) {
     var first = today.getDate() - today.getDay() + 1;
     var last = first + 6;
     var DayToday = today.getDate();
-    console.log(first);
-    console.log(DayToday);
 
     var now = new Date(today.setDate(DayToday)).toISOString().slice(0, 10);
     var firstDay = new Date(today.setDate(first)).toISOString().slice(0, 10);
@@ -74,9 +72,40 @@ function chart(chartSoort) {
                             document.getElementById('slaap').innerHTML = "Slaap <br>" + slaapVandaag;
                             document.getElementById('sport').innerHTML = "Sport <br>" + sportVandaag;
                             document.getElementById('totaal').innerHTML = "Gemiddelde cijfer <br>" + totaalVandaag;
+                            var arbeidmeter = document.getElementsByClassName("meter arbeid");
+                            var etenmeter = document.getElementsByClassName("meter eten");
+                            var drinkenmeter = document.getElementsByClassName("meter drinken");
+                            var drugsmeter = document.getElementsByClassName("meter drugs");
+                            var slaapmeter = document.getElementsByClassName("meter slaap");
+                            var sportmeter = document.getElementsByClassName("meter sport");
+                            var totaalmeter = document.getElementsByClassName("bigmeter algemeen");
+                            backColor(arbeidVandaag, arbeidmeter);
+                            backColor(drugsVandaag, drugsmeter);
+                            backColor(slaapVandaag, slaapmeter);
+                            backColor(drinkenVandaag, drinkenmeter);
+                            backColor(etenVandaag, etenmeter);
+                            backColor(sportVandaag, sportmeter);
+                            backColor(totaalVandaag, totaalmeter);
                             break;
                     }
 
+                }
+                function backColor($cijfer, $naam){
+                    if($cijfer <= 2 ){
+                        $naam[0].style.backgroundColor = 'red';
+                    }
+                    else if($cijfer <= 4 ){
+                        $naam[0].style.backgroundColor = 'orange';
+                    }
+                    else if($cijfer <= 6 ){
+                        $naam[0].style.backgroundColor = 'yellow';
+                    }
+                    else if($cijfer <= 8 ){
+                        $naam[0].style.backgroundColor = 'lime';
+                    }
+                    else if($cijfer <= 10 ){
+                        $naam[0].style.backgroundColor = 'green';
+                    }
                 }
                 var chart = new Chart(collapseChart, {
                     type: 'line',
