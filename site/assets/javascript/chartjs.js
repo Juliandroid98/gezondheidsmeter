@@ -91,17 +91,32 @@ function chart(chartSoort) {
 
                 }
                 function backColor($cijfer, $naam){
-                    if($cijfer <= 2 ){
+                    if($cijfer <= 1 ){
                         $naam[0].style.backgroundColor = 'red';
+                    }
+                    else if($cijfer <= 2 ){
+                        $naam[0].style.backgroundColor = 'orangered';
+                    }
+                    else if($cijfer <= 3 ){
+                        $naam[0].style.backgroundColor = 'darkorange';
                     }
                     else if($cijfer <= 4 ){
                         $naam[0].style.backgroundColor = 'orange';
                     }
-                    else if($cijfer <= 6 ){
+                    else if($cijfer <= 5 ){
                         $naam[0].style.backgroundColor = 'yellow';
                     }
+                    else if($cijfer <= 6 ){
+                        $naam[0].style.backgroundColor = 'greenyellow';
+                    }
+                    else if($cijfer <= 7 ){
+                        $naam[0].style.backgroundColor = 'lawngreen';
+                    }
                     else if($cijfer <= 8 ){
-                        $naam[0].style.backgroundColor = 'lime';
+                        $naam[0].style.backgroundColor = 'limegreen';
+                    }
+                    else if($cijfer <= 9 ){
+                        $naam[0].style.backgroundColor = 'forestgreen';
                     }
                     else if($cijfer <= 10 ){
                         $naam[0].style.backgroundColor = 'green';
