@@ -10,9 +10,9 @@ $conn = mysqli_connect($servername,$username_DB,$password_DB,$database);
 
 $firstDay = $_POST['firstDay'];
 $lastDay = $_POST['lastDay'];
-$today = $_POST['today'];
+$today = '2019-10-28';
 $soort = $_POST['soort'];
-$id = $_SESSION['id'];
+$id = '5';
 
 if($soort === 'drugs'){
     $query = mysqli_query($conn, "SELECT hoeveelheid, DATE_FORMAT(koppel_user_drugs.datum, '%d') AS datum FROM koppel_user_drugs WHERE gebruiker_ID = '$id' AND datum BETWEEN '$firstDay' AND '$lastDay' ORDER BY datum");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 12:51 AM
+-- Generation Time: Oct 28, 2019 at 07:43 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -86,7 +86,8 @@ INSERT INTO `drugs` (`drugs_ID`, `naam`, `soort`) VALUES
 (16, 'harddrugs', '8'),
 (17, 'softdrugs', '2'),
 (18, 'softdrugs', '2'),
-(19, 'softdrugs', '2');
+(19, 'softdrugs', '2'),
+(20, 'softdrugs', '2');
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,8 @@ INSERT INTO `eten` (`eten_ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) VALUES
 (17, '8', 8, 8.00, 0),
 (18, '2', 2, 2.00, 0),
 (19, '2', 2, 2.00, 0),
-(20, '2', 2, 2.00, 0);
+(20, '2', 2, 2.00, 0),
+(21, '2', 2, 2.00, 0);
 
 -- --------------------------------------------------------
 
@@ -164,36 +166,6 @@ CREATE TABLE `koppel_user_drinks` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `koppel_user_drinks`
---
-
-INSERT INTO `koppel_user_drinks` (`gebruiker_ID`, `drinks_ID`, `datum`) VALUES
-(1, 5, '0000-00-00'),
-(1, 6, '0000-00-00'),
-(1, 7, '0000-00-00'),
-(1, 8, '0000-00-00'),
-(2, 1, '2019-10-16'),
-(4, 2, '0000-00-00'),
-(4, 3, '0000-00-00'),
-(4, 4, '0000-00-00'),
-(4, 5, '0000-00-00'),
-(7, 9, '2019-10-18'),
-(5, 10, '0000-00-00'),
-(5, 11, '0000-00-00'),
-(5, 12, '0000-00-00'),
-(5, 13, '0000-00-00'),
-(5, 14, '2019-10-04'),
-(5, 15, '0000-00-00'),
-(5, 16, '0000-00-00'),
-(5, 17, '0000-00-00'),
-(5, 18, '2019-10-27'),
-(5, 19, '0000-00-00'),
-(5, 20, '2019-10-27'),
-(5, 21, '2019-10-28'),
-(5, 22, '2019-10-27'),
-(5, 23, '2019-10-29');
-
 -- --------------------------------------------------------
 
 --
@@ -207,25 +179,6 @@ CREATE TABLE `koppel_user_drugs` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `koppel_user_drugs`
---
-
-INSERT INTO `koppel_user_drugs` (`gebruiker_ID`, `drug_ID`, `hoeveelheid`, `datum`) VALUES
-(1, 1, 7, '2019-10-18'),
-(2, 1, 6, '2019-10-15'),
-(3, 1, 2, '2019-10-13'),
-(4, 1, 4, '2019-10-27'),
-(5, 1, 9, '2019-10-27'),
-(6, 1, 8, '2019-10-14'),
-(7, 1, 5, '2019-10-20'),
-(5, 13, 1, '2019-10-27'),
-(5, 15, 5, '0000-00-00'),
-(5, 16, 8, '2019-10-27'),
-(5, 17, 2, '2019-10-28'),
-(5, 18, 2, '2019-10-27'),
-(5, 19, 2, '2019-10-29');
-
 -- --------------------------------------------------------
 
 --
@@ -238,17 +191,6 @@ CREATE TABLE `koppel_user_eten` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `koppel_user_eten`
---
-
-INSERT INTO `koppel_user_eten` (`gebruiker_ID`, `eten_ID`, `datum`) VALUES
-(5, 11, '0000-00-00'),
-(5, 17, '2019-10-27'),
-(5, 18, '2019-10-28'),
-(5, 19, '2019-10-27'),
-(5, 20, '2019-10-29');
-
 -- --------------------------------------------------------
 
 --
@@ -260,18 +202,6 @@ CREATE TABLE `koppel_user_sport` (
   `sport_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `koppel_user_sport`
---
-
-INSERT INTO `koppel_user_sport` (`gebruiker_ID`, `sport_ID`, `datum`) VALUES
-(4, 1, '2019-10-16'),
-(5, 5, '0000-00-00'),
-(5, 14, '2019-10-27'),
-(5, 15, '2019-10-28'),
-(5, 16, '2019-10-27'),
-(5, 17, '2019-10-29');
 
 -- --------------------------------------------------------
 
@@ -320,30 +250,6 @@ CREATE TABLE `slaap` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `slaap`
---
-
-INSERT INTO `slaap` (`slaap_ID`, `gebruiker_ID`, `uren`, `beoordeling`, `datum`) VALUES
-(1, 1, 3, '3', '2019-10-16'),
-(2, 4, 8, '8', '2019-10-14'),
-(3, 4, 8, '9', '2019-10-17'),
-(4, 4, 5, '5', '2019-10-18'),
-(5, 4, 0, '0', '0000-00-00'),
-(6, 5, 6, '10', '2019-10-18'),
-(7, 5, 2, '2', '2019-10-02'),
-(8, 5, 1, '1', '0000-00-00'),
-(9, 5, 12, '21', '2019-10-19'),
-(10, 5, 5, '5', '2019-10-04'),
-(11, 5, 2, '2', '2019-10-05'),
-(12, 5, 3, '3', '2019-10-03'),
-(13, 5, 4, '4', '2019-10-04'),
-(14, 5, 5, '5', '2019-10-12'),
-(15, 5, 8, '8', '2019-10-27'),
-(16, 5, 2, '2', '2019-10-28'),
-(17, 5, 2, '2', '2019-10-27'),
-(18, 5, 2, '2', '2019-10-29');
-
 -- --------------------------------------------------------
 
 --
@@ -377,7 +283,8 @@ INSERT INTO `sport` (`sport_ID`, `naam`, `verbranding`) VALUES
 (14, '8', '8'),
 (15, '2', '2'),
 (16, '2', '2'),
-(17, '2', '2');
+(17, '2', '2'),
+(18, '2', '2');
 
 --
 -- Indexes for dumped tables
@@ -473,22 +380,22 @@ ALTER TABLE `sport`
 -- AUTO_INCREMENT for table `arbeid`
 --
 ALTER TABLE `arbeid`
-  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `drinken`
 --
 ALTER TABLE `drinken`
-  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `eten`
 --
 ALTER TABLE `eten`
-  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `gebruiker`
 --
@@ -498,7 +405,7 @@ ALTER TABLE `gebruiker`
 -- AUTO_INCREMENT for table `melding`
 --
 ALTER TABLE `melding`
-  MODIFY `melding_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `melding_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `schijf`
 --
@@ -508,12 +415,12 @@ ALTER TABLE `schijf`
 -- AUTO_INCREMENT for table `slaap`
 --
 ALTER TABLE `slaap`
-  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Constraints for dumped tables
 --

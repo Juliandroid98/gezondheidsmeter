@@ -2,9 +2,11 @@ function chart(chartSoort) {
     var collapseChart;
     var result = [];
     var today = new Date;
-    var first = today.getDate() - today.getDay() + 2;
+    var first = today.getDate() - today.getDay() + 1;
     var last = first + 6;
-    var DayToday = today.getDate() + 1;
+    var DayToday = today.getDate();
+    console.log(first);
+    console.log(DayToday);
 
     var now = new Date(today.setDate(DayToday)).toISOString().slice(0, 10);
     var firstDay = new Date(today.setDate(first)).toISOString().slice(0, 10);
