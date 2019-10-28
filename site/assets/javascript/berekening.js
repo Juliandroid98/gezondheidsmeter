@@ -235,7 +235,7 @@ function sporten(calorien_verbrand)
 
 function drugs(hoeveelheid_drugs)
 {
-    if(hoeveelheid_drugs === 0){
+    if(hoeveelheid_drugs === '0'){
         drugs_punten = 10;
     }else if(hoeveelheid_drugs <= 0.2){
         drugs_punten = 9;
