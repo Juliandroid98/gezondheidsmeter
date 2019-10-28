@@ -65,7 +65,7 @@ if(isset($data)){
         $id = $_SESSION['id'];
 
         $query = "INSERT INTO melding (melding, datum, gebruiker_ID) 
-  			  VALUES('Er is voor vandaag nog geen data ingevuld.', '$date', $id)";
+  			  VALUES('Voor $date is nog geen data ingevuld.', '$date', $id)";
 
         mysqli_query($conn, $query);
     }
