@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 07:43 AM
+-- Generation Time: Oct 31, 2019 at 11:50 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -36,6 +36,16 @@ CREATE TABLE `arbeid` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `arbeid`
+--
+
+INSERT INTO `arbeid` (`arbeid_ID`, `gebruiker_ID`, `werkplek`, `werkdruk`, `datum`) VALUES
+(1, 10, 6, 8, '2019-10-28'),
+(2, 10, 4, 9, '2019-10-29'),
+(3, 10, 8, 2, '2019-10-30'),
+(4, 10, 10, 8, '2019-10-31');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +60,17 @@ CREATE TABLE `drinken` (
   `schijf_ID` int(11) NOT NULL,
   `alcohol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `drinken`
+--
+
+INSERT INTO `drinken` (`drinken_ID`, `naam`, `kcal`, `suiker`, `schijf_ID`, `alcohol`) VALUES
+(25, 'water', 50, 1.00, 0, '10'),
+(26, 'water', 10, 0.00, 0, '0'),
+(27, 'cola', 115, 15.00, 0, '0'),
+(28, 'bier', 200, 30.00, 0, '6'),
+(29, 'water', 0, 0.00, 0, '0');
 
 -- --------------------------------------------------------
 
@@ -87,7 +108,12 @@ INSERT INTO `drugs` (`drugs_ID`, `naam`, `soort`) VALUES
 (17, 'softdrugs', '2'),
 (18, 'softdrugs', '2'),
 (19, 'softdrugs', '2'),
-(20, 'softdrugs', '2');
+(20, 'softdrugs', '2'),
+(21, 'softdrugs', '10'),
+(22, 'softdrugs', '1'),
+(23, '', '0'),
+(24, 'softdrugs', '2'),
+(25, '', '0');
 
 -- --------------------------------------------------------
 
@@ -118,7 +144,12 @@ INSERT INTO `eten` (`eten_ID`, `naam`, `kcal`, `sugar`, `schijf_ID`) VALUES
 (18, '2', 2, 2.00, 0),
 (19, '2', 2, 2.00, 0),
 (20, '2', 2, 2.00, 0),
-(21, '2', 2, 2.00, 0);
+(21, '2', 2, 2.00, 0),
+(22, 'brood', 150, 20.00, 0),
+(23, 'aardappels', 500, 30.00, 0),
+(24, 'wortels', 300, 5.00, 0),
+(25, 'biefstuk met aardappels', 1100, 50.00, 0),
+(26, '3 gangen diner', 1800, 70.00, 0);
 
 -- --------------------------------------------------------
 
@@ -131,8 +162,8 @@ CREATE TABLE `gebruiker` (
   `gebruikersnaam` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `wachtwoord` varchar(255) NOT NULL,
-  `gewicht` double(3,2) NOT NULL,
-  `lengte` double(3,2) NOT NULL,
+  `gewicht` decimal(10,0) NOT NULL,
+  `lengte` decimal(10,0) NOT NULL,
   `geboortedatum` date NOT NULL,
   `geslacht` varchar(5) NOT NULL,
   `geactiveerd` tinyint(1) NOT NULL,
@@ -146,13 +177,16 @@ CREATE TABLE `gebruiker` (
 --
 
 INSERT INTO `gebruiker` (`gebruiker_ID`, `gebruikersnaam`, `email`, `wachtwoord`, `gewicht`, `lengte`, `geboortedatum`, `geslacht`, `geactiveerd`, `activeer_id`, `ww_vergeet_id`, `is_admin`) VALUES
-(1, 'userew', '', 'user', 9.90, 9.99, '2004-06-09', 'dunno', 0, '', '', 1),
-(2, 'miquel', 'miquelalessandro@gmail.com', '$2y$10$oDKaVNdwV4OjiOKM.SyPC.kOailffgTBkHWQ/UX0rUSdWUFVUk61e', 9.99, 9.99, '2001-04-24', 'male', 1, '0', '', 0),
-(3, 'user', 'u@u', '$2y$10$WzIaEfM6.MZwS9/colA4b.gGS1YbT2gvlliAeqfLwsIIzB1./cBYW', 1.00, 1.00, '2019-10-01', 'femal', 0, '5d9716af4f2e8', '', 0),
-(4, 'test', 'test@mail.com', '$2y$10$99RHDbaaPE93pKBlpmSq7uH./SJeG93jE/StCVG8N1./0cFbrbad2', 9.99, 9.99, '2019-10-20', 'femal', 0, '5da59e3867aa0', '', 0),
-(5, 'rens', 'rens@mail.com', '$2y$10$gi5FnzCV8kJopqJl1SbPU.pR2sdMf3Xlded9Pb5vBMjNF71fpoD5S', 9.99, 9.99, '2019-10-18', 'male', 1, '5da6c0585939a', '', 0),
-(6, 'pietje', 'lol@mail.com', '$2y$10$0MtubUZFhCrXSCmp/mgmaO7iiFGlGAXN8Dn2eAz3or2FBoWoo3PRO', 9.99, 9.99, '2019-10-12', 'femal', 0, '5da6c0773f10f', '', 0),
-(7, 'test', 'test@mail', '$2y$10$SreEeYpdzQApCvV6jcDe6OP0dpIlxx67NiWhuuuJZMW34/roxh8pC', 9.99, 9.99, '2019-10-12', 'femal', 0, '5da6c1f542c47', '', 0);
+(1, 'userew', '', 'user', '10', '10', '2004-06-09', 'dunno', 0, '', '', 1),
+(2, 'miquel', 'miquelalessandro@gmail.com', '$2y$10$oDKaVNdwV4OjiOKM.SyPC.kOailffgTBkHWQ/UX0rUSdWUFVUk61e', '10', '10', '2001-04-24', 'male', 1, '0', '', 1),
+(3, 'user', 'u@u', '$2y$10$WzIaEfM6.MZwS9/colA4b.gGS1YbT2gvlliAeqfLwsIIzB1./cBYW', '1', '1', '2019-10-01', 'femal', 0, '5d9716af4f2e8', '', 0),
+(4, 'test', 'test@mail.com', '$2y$10$99RHDbaaPE93pKBlpmSq7uH./SJeG93jE/StCVG8N1./0cFbrbad2', '10', '10', '2019-10-20', 'femal', 0, '5da59e3867aa0', '', 0),
+(5, 'rens', 'rens@mail.com', '$2y$10$gi5FnzCV8kJopqJl1SbPU.pR2sdMf3Xlded9Pb5vBMjNF71fpoD5S', '10', '10', '2019-10-18', 'male', 1, '5da6c0585939a', '', 0),
+(6, 'pietje', 'lol@mail.com', '$2y$10$0MtubUZFhCrXSCmp/mgmaO7iiFGlGAXN8Dn2eAz3or2FBoWoo3PRO', '10', '10', '2019-10-12', 'femal', 0, '5da6c0773f10f', '', 0),
+(7, 'test', 'test@mail', '$2y$10$SreEeYpdzQApCvV6jcDe6OP0dpIlxx67NiWhuuuJZMW34/roxh8pC', '10', '10', '2019-10-12', 'femal', 0, '5da6c1f542c47', '', 0),
+(8, 'fwebbeb', 'yuaedyvb@gmail.com', '$2y$10$qgx8cQm0LEHOMllw1wZEVu.w9ux630gifFh7aUPknQYFlbjGNvTQ2', '87', '180', '2003-07-26', 'male', 1, '', '', 0),
+(9, 'Hdhsshsndn', 'skdhsgb@gmail.com', '$2y$10$ibp3XoQIr6cxmfLIMVi.ie1CwTl27e4tVBW4REs8dtRuUxz.02fF.', '10', '10', '2002-11-27', 'male', 0, '5db6ad7210451', '', 0),
+(10, 'testtest', 'testtest@gmail.com', '$2y$10$mCvnOpYGJW4jzCd9MLVOgu2V4/YQ/YT4nH8jSgCBABqdQWmIB/Sui', '78', '187', '2000-05-24', 'male', 1, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -165,6 +199,16 @@ CREATE TABLE `koppel_user_drinks` (
   `drinks_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `koppel_user_drinks`
+--
+
+INSERT INTO `koppel_user_drinks` (`gebruiker_ID`, `drinks_ID`, `datum`) VALUES
+(10, 26, '2019-10-28'),
+(10, 27, '2019-10-29'),
+(10, 28, '2019-10-30'),
+(10, 29, '2019-10-31');
 
 -- --------------------------------------------------------
 
@@ -179,6 +223,16 @@ CREATE TABLE `koppel_user_drugs` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `koppel_user_drugs`
+--
+
+INSERT INTO `koppel_user_drugs` (`gebruiker_ID`, `drug_ID`, `hoeveelheid`, `datum`) VALUES
+(10, 22, 1, '2019-10-28'),
+(10, 23, 0, '2019-10-29'),
+(10, 24, 2, '2019-10-30'),
+(10, 25, 0, '2019-10-31');
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +245,16 @@ CREATE TABLE `koppel_user_eten` (
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `koppel_user_eten`
+--
+
+INSERT INTO `koppel_user_eten` (`gebruiker_ID`, `eten_ID`, `datum`) VALUES
+(10, 23, '2019-10-28'),
+(10, 24, '2019-10-29'),
+(10, 25, '2019-10-30'),
+(10, 26, '2019-10-31');
+
 -- --------------------------------------------------------
 
 --
@@ -202,6 +266,16 @@ CREATE TABLE `koppel_user_sport` (
   `sport_ID` int(11) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `koppel_user_sport`
+--
+
+INSERT INTO `koppel_user_sport` (`gebruiker_ID`, `sport_ID`, `datum`) VALUES
+(10, 20, '2019-10-28'),
+(10, 21, '2019-10-29'),
+(10, 22, '2019-10-30'),
+(10, 23, '2019-10-31');
 
 -- --------------------------------------------------------
 
@@ -221,9 +295,8 @@ CREATE TABLE `melding` (
 --
 
 INSERT INTO `melding` (`melding_ID`, `melding`, `datum`, `gebruiker_ID`) VALUES
-(1, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-17', 4),
-(2, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-18', 5),
-(3, 'Er is voor vandaag nog geen data ingevuld.', '2019-10-26', 5);
+(7, 'Voor 2019-10-28 is nog geen data ingevuld.', '2019-10-28', 8),
+(9, 'Voor 2019-10-28 is nog geen data ingevuld.', '2019-10-28', 2);
 
 -- --------------------------------------------------------
 
@@ -249,6 +322,16 @@ CREATE TABLE `slaap` (
   `beoordeling` varchar(50) NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slaap`
+--
+
+INSERT INTO `slaap` (`slaap_ID`, `gebruiker_ID`, `uren`, `beoordeling`, `datum`) VALUES
+(1, 10, 10, '6', '2019-10-28'),
+(2, 10, 5, '7', '2019-10-29'),
+(3, 10, 8, '10', '2019-10-30'),
+(4, 10, 13, '8', '2019-10-31');
 
 -- --------------------------------------------------------
 
@@ -284,7 +367,12 @@ INSERT INTO `sport` (`sport_ID`, `naam`, `verbranding`) VALUES
 (15, '2', '2'),
 (16, '2', '2'),
 (17, '2', '2'),
-(18, '2', '2');
+(18, '2', '2'),
+(19, 'tennis', '800'),
+(20, 'voetbal', '800'),
+(21, 'basketball', '800'),
+(22, 'tennis', '200'),
+(23, 'cricket', '500');
 
 --
 -- Indexes for dumped tables
@@ -380,32 +468,32 @@ ALTER TABLE `sport`
 -- AUTO_INCREMENT for table `arbeid`
 --
 ALTER TABLE `arbeid`
-  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `arbeid_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `drinken`
 --
 ALTER TABLE `drinken`
-  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `drinken_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `drugs_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `eten`
 --
 ALTER TABLE `eten`
-  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `eten_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `gebruiker`
 --
 ALTER TABLE `gebruiker`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `melding`
 --
 ALTER TABLE `melding`
-  MODIFY `melding_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `melding_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `schijf`
 --
@@ -415,12 +503,12 @@ ALTER TABLE `schijf`
 -- AUTO_INCREMENT for table `slaap`
 --
 ALTER TABLE `slaap`
-  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `slaap_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `sport_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- Constraints for dumped tables
 --
