@@ -186,7 +186,7 @@ try{
 				echo "<td>" . $row['schijf_ID'] . "</td>";
                 echo "<td>" . $row['sugar'] . "</td>";
 				echo "<td><img id='penciltrash' onclick='addRowForEditEten(" . $row['eten_ID'] . ");' class='bottomimg' src='assets/images/pencil-edit-button.png'></td>";
-				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input id='penciltrash' type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
+				echo "<form action='refreshAdmin.php' method='post' onsubmit='return confirm(`wilt u verwijderen?`);'><td><input type='hidden' name='verwijderIDeten' value='" . $row['eten_ID'] . "'><input type='image'  id='penciltrash' name='submit' class='bottomimg' src='assets/images/rubbish-bin.png'></td></form>";
             echo "</tr>";
 			echo "<tr id='addRowEditEten".$row['eten_ID']."' style='display: none;'>";
 				echo "<form action='refreshAdmin.php' method='post'>";
