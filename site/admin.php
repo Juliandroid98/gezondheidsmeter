@@ -50,19 +50,19 @@ try{
     $sql = "SELECT * FROM gebruiker";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>gebruiker</b><div class='responsiveTable'><table id='gebruiker'>";
+        echo "<br><b class='tabelTitel'>Gebruiker</b><div class='responsiveTable'><table id='gebruiker'>";
             echo "<tr>";
-                echo "<th>admin</th>";
+                echo "<th>Admin</th>";
                 //echo "<th>gebruikers id</th>";
-				echo "<th>gebruikersnaam</th>";
-                echo "<th>email</th>";
-				echo "<th>geboortedatum</th>";
-				echo "<th>lengte</th>";
-				echo "<th>gewicht</th>";
-				echo "<th>geslacht</th>";
-				echo "<th>geactiveerd</th>";
-				echo "<th>wijzigen</th>";
-				echo "<th>verwijderen</th>";
+				echo "<th>Gebruikersnaam</th>";
+                echo "<th>Email</th>";
+				echo "<th>Geboortedatum</th>";
+				echo "<th>Lengte</th>";
+				echo "<th>Gewicht</th>";
+				echo "<th>Geslacht</th>";
+				echo "<th>Geactiveerd</th>";
+				echo "<th>Wijzigen</th>";
+				echo "<th>Verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
@@ -120,13 +120,13 @@ try{
     $sql = "SELECT * FROM drugs";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drugs</b><div class='responsiveTable'><table id='drugs'>";
+        echo "<br><b class='tabelTitel'>Drugs</b><div class='responsiveTable'><table id='drugs'>";
             echo "<tr>";
-                //echo "<th>drugs id</th>";
-                echo "<th>drugsnaam</th>";
-				echo "<th>soort</th>";
-				echo "<th>wijzigen</th>";
-				echo "<th>verwijderen</th>";
+                //echo "<th>Drugs id</th>";
+                echo "<th>Drugsnaam</th>";
+				echo "<th>Soort</th>";
+				echo "<th>Wijzigen</th>";
+				echo "<th>Verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
@@ -168,15 +168,15 @@ try{
     $sql = "SELECT * FROM eten";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>eten</b><div class='responsiveTable'><table id='eten'>";
+        echo "<br><b class='tabelTitel'>Eten</b><div class='responsiveTable'><table id='eten'>";
             echo "<tr>";
-                //echo "<th>eten id</th>";
-                echo "<th>etennaam</th>";
-                echo "<th>kcal</th>";
-				echo "<th>schijf id</th>";
-                echo "<th>suiker gram</th>";
-				echo "<th>wijzigen</th>";
-				echo "<th>verwijderen</th>";
+                //echo "<th>Eten id</th>";
+                echo "<th>Etennaam</th>";
+                echo "<th>Kcal</th>";
+				echo "<th>Schijf id</th>";
+                echo "<th>Suiker gram</th>";
+				echo "<th>Wijzigen</th>";
+				echo "<th>Verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
@@ -221,16 +221,16 @@ try{
     $sql = "SELECT * FROM drinken";
     $result = $pdo->query($sql);
     if($result->rowCount() > 0){
-        echo "<br><b class='tabelTitel'>drinken</b><div class='responsiveTable'><table id='drinken'>";
+        echo "<br><b class='tabelTitel'>Drinken</b><div class='responsiveTable'><table id='drinken'>";
             echo "<tr>";
-                //echo "<th>drank id</th>";
-                echo "<th>dranknaam</th>";
-                echo "<th>kcal</th>";
-				echo "<th>suiker gram</th>";
-                echo "<th>alcoholpercentage</th>";
-                echo "<th>schijf id</th>";
-				echo "<th>wijzigen</th>";
-				echo "<th>verwijderen</th>";
+                //echo "<th>Drank id</th>";
+                echo "<th>Dranknaam</th>";
+                echo "<th>Kcal</th>";
+				echo "<th>Suiker gram</th>";
+                echo "<th>Alcoholpercentage</th>";
+                echo "<th>Schijf id</th>";
+				echo "<th>Wijzigen</th>";
+				echo "<th>Verwijderen</th>";
             echo "</tr>";
         while($row = $result->fetch()){
             echo "<tr>";
