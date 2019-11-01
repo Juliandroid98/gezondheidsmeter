@@ -46,14 +46,14 @@ if($soort === 'alles'){
                                         INNER JOIN drugs ON koppel_user_drugs.drug_ID = drugs.drugs_ID 
                                         INNER JOIN koppel_user_drinks ON gebruiker.gebruiker_ID = koppel_user_drinks.gebruiker_ID 
                                         INNER JOIN drinken ON koppel_user_drinks.drinks_ID = drinken.drinken_ID 
-                                        WHERE koppel_user_sport.datum = '$today' AND arbeid.gebruiker_ID = '$id' AND koppel_user_drinks.gebruiker_ID = '$id' AND koppel_user_drugs.gebruiker_ID = '$id' AND koppel_user_eten.gebruiker_ID = '$id' AND koppel_user_sport.gebruiker_ID = '$id' AND slaap.gebruiker_ID = '$id'");
+                                        WHERE koppel_user_sport.datum = '$today' AND koppel_user_drinks.datum = '$today' AND koppel_user_eten.datum = '$today' AND koppel_user_drugs.datum = '$today' AND arbeid.datum = '$today' AND slaap.datum = '$today' AND arbeid.gebruiker_ID = '$id' AND koppel_user_drinks.gebruiker_ID = '$id' AND koppel_user_drugs.gebruiker_ID = '$id' AND koppel_user_eten.gebruiker_ID = '$id' AND koppel_user_sport.gebruiker_ID = '$id' AND slaap.gebruiker_ID = '$id'");
 
 }
-
 
 while($r = mysqli_fetch_array($query)) {
     $rows[] = $r;
 }
 echo json_encode($rows);
 mysqli_close($conn);
+
 ?>
