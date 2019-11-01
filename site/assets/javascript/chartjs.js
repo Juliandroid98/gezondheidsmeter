@@ -2,14 +2,14 @@ function chart(chartSoort) {
     var collapseChart;
     var result = [];
     var today = new Date;
+    var DayToday = today.getDate();
     var first = today.getDate() - today.getDay() + 1;
     var last = first + 6;
-    var DayToday = today.getDate();
 
     var now = new Date(today.setDate(DayToday)).toISOString().slice(0, 10);
-    var firstDay = new Date(today.setDate(first)).toISOString().slice(0, 10);
     var lastDay = new Date(today.setDate(last)).toISOString().slice(0, 10);
-
+    var firstDay = new Date(today.setDate(first)).toISOString().slice(0, 10);
+    
     switch (chartSoort) {
         case 'arbeid':
             collapseChart = document.getElementById('chartArbeid').getContext('2d');
